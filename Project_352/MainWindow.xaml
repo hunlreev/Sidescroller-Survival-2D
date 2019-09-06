@@ -6,7 +6,7 @@
         Icon="temp.png"
         xmlns:local="clr-namespace:Project_352"
         mc:Ignorable="d"
-        Title="Sidescroller Adventure 2D" Height="480" Width="720">
+        Title="Sidescroller Adventure 2D" Width="1080" Height="720">
     <Grid>
         
     </Grid>
