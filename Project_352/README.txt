@@ -1,5 +1,5 @@
 ﻿Authors: Hunter Reeves, Billy Gibson
-Date: 09/07/2019
+Date: 09/22/2019
 File: README.txt
 Description: A 2D sidescroller survival-adventure game for CSCI 352!
 
