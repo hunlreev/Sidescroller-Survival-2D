@@ -1,6 +1,13 @@
-﻿using System;
+﻿/* Name: Hunter Reeves, Billy Gibson
+ * Date: 09/14/2019
+ * File: MainWindow.xaml.cs
+ * Description: Main window for the game!
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +27,7 @@ namespace Project_352
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Initializing the game window
         public MainWindow()
         {
             InitializeComponent();
