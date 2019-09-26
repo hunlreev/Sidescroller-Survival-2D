@@ -5,12 +5,11 @@ File: README.txt
 Description: A text adventure RPG game for CSCI 352!
 
 STARTER IDEAS TO IMPLEMENT
-- GUI to interact with
-- Some sort of introduction for a story
-- Way to pick a class (three classes)
-- Get and use loot
+- Interactive GUI for Gameplay
+- The Story (short for the sake of the semester)
+- Class Selection (three classes)
+- Obtain/Use Loot
 
 ADDITIONAL IDEAS TO IMPLEMENT (IF WE HAVE TIME)
-- Text combat with health!
-- Perhaps magic abilities as an option instead of a sword
-- Gold and leveling system
+- Gold and Leveling system
+- Different Locations/Areas
