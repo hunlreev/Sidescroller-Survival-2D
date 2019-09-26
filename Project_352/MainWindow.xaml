@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_352"
         mc:Ignorable="d"
-        Title="Sidescroller Adventure 2D" Width="1080" Height="720" 
+        Title="Text Adventure RPG" Width="1080" Height="720" 
         Icon="temp_logo.png">
     <Grid Name="ViewPortContainer">
         <!-- Skybox for the game -->
