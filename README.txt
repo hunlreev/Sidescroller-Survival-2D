@@ -11,4 +11,6 @@ STARTER IDEAS TO IMPLEMENT
 - Get and use loot
 
 ADDITIONAL IDEAS TO IMPLEMENT (IF WE HAVE TIME)
-- ...
+- Text combat with health!
+- Perhaps magic abilities as an option instead of a sword
+- Gold and leveling system
