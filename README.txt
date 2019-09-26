@@ -7,7 +7,7 @@ Description: A text adventure RPG game for CSCI 352!
 STARTER IDEAS TO IMPLEMENT
 - GUI to interact with
 - Some sort of introduction for a story
-- Way to pick a class
+- Way to pick a class (three classes)
 - Get and use loot
 
 ADDITIONAL IDEAS TO IMPLEMENT (IF WE HAVE TIME)
