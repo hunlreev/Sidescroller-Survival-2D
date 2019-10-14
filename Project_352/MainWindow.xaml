@@ -8,7 +8,7 @@
         Title="Text Adventure RPG" Width="1080" Height="720" 
         Icon="temp_logo.png">
     <Grid Name="ViewPortContainer">
-        <!-- Skybox for the game -->
+        <!-- Pretty Background Image for Now -->
         <Grid.Background>
             <ImageBrush ImageSource="skybox.jpg" Stretch="UniformToFill"/>
         </Grid.Background>

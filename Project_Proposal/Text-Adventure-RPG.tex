@@ -474,7 +474,7 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-Text Adventure RPG (better name to come) will be a game similar to something like Dungeons and Dragons. Our target audience is someone who enjoys fun RPG style games. So far, we have our repo set up with our individual branches.
+Text Adventure RPG (better name to come) will be a game similar to something like Dungeons and Dragons. Our target audience is someone who enjoys fun RPG style games. So far, we have our repo set up with our individual branches. We have also created a mock-up for the GUI interface of the game.
 \end{abstract}
 
 %As the comment below states, you usually only do these when you're doing a final submission of a paper, to make it easier to find your work when searching.
@@ -643,119 +643,110 @@ Stuff for Billy to fix up.
 
 
 \section{Scope}
-Stuff for Billy to fix up.\\
+Due to the game being more text-based, the scope is easier to handle. It involves some basic gameplay mechanics, the storyline, and how the player will interact with the world. It also includes our two stretch goals that we want to complete if we have the time.\\
 
 \textit{1. Interactive GUI for Gameplay\\}
-Stuff for Billy to fix up.\\
+This will be the main window of the game where you will see your level, gold, experience, any quest updates and information, and the basic player controls for moving area to area.\\
 
 \textit{2. The Story\\}
-Stuff for Billy to fix up.\\
+The story will be pretty simple given the time we have. It will most likely involve the player escaping a prison to start our their new life.\\
 
 \textit{3. Class Selection\\}
-Stuff for Billy to fix up.\\
+We are thinking about three classes. A warrior, mage, and thief. Pretty basic selection and shouldn't take much to implement. They will vary in starting stats and abilities/weapon choice.\\
 
 \textit{4. Obtain/Use Loot\\}
-Stuff for Billy to fix up.\\
+Obtaining and using loot will be as simple as seeing some text appear and then the appropriate changes regarding the loot obtained or used. It could be a weapon swap, using a potion, or getting a quest item.\\
 
 \textbf{Stretch Goals\\}
 
 \textit{5. Gold and Leveling System\\}
-Stuff for Billy to fix up.\\
+Pretty straightforward. Include a way to obtain gold and perhaps have a small shop to buy and sell goods. As well as the leveling system based on gaining experience from quests and defeated enemies in the world.\\
 
 \textit{6. Different Locations/Areas\\}
-Stuff for Billy to fix up.\\
-
-\iffalse % comment out the rest
+The starting location will be a sewer type location after the player gets out of prison. We hope to also add a few more areas. Perhaps a city and a forest for the player to explore.\\
 
 \subsection{Requirements}
-As part of fleshing out the scope of your requirements, you'll also need to keep in mind both your functional and non-functional requirements.  These should be listed, and explained in detail as necessary.  Use this area to explain how you gathered these requirements.
+The requirements were gathered by researching and thinking of what would be the best for our purposes in the game. The functional are the basic abilities that the user should be able to do at any point. The non-functional requirements involve keeping the game stable and of a higher standard.
 
 \subsubsection{Functional}
 \begin{itemize}
-\item User needs to have a private shopping cart -- this cannot be shared between users, and needs to maintain state across subsequent visits to the site
-\item Users need to have website accounts -- this will help track recent purchases, keep shopping cart records, etc.
-\item You'll need more than 2 of these...
+\item The user must have the ability to equip and unequip their weapons/armour.
+\item The user should have private inventories that can't be accessed but from themselves.
+\item The user should be able to run or fight from any battle.
+\item The user should have the ability to quit the game at any point.
 \end{itemize}
 
 \subsubsection{Non-Functional}
 \begin{itemize}
-\item Security -- user credentials must be encrypted on disk, users should be able to reset their passwords if forgotten
-\item you'll typically have fewer non-functional than functional requirements
+\item Stability - the game should always run with as little problems as possible
+\item Quality - the quality of the game should be to our highest expectations
 \end{itemize}
 
 \subsection{Use Cases}
-This subsection is arguably part of how you define your project scope (why it is in the Scope section...).  In a traditional Waterfall approach, as part of your requirements gathering phase (what does the product actually \emph{need} to do?), you will typically sit down with a user to develop use cases.
+\begin{itemize}
+\item[Use Case:] 1
+\item[Name:] Select a Class
+\item[Description:] The player will need to do this almost at the start of the game. They will choose whether they want to be a Warrior, Mage, or Thief class. As they click on the class, they will see the stat spread and starting gear of each class. Once they pick the class they want, they will click "Select" and they will start the game with the class they selected.
+\end{itemize}
 
-You should have a table listing all use cases discussed in the document, the ID is just the order it is listed in, the name should be indicative of what should happen, the primary actor is typically most important in an application where you may have different levels of users (think admin vs normal user), complexity is a best-guess on your part as to how hard it should be.  A lower number in priority indicates that it needs to happen sooner rather than later.  A sample table, or Use Case Index can be seen in Table \ref{tab:useCaseIndex}.
 
+\begin{enumerate}
+\item Player clicks on a class within the GUI.
+\item Player reads and decides on which class they want to have.
+\item Player clicks "Select" on the class they want and obtain the gear and stats associated with that class.\\
+\end{enumerate}
 
-\begin{table}
-\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
-\hline \hline
-1 & Add item to cart & Shopper & Med & 1\\
-\hline
-2 & Checkout & Shopper & Med & 1\\
-\hline
+\begin{itemize}
+	\item[Use Caser:] 2
+	\item[Name:] Attack an Enemy
+	\item[Description:] You will come across enemies in the game, some pretty immediately into starting out. When you enter combat with a rat, the rat will attack and dialogue will appear to indicate this. Something like "A rat has appeared. It caused X damage." The player will now see an option to attack the rat with their weapon. More dialogue will appear to show this. "You have caused X damage to the rat."
+\end{itemize}
 
-\end{tabular}
-\caption{Sample use case table}
-\label{tab:useCaseIndex}
+\begin{enumerate}
+	\item Player initiates combat with an enemy.
+	\item Player fights the enemy until one of them dies.
+	\item Player will either defeat the enemy or respawn.\\
+\end{enumerate}
+
+\begin{itemize}
+	\item[Use Case:] 3
+	\item[Name:] Obtain Loot
+	\item[Description:] There will be moments in the game where the player can pick up new gear, quest items, or gold. When the player encounters something they can loot, a text dialogue describing the item will appear. The player will then get the option to either pick the item up or ignore the item.
+\end{itemize}
+
+\begin{enumerate}
+	\item Player comes across loot and receives dialogue about the loot.
+	\item Player decides whether or not they pick the loot up or ignore it.
+	\item Player adds loot to their inventory or simply walks away from the loot.\\\\\\
+\end{enumerate}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
+		\hline \hline
+		1 & Select a Class & Player & Easy & 1\\
+		\hline
+		2 & Attack an Enemy & Player & Easy & 1\\
+		\hline
+		3 & Obtain Loot & Player & Easy & 1\\
+		\hline
+		
+	\end{tabular}
+	\caption{Use case for some basic player interactions}
+	\label{tab:useCaseIndex}
 \end{table}
 
-
-\begin{itemize}
-\item[Use Case Number:] 1
-\item[Use Case Name:] Add item to cart
-\item[Description:] A shopper on our site has identified an item they wish to buy.  They will click on a ``Add to Cart" button.  This will kick off a process to add one instance of the item to their cart.
-\end{itemize}
-
-You will then go on to (minimally) discuss a basic flow for the process:
-
-\begin{enumerate}
-\item User navigates to page listing desired item
-\item User left-clicks on ``Add to Cart" button.
-\item User cart is updated to reflect the new item, this also updates the current total.
-\item[Termination Outcome:] The user now has a single instance of the item in their cart.
-\end{enumerate}
-
-You may need to also add in any alternative flows:
-
-Alternative: Item already exists in the cart
-\begin{enumerate}
-\item User navigates to page listing desired item
-\item User left-clicks on ``Add to Cart" button.
-\item User cart is updated to reflect the new item, showing that one more instance of the existing item has been added.  This also updates the current total.
-\item[Termination Outcome:] The user now has multiple instances of the item in their cart.
-\end{enumerate}
-
-You will often also need to include pictures or diagrams.  It is quite common to see use-case diagrams in such write-ups.  To properly reference an image, you will need to use the \texttt{figure} environment and will need to reference it in your text (via the \texttt{ref} command) (see Figure \ref{cat1}).  NOTE: this is not a use case diagram, but a kitten.
-
-After fully describing a use case, it is time to move on to the next use case:
-
-\begin{itemize}
-\item[Use Case Number:] 2
-\item[Use Case Name:] Checkout
-\item[Description:] A shopper on our site has finished shopping.  They will click on a ``Checkout" button.  This will kick off a process to calculate cart total, any taxes, shipping rates, and collect payment from the shopper.
-
-\end{itemize}
-
-You will then need to continue to flesh out all use cases you have identified for your project.
-
-\begin{figure}[ht!]
-\includegraphics[height=250px, width=350px]{cat1.jpg}
-\caption{First picture, this is a kitten, not a use case diagram}
-\label{cat1}
+\subsection{Interface Mockups}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{interface}
+	\caption{The base game GUI so far.}
+	\label{fig:interface}
 \end{figure}
 
-\subsection{Interface Mockups}
-At first, this will largely be completely made up, as you get further along in your project, and closer to a final product, this will typically become simple screenshots of your running application.
-
-In this subsection, you will be showing what the screen should look like as the user moves through various use cases (make sure to tie the interface mockups back to the specific use cases they illustrate).
-
-
+\iffalse % comment out the rest
 
 \section{Project Timeline}
 Go back to your notes and look up a typical project development life cycle for the Waterfall approach.  How will you follow this life cycle over the remainder of this semester?  This will usually involve a chart showing your proposed timeline, with specific milestones plotted out.  Make sure you have deliverable dates from the course schedule listed, with a plan to meet them (NOTE: these are generally optimistic deadlines).
