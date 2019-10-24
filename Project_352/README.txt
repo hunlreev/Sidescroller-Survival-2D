@@ -1,5 +1,5 @@
 ﻿Authors: Hunter Reeves, Billy Gibson
-Date: 09/26/2019
+Date: 10/24/2019
 File: README.txt
 Description: A text based adventure RPG game for 352!
 

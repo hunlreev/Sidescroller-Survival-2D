@@ -1,5 +1,5 @@
 ﻿/* Name: Hunter Reeves, Billy Gibson
- * Date: 09/14/2019
+ * Date: 10/22/2019
  * File: MainWindow.xaml.cs
  * Description: Main window for the game!
  */
@@ -31,6 +31,11 @@ namespace Project_352
         public MainWindow()
         {
             InitializeComponent();
+        }
+        // Press ESC to close the window
+        private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
