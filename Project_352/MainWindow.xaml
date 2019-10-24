@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Project_352"
         mc:Ignorable="d"
         Title="Text Adventure RPG" Width="1080" Height="720" ResizeMode="NoResize"
-        Icon="temp_logo_test.png">
+        Icon="temp_logo.png">
     <!-- Some key controls -->
     <Window.CommandBindings>
         <CommandBinding Command="Close" Executed="CloseWindow" />
