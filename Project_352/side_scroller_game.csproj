@@ -108,5 +108,8 @@
   <ItemGroup>
     <Resource Include="skybox.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="temp_logo_test.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

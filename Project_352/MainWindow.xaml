@@ -5,34 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_352"
         mc:Ignorable="d"
-        Title="Text Adventure RPG" Width="1080" Height="720"
-        Icon="temp_logo.png">
+        Title="Text Adventure RPG" Width="1080" Height="720" ResizeMode="NoResize"
+        Icon="temp_logo_test.png">
+    <!-- Some key controls -->
     <Window.CommandBindings>
         <CommandBinding Command="Close" Executed="CloseWindow" />
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Command="Close" Key="Esc" />
     </Window.InputBindings>
+    <!-- Background image -->
     <Grid Name="ViewPortContainer">
-        <!-- Pretty Background Image for Now -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="skybox.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="283" Margin="10,12,0,-291" Stroke="Black" VerticalAlignment="Top" Width="1052"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="10,300,0,-660" Stroke="Black" VerticalAlignment="Top" Width="345" RenderTransformOrigin="0.361,0.493"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="360,300,0,-654" Stroke="Black" VerticalAlignment="Top" Width="352" RenderTransformOrigin="0.361,0.493"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="717,300,0,-659" Stroke="Black" VerticalAlignment="Top" Width="345" RenderTransformOrigin="0.361,0.493"/>
-        <Label Content="Player Information" HorizontalAlignment="Center" Margin="832,300,132,-154" VerticalAlignment="Top" Width="108"/>
-        <Label Content="Name: Player" HorizontalAlignment="Left" Margin="717,331,0,-195" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Gold: 0" HorizontalAlignment="Left" Margin="717,357,0,-221" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Level: 1" HorizontalAlignment="Left" Margin="717,383,0,-247" VerticalAlignment="Top" Width="90"/>
-        <Label Content="EXP: 0/256" HorizontalAlignment="Left" Margin="717,409,0,-273" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Class: Warrior" HorizontalAlignment="Left" Margin="954,331,0,-195" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-        <Label Content="Health: 100/100" HorizontalAlignment="Left" Margin="954,357,0,-221" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-        <Label Content="Mana: 100/100" HorizontalAlignment="Left" Margin="954,383,0,-247" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-        <Label Content="Stamina: 100/100" HorizontalAlignment="Left" Margin="954,409,0,-273" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <!-- Interface for Main Game Window -->
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="283" Margin="11,10,11,0" Stroke="Black" VerticalAlignment="Top" Width="1052"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="10,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="360,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="710,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Label Content="Player Information" HorizontalAlignment="Center" Margin="828,300,139,0" VerticalAlignment="Top" Width="107"/>
+        <Label Content="Name: Player" HorizontalAlignment="Left" Margin="716,331,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="Gold: 0" HorizontalAlignment="Left" Margin="716,357,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="Level: 1" HorizontalAlignment="Left" Margin="716,383,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="EXP: 0/256" HorizontalAlignment="Left" Margin="716,409,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="Class: Warrior" HorizontalAlignment="Left" Margin="941,331,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label Content="Health: 100/100" HorizontalAlignment="Left" Margin="941,357,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label Content="Mana: 100/100" HorizontalAlignment="Left" Margin="941,383,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label Content="Stamina: 100/100" HorizontalAlignment="Left" Margin="941,409,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
     </Grid>
 </Window>
