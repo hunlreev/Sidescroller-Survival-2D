@@ -59,9 +59,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Mage.cs" />
-    <Compile Include="Rogue.cs" />
-    <Compile Include="Warrior.cs" />
+    <Compile Include="Functionality\PlayerCreation.cs" />
+    <Compile Include="Player\Mage.cs" />
+    <Compile Include="Player\Rogue.cs" />
+    <Compile Include="Player\Statistics.cs" />
+    <Compile Include="Player\Warrior.cs" />
+    <Compile Include="SelectPlayer.xaml.cs">
+      <DependentUpon>SelectPlayer.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,9 +79,13 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SelectPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player.cs" />
+    <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,8 +121,6 @@
   <ItemGroup>
     <Resource Include="skybox.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="temp_logo_test.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

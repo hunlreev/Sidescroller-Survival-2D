@@ -1,13 +1,12 @@
-﻿/* Name: Hunter Reeves, Billy Gibson
+﻿/* Author: Hunter Reeves
  * Date: 10/24/2019
- * File: MainWindow.xaml.cs
- * Description: Main window for the game!
+ * File: SelectPlayer.xaml.cs
+ * Description: Code for SelectPlayer window
  */
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,23 +18,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
 
 namespace Project_352
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SelectPlayer.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SelectPlayer : Window
     {
-        // Initializing the game window
-        public MainWindow()
+        public SelectPlayer()
         {
             InitializeComponent();
         }
-        // Press ESC to close the window
-        private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
+        private void CreateCharacter(object sender, RoutedEventArgs e)
         {
+            // TODO - Create character with PlayerCreation
+
+            MainWindow main = new MainWindow();
+            main.Show();
             this.Close();
         }
     }
