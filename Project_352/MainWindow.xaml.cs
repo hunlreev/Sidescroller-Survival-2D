@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +20,15 @@ namespace Project_352
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Initializing the game window
         public MainWindow()
         {
             InitializeComponent();
+        }
+        // Press ESC to close the window
+        private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
