@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* Name: Hunter Reeves, Billy Gibson
+ * Date: 10/22/2019
+ * File: MainWindow.xaml.cs
+ * Description: Main window for the game!
+ */
+
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
