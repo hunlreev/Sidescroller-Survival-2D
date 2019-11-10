@@ -1,7 +1,7 @@
 ﻿/* Author: Hunter Reeves
- * Date: 10/24/2019
+ * Date: 10/27/2019
  * File: PlayerCreation.cs
- * Description: Allows user to enter a name and select a class for them to play as in the game
+ * Description: Handles player creation
  */
 
 using System;
@@ -12,26 +12,19 @@ using System.Threading.Tasks;
 
 namespace Project_352.Functionality
 {
-    /// <summary>
-    /// pre-conditions:
-    ///     player needs a name and class to be represented in the game and in the GUI
-    /// 
-    /// user types in name in the SelectPlayer screen
-    /// user chooses class
-    /// character is created with the name and class chosen
-    /// 
-    /// post-conditions:
-    ///     player has selected name and class, changes reflect that and stat spread shows this
-    /// </summary>
     class PlayerCreation
     {
-        // Default Constructor
-        public PlayerCreation()
+        public Warrior Warrior(string name, string classification)
         {
-            // Code goes here
+            return new Warrior(name, classification);
         }
-
-        private string _name;
-        private string _class;
+        public Mage Mage(string name, string classification)
+        {
+            return new Mage(name, classification);
+        }
+        public Rogue Rogue(string name, string classification)
+        {
+            return new Rogue(name, classification);
+        }
     }
 }

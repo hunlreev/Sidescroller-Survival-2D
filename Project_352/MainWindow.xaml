@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Project_352"
         mc:Ignorable="d"
         Title="Text Adventure RPG" Width="1080" Height="720" ResizeMode="NoResize"
-        Icon="temp_logo.png">
+        Icon="temp_logo.png"
+        ContentRendered="ShowPlayerInfo">
     <!-- Some key controls -->
     <Window.CommandBindings>
         <CommandBinding Command="Close" Executed="CloseWindow" />
@@ -31,13 +32,18 @@
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="360,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="710,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
         <Label Content="Player Information" HorizontalAlignment="Center" Margin="828,300,139,0" VerticalAlignment="Top" Width="107"/>
-        <Label Content="Name: Player" HorizontalAlignment="Left" Margin="716,331,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Gold: 0" HorizontalAlignment="Left" Margin="716,357,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Level: 1" HorizontalAlignment="Left" Margin="716,383,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label Content="EXP: 0/256" HorizontalAlignment="Left" Margin="716,409,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Class: Warrior" HorizontalAlignment="Left" Margin="941,331,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-        <Label Content="Health: 100/100" HorizontalAlignment="Left" Margin="941,357,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-        <Label Content="Mana: 100/100" HorizontalAlignment="Left" Margin="941,383,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-        <Label Content="Stamina: 100/100" HorizontalAlignment="Left" Margin="941,409,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="name" Content="Name: " HorizontalAlignment="Left" Margin="716,331,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="gold" Content="Gold: " HorizontalAlignment="Left" Margin="716,357,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="level" Content="Level: " HorizontalAlignment="Left" Margin="716,383,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="exp" Content="EXP: " HorizontalAlignment="Left" Margin="716,409,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="cls" Content="Class: " HorizontalAlignment="Left" Margin="941,331,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="health" Content="Health: " HorizontalAlignment="Left" Margin="941,357,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="mana" Content="Mana: " HorizontalAlignment="Left" Margin="941,383,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="stamina" Content="Stamina: " HorizontalAlignment="Left" Margin="941,409,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label Content="Player Stats" HorizontalAlignment="Center" Margin="846,448,121,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="strength" Content="Strength: " HorizontalAlignment="Left" Margin="716,479,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="endurance" Content="Endurance: " HorizontalAlignment="Left" Margin="716,505,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="intelligence" Content="Intelligence: " HorizontalAlignment="Left" Margin="941,479,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="dexterity" Content="Dexterity: " HorizontalAlignment="Left" Margin="941,505,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
     </Grid>
 </Window>

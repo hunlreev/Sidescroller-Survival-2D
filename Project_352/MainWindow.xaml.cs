@@ -1,5 +1,5 @@
 ﻿/* Name: Hunter Reeves, Billy Gibson
- * Date: 10/24/2019
+ * Date: 11/06/2019
  * File: MainWindow.xaml.cs
  * Description: Main window for the game!
  */
@@ -29,14 +29,37 @@ namespace Project_352
     public partial class MainWindow : Window
     {
         // Initializing the game window
-        public MainWindow()
+        public MainWindow(Warrior warrior)
         {
             InitializeComponent();
+
+            _warrior = warrior;
         }
         // Press ESC to close the window
         private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
+        // Shows information to the user of their player
+        private void ShowPlayerInfo(object sender, EventArgs e)
+        {
+            name.Content = "Name: " + _warrior.name;
+            gold.Content = "Gold: " + _warrior.info.gold;
+            level.Content = "Level: " + _warrior.info.level;
+            exp.Content = "EXP: " + _warrior.info.exp + "/" + _warrior.info.totalExp;
+            cls.Content = "Class: " + _warrior.classification;
+            health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+            mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
+            mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
+            stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+            strength.Content = "Strength: " + _warrior.attr.strength;
+            endurance.Content = "Endurance: " + _warrior.attr.endurance;
+            intelligence.Content = "Intelligence: " + _warrior.attr.intelligence;
+            dexterity.Content = "Dexterity: " + _warrior.attr.dexterity;
+        }
+
+        private Warrior _warrior;
+        private Mage _mage;
+        private Rogue _rogue;
     }
 }

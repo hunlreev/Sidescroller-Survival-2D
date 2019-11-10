@@ -1,5 +1,5 @@
 ﻿/* Author: Hunter Reeves
- * Date: 10/24/2019
+ * Date: 11/05/2019
  * File: Statistics.cs
  * Description: All information needed for the Player
  */
@@ -24,8 +24,11 @@ namespace Project_352
     public struct Stats
     {
         public int health;  // player dies when this reaches 0 
+        public int totalHealth; // total health player has
         public int mana;    // player cannot cast any more magic attacks when this reaches 0
+        public int totalMana; // total mana player has
         public int stamina; // player cannot move to another tile when this reaches 0
+        public int totalStamina; // total stamina player has
     }
     // Contains attributes for the player
     public struct Attributes

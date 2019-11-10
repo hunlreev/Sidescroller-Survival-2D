@@ -1,5 +1,5 @@
 ﻿/* Author: Hunter Reeves
- * Date: 10/24/2019
+ * Date: 11/06/2019
  * File: Warrior.cs
  * Description: Class for Warrior
  */
@@ -13,37 +13,38 @@ using System.Diagnostics;
 
 namespace Project_352
 {
-    class Warrior : Player
+    public class Warrior
     {
         // Create a Warrior
-        public Warrior(string name) : base(name)
+        public Warrior(string name, string classification)
         {
-            _name = name;
-            _class = "Warrior";
+            this.name = name;
+            this.classification = classification;
             info.level = 1;
             info.gold = 0;
             info.exp = 0;
             info.totalExp = 50;
-            stats.health = 100;
-            stats.mana = 100;
-            stats.stamina = 100;
+            stats.health = 120;
+            stats.totalHealth = 120;
+            stats.mana = 70;
+            stats.totalMana = 70;
+            stats.stamina = 110;
+            stats.totalStamina = 110;
             attr.strength = 14;
             attr.endurance = 12;
             attr.intelligence = 6;
             attr.dexterity = 8;
         }
-        // TODO - Damage the player does, accounts for strength stat and weapon damage
-        public double DoDamage()
+        // Base damage the player does, accounts for strength stat and weapon damage
+        public new double DoDamage()
         {
-            double damage = 0.25 * (double)attr.strength;
-
-            return damage;
+            return 0.25 * attr.strength;
         }
 
-        private string _name;
-        private string _class;
-        Information info = new Information();
-        Stats stats = new Stats();
-        Attributes attr = new Attributes();
+        public string name;
+        public string classification;
+        public Information info = new Information();
+        public Stats stats = new Stats();
+        public Attributes attr = new Attributes();
     }
 }

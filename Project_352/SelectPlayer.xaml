@@ -17,17 +17,24 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="55" Margin="10,10,0,-14" Stroke="Black" VerticalAlignment="Top" Width="272"/>
         <Label Content="Enter your Name:" HorizontalAlignment="Left" Margin="19,23,0,0" VerticalAlignment="Top" Height="29" Width="111"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="55" Margin="10,10,0,-12" Stroke="Black" VerticalAlignment="Top" Width="272"/>
-        <Label Content="Enter your Name:" HorizontalAlignment="Left" Margin="19,23,0,0" VerticalAlignment="Top" Height="29" Width="111"/>
-        <TextBox HorizontalAlignment="Left" Margin="122,25,0,533" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="146"/>
+        <TextBox x:Name="GetName" HorizontalAlignment="Left" Margin="122,25,0,558" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="146"/>
+
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="55" Margin="0,616,10,-473" Stroke="Black" VerticalAlignment="Top" Width="272"/>
         <Label Content="Begin your Journey:" HorizontalAlignment="Left" Margin="798,630,0,-460" VerticalAlignment="Top" Height="28" Width="117"/>
         <Button x:Name="Continue" Content="Click to Continue" HorizontalAlignment="Left" Margin="921,635,0,-456" VerticalAlignment="Top" Width="120" Click="CreateCharacter"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="541" Margin="10,70,713,-47" Stroke="Black" VerticalAlignment="Top" Width="341"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="541" Margin="368,70,365,-27" Stroke="Black" VerticalAlignment="Top" Width="341"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="541" Margin="0,70,10,-41" Stroke="Black" VerticalAlignment="Top" Width="341"/>
+
+        <Rectangle x:Name="WarriorClass" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="541" Margin="10,70,713,-47" Stroke="Black" VerticalAlignment="Top" Width="341"/>
+        <Button x:Name="Warrior" Content="Select" HorizontalAlignment="Left" Margin="11,590,0,-8" VerticalAlignment="Top" Width="339" Click="SelectWarrior"/>
+        
+        <Rectangle x:Name="MageClass" Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="541" Margin="368,70,365,-27" Stroke="Black" VerticalAlignment="Top" Width="341"/>
+        <Button x:Name="Mage" Content="Select" HorizontalAlignment="Left" Margin="368,590,0,0" VerticalAlignment="Top" Width="331" Click="SelectMage"/>
+        
+        <Rectangle x:Name="RogueClass" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="541" Margin="0,70,10,-41" Stroke="Black" VerticalAlignment="Top" Width="341"/>
+        <Button x:Name="Rogue" Content="Select" HorizontalAlignment="Left" Margin="714,590,0,0" VerticalAlignment="Top" Width="339" Click="SelectRogue"/>
+
         <Label Content="WARRIOR" FontSize="68" HorizontalAlignment="Left" Margin="23,74,0,0" VerticalAlignment="Top" Width="319"/>
         <Label Content="MAGE" FontSize="68" HorizontalAlignment="Left" Margin="438,74,0,0" VerticalAlignment="Top" Width="204"/>
         <Label Content="ROGUE" FontSize="68" HorizontalAlignment="Left" Margin="777,74,0,0" VerticalAlignment="Top" Width="243"/>
