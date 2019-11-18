@@ -120,6 +120,10 @@
   <ItemGroup>
     <Resource Include="skybox.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="mage_logo.png" />
+    <Resource Include="rogue_logo.png" />
+    <Resource Include="warrior_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

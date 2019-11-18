@@ -59,7 +59,5 @@ namespace Project_352
         }
 
         private Warrior _warrior;
-        private Mage _mage;
-        private Rogue _rogue;
     }
 }
