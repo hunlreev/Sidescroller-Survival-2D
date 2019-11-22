@@ -36,7 +36,7 @@ namespace Project_352
             attr.dexterity = 14;
         }
         // Base damage the player does, accounts for strength stat and weapon damage
-        public new double DoDamage()
+        public double DoDamage()
         {
             return 0.30 * (attr.strength + (attr.dexterity * 0.25));
         }

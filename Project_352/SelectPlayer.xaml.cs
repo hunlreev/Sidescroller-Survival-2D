@@ -36,7 +36,7 @@ namespace Project_352
         private void CreateCharacter(object sender, RoutedEventArgs e)
         {
             // Passes all possible class choices to main window
-            MainWindow main = new MainWindow(_warrior);
+            MainWindow main = new MainWindow(_warrior, _mage, _rogue);
             main.Show();
             Close();
         }
