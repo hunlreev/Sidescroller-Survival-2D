@@ -15,7 +15,7 @@ namespace Project_352
 {
     public class Rogue
     {
-        // Create a Rogue
+        // Create a Rogue, moderate class
         public Rogue(string name, string classification)
         {
             this.name = name;
@@ -24,12 +24,12 @@ namespace Project_352
             info.gold = 0;
             info.exp = 0;
             info.totalExp = 50;
-            stats.health = 70;
-            stats.totalHealth = 70;
-            stats.mana = 110;
-            stats.totalMana = 110;
-            stats.stamina = 120;
-            stats.totalStamina = 120;
+            stats.health = 100;
+            stats.totalHealth = 100;
+            stats.mana = 100;
+            stats.totalMana = 100;
+            stats.stamina = 100;
+            stats.totalStamina = 100;
             attr.strength = 12;
             attr.endurance = 8;
             attr.intelligence = 6;
