@@ -1,0 +1,43 @@
+﻿<Window x:Class="Project_352.SelectPlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_352"
+        mc:Ignorable="d"
+        Title="Create Your Character" Width="1080" Height="720" ResizeMode="NoResize"
+        Icon="temp_logo.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="skybox.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Select your Character -->
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="55" Margin="10,10,0,-14" Stroke="Black" VerticalAlignment="Top" Width="272"/>
+        <Label Content="Enter your Name:" HorizontalAlignment="Left" Margin="19,23,0,0" VerticalAlignment="Top" Height="29" Width="111"/>
+        <TextBox x:Name="GetName" HorizontalAlignment="Left" Margin="122,25,0,580" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="146"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="55" Margin="0,616,10,-473" Stroke="Black" VerticalAlignment="Top" Width="272"/>
+        <Label Content="Begin your Journey:" HorizontalAlignment="Left" Margin="798,630,0,-460" VerticalAlignment="Top" Height="28" Width="117"/>
+        <Button x:Name="Continue" Content="Click to Continue" HorizontalAlignment="Left" Margin="921,635,0,-456" VerticalAlignment="Top" Width="120" Click="CreateCharacter"/>
+        <!-- Warrior -->
+        <Rectangle x:Name="WarriorClass" Fill="#FFFFFF" HorizontalAlignment="Left" Height="541" Margin="10,70,0,0" Stroke="Black" VerticalAlignment="Top" Width="341"/>
+        <Label Content="WARRIOR" FontSize="68" HorizontalAlignment="Left" Margin="23,74,0,0" VerticalAlignment="Top" Width="314"/>
+        <Button x:Name="Warrior" Content="Select" HorizontalAlignment="Left" Margin="11,590,0,-8" VerticalAlignment="Top" Width="339" Click="SelectWarrior"/>
+        <Image Source="warrior_logo.png" HorizontalAlignment="Left" Height="426" Margin="28,210,0,-6" VerticalAlignment="Top" Width="307"/>
+        <!-- Mage -->
+        <Rectangle x:Name="MageClass" Fill="#FFFFFF" HorizontalAlignment="Center" Height="541" Margin="368,70,365,-27" Stroke="Black" VerticalAlignment="Top" Width="341"/>
+        <Label Content="MAGE" FontSize="68" HorizontalAlignment="Left" Margin="438,74,0,0" VerticalAlignment="Top" Width="204"/>
+        <Button x:Name="Mage" Content="Select" HorizontalAlignment="Left" Margin="368,590,0,0" VerticalAlignment="Top" Width="331" Click="SelectMage"/>
+        <Image Source="mage_logo.png"  HorizontalAlignment="Left" Height="387" Margin="390,211,0,0" VerticalAlignment="Top" Width="307"/>
+        <!-- Rogue -->
+        <Rectangle x:Name="RogueClass" Fill="#FFFFFF" HorizontalAlignment="Right" Height="541" Margin="0,70,10,-41" Stroke="Black" VerticalAlignment="Top" Width="341"/>
+        <Label Content="ROGUE" FontSize="68" HorizontalAlignment="Left" Margin="777,74,0,0" VerticalAlignment="Top" Width="243"/>
+        <Button x:Name="Rogue" Content="Select" HorizontalAlignment="Left" Margin="714,590,0,0" VerticalAlignment="Top" Width="339" Click="SelectRogue"/>
+        <Image Source="rogue_logo.png"  HorizontalAlignment="Left" Height="387" Margin="738,197,0,0" VerticalAlignment="Top" Width="307"/>
+    </Grid>
+</Window>

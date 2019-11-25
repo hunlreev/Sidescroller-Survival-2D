@@ -5,83 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_352"
         mc:Ignorable="d"
-        Title="Text Adventure RPG" Width="1080" Height="720"
-        Icon="temp_logo.png">
-  <Window.CommandBindings>
-    <CommandBinding Command="Close" Executed="CloseWindow" />
-  </Window.CommandBindings>
-  <Window.InputBindings>
-    <KeyBinding Command="Close" Key="Esc" />
-  </Window.InputBindings>
-  <Grid Name="ViewPortContainer">
-    <!-- Pretty Background Image for Now -->
-    <Grid.Background>
-      <ImageBrush ImageSource="skybox.jpg" Stretch="UniformToFill"/>
-    </Grid.Background>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-    </Grid.RowDefinitions>
-    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="283" Margin="10,12,0,-291" Stroke="Black" VerticalAlignment="Top" Width="1052"/>
-    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="10,300,0,-660" Stroke="Black" VerticalAlignment="Top" Width="345" RenderTransformOrigin="0.361,0.493"/>
-    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="360,300,0,-654" Stroke="Black" VerticalAlignment="Top" Width="352" RenderTransformOrigin="0.361,0.493"/>
-    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="717,300,0,-659" Stroke="Black" VerticalAlignment="Top" Width="345" RenderTransformOrigin="0.361,0.493"/>
-    <Label Content="Player Information" HorizontalAlignment="Center" Margin="832,300,132,-154" VerticalAlignment="Top" Width="108"/>
-    <Label Content="Name: Player" HorizontalAlignment="Left" Margin="717,331,0,-195" VerticalAlignment="Top" Width="90"/>
-    <Label Content="Gold: 0" HorizontalAlignment="Left" Margin="717,357,0,-221" VerticalAlignment="Top" Width="90"/>
-    <Label Content="Level: 1" HorizontalAlignment="Left" Margin="717,383,0,-247" VerticalAlignment="Top" Width="90"/>
-    <Label Content="EXP: 0/256" HorizontalAlignment="Left" Margin="717,409,0,-273" VerticalAlignment="Top" Width="90"/>
-    <Label Content="Class: Warrior" HorizontalAlignment="Left" Margin="954,331,0,-195" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-    <Label Content="Health: 100/100" HorizontalAlignment="Left" Margin="954,357,0,-221" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-    <Label Content="Mana: 100/100" HorizontalAlignment="Left" Margin="954,383,0,-247" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-    <Label Content="Stamina: 100/100" HorizontalAlignment="Left" Margin="954,409,0,-273" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-    <!--Declaration of the Map. 32x8-->
-    <Grid x:Name="Map" HorizontalAlignment="Left" Height="283" VerticalAlignment="Top" Width="1052" Margin="10,12,0,-112" ShowGridLines="True" >
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="35*"/>
-        <RowDefinition Height="35*"/>
-        <RowDefinition Height="36"/>
-        <RowDefinition Height="35*"/>
-        <RowDefinition Height="36*"/>
-        <RowDefinition Height="35*"/>
-        <RowDefinition Height="36*"/>
-        <RowDefinition Height="35*"/>
-      </Grid.RowDefinitions>
-      <!--1 Column-->
-      <Label Name="A0"
+        Title="Text Adventure RPG" Width="1080" Height="720" ResizeMode="NoResize"
+        Icon="temp_logo.png"
+        ContentRendered="ShowPlayerInfo">
+    <!-- Some key controls -->
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="CloseWindow" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="Close" Key="Esc" />
+    </Window.InputBindings>
+    <!-- Background image -->
+    <Grid Name="ViewPortContainer">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="skybox.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Interface for Main Game Window -->
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="283" Margin="11,10,11,0" Stroke="Black" VerticalAlignment="Top" Width="1052"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="10,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="366,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="722,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Label Content="Player Information" HorizontalAlignment="Center" Margin="840,300,127,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="name" Content="Name: " HorizontalAlignment="Left" Margin="728,331,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="gold" Content="Gold: " HorizontalAlignment="Left" Margin="728,357,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="level" Content="Level: " HorizontalAlignment="Left" Margin="728,383,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="exp" Content="EXP: " HorizontalAlignment="Left" Margin="728,409,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="cls" Content="Class: " HorizontalAlignment="Left" Margin="953,331,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="health" Content="Health: " HorizontalAlignment="Left" Margin="953,357,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="mana" Content="Mana: " HorizontalAlignment="Left" Margin="953,383,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="stamina" Content="Stamina: " HorizontalAlignment="Left" Margin="953,409,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label Content="Player Stats" HorizontalAlignment="Center" Margin="858,448,109,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="strength" Content="Strength: " HorizontalAlignment="Left" Margin="728,479,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="endurance" Content="Endurance: " HorizontalAlignment="Left" Margin="728,505,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label x:Name="intelligence" Content="Intelligence: " HorizontalAlignment="Left" Margin="953,479,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <Label x:Name="dexterity" Content="Dexterity: " HorizontalAlignment="Left" Margin="953,505,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
+        <!--Declaration of the Map. 32x8-->
+        <Grid x:Name="Map" HorizontalAlignment="Left" Height="283" VerticalAlignment="Top" Width="1052" Margin="10,12,0,-112" ShowGridLines="True" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="35*"/>
+            </Grid.RowDefinitions>
+            <!--1 Column-->
+            <Label Name="A0"
           Grid.Row="0"
           Grid.Column="0"
           Content="🏝"
@@ -93,7 +104,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B0"
+            <Label Name="B0"
           Grid.Row="1"
           Grid.Column="0"
           Content="🌊"
@@ -105,7 +116,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C0"
+            <Label Name="C0"
           Grid.Row="2"
           Grid.Column="0"
           Content="🌊"
@@ -117,7 +128,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D0"
+            <Label Name="D0"
           Grid.Row="3"
           Grid.Column="0"
           Content="🏖"
@@ -129,7 +140,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E0"
+            <Label Name="E0"
           Grid.Row="4"
           Grid.Column="0"
           Content="🌴"
@@ -141,7 +152,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F0"
+            <Label Name="F0"
           Grid.Row="5"
           Grid.Column="0"
           Content="🌻"
@@ -153,7 +164,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G0"
+            <Label Name="G0"
           Grid.Row="6"
           Grid.Column="0"
           Content="🏠"
@@ -165,7 +176,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H0"
+            <Label Name="H0"
           Grid.Row="7"
           Grid.Column="0"
           Content="🏰"
@@ -177,8 +188,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--2 Column-->
-      <Label Name="A1"
+            <!--2 Column-->
+            <Label Name="A1"
           Grid.Row="0"
           Grid.Column="1"
           Content="🐙"
@@ -190,7 +201,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B1"
+            <Label Name="B1"
           Grid.Row="1"
           Grid.Column="1"
           Content="🌊"
@@ -202,7 +213,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C1"
+            <Label Name="C1"
           Grid.Row="2"
           Grid.Column="1"
           Content="🏖"
@@ -214,7 +225,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D1"
+            <Label Name="D1"
           Grid.Row="3"
           Grid.Column="1"
           Content="🌴"
@@ -226,7 +237,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E1"
+            <Label Name="E1"
           Grid.Row="4"
           Grid.Column="1"
           Content="🌻"
@@ -238,7 +249,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F1"
+            <Label Name="F1"
           Grid.Row="5"
           Grid.Column="1"
           Content="🌻"
@@ -250,7 +261,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G1"
+            <Label Name="G1"
           Grid.Row="6"
           Grid.Column="1"
           Content="🏠"
@@ -262,7 +273,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H1"
+            <Label Name="H1"
           Grid.Row="7"
           Grid.Column="1"
           Content="🏠"
@@ -274,8 +285,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--3 Column-->
-      <Label Name="A2"
+            <!--3 Column-->
+            <Label Name="A2"
           Grid.Row="0"
           Grid.Column="2"
           Content="🌊"
@@ -287,7 +298,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B2"
+            <Label Name="B2"
           Grid.Row="1"
           Grid.Column="2"
           Content="🌊"
@@ -299,7 +310,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C2"
+            <Label Name="C2"
           Grid.Row="2"
           Grid.Column="2"
           Content="🏖"
@@ -311,7 +322,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D2"
+            <Label Name="D2"
           Grid.Row="3"
           Grid.Column="2"
           Content="🌴"
@@ -323,7 +334,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E2"
+            <Label Name="E2"
           Grid.Row="4"
           Grid.Column="2"
           Content="🌻"
@@ -335,7 +346,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F2"
+            <Label Name="F2"
           Grid.Row="5"
           Grid.Column="2"
           Content="🌻"
@@ -347,7 +358,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G2"
+            <Label Name="G2"
           Grid.Row="6"
           Grid.Column="2"
           Content="🏠"
@@ -359,7 +370,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H2"
+            <Label Name="H2"
           Grid.Row="7"
           Grid.Column="2"
           Content="🏠"
@@ -371,8 +382,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--4 Column-->
-      <Label Name="A3"
+            <!--4 Column-->
+            <Label Name="A3"
           Grid.Row="0"
           Grid.Column="3"
           Content="🌊"
@@ -384,7 +395,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B3"
+            <Label Name="B3"
           Grid.Row="1"
           Grid.Column="3"
           Content="🏖"
@@ -396,7 +407,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C3"
+            <Label Name="C3"
           Grid.Row="2"
           Grid.Column="3"
           Content="🌴"
@@ -408,7 +419,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D3"
+            <Label Name="D3"
           Grid.Row="3"
           Grid.Column="3"
           Content="🌴"
@@ -420,7 +431,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E3"
+            <Label Name="E3"
           Grid.Row="4"
           Grid.Column="3"
           Content="🌻"
@@ -432,7 +443,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F3"
+            <Label Name="F3"
           Grid.Row="5"
           Grid.Column="3"
           Content="🌻"
@@ -444,7 +455,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G3"
+            <Label Name="G3"
           Grid.Row="6"
           Grid.Column="3"
           Content="🌽"
@@ -456,7 +467,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H3"
+            <Label Name="H3"
           Grid.Row="7"
           Grid.Column="3"
           Content="🌽"
@@ -468,8 +479,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--5 Column-->
-      <Label Name="A4"
+            <!--5 Column-->
+            <Label Name="A4"
           Grid.Row="0"
           Grid.Column="4"
           Content="🏖"
@@ -481,7 +492,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B4"
+            <Label Name="B4"
           Grid.Row="1"
           Grid.Column="4"
           Content="🌴"
@@ -493,7 +504,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C4"
+            <Label Name="C4"
           Grid.Row="2"
           Grid.Column="4"
           Content="🌴"
@@ -505,7 +516,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D4"
+            <Label Name="D4"
           Grid.Row="3"
           Grid.Column="4"
           Content=""
@@ -517,7 +528,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E4"
+            <Label Name="E4"
           Grid.Row="4"
           Grid.Column="4"
           Content="🐔"
@@ -529,7 +540,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F4"
+            <Label Name="F4"
           Grid.Row="5"
           Grid.Column="4"
           Content="🐔"
@@ -541,7 +552,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G4"
+            <Label Name="G4"
           Grid.Row="6"
           Grid.Column="4"
           Content="🌽"
@@ -553,7 +564,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H4"
+            <Label Name="H4"
           Grid.Row="7"
           Grid.Column="4"
           Content="🌽"
@@ -565,8 +576,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--6 Column-->
-      <Label Name="A5"
+            <!--6 Column-->
+            <Label Name="A5"
           Grid.Row="0"
           Grid.Column="5"
           Content="🌴"
@@ -578,7 +589,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B5"
+            <Label Name="B5"
           Grid.Row="1"
           Grid.Column="5"
           Content="🌴"
@@ -590,7 +601,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C5"
+            <Label Name="C5"
           Grid.Row="2"
           Grid.Column="5"
           Content=""
@@ -602,7 +613,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D5"
+            <Label Name="D5"
           Grid.Row="3"
           Grid.Column="5"
           Content=""
@@ -614,7 +625,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E5"
+            <Label Name="E5"
           Grid.Row="4"
           Grid.Column="5"
           Content=""
@@ -626,7 +637,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F5"
+            <Label Name="F5"
           Grid.Row="5"
           Grid.Column="5"
           Content="🌻"
@@ -638,7 +649,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G5"
+            <Label Name="G5"
           Grid.Row="6"
           Grid.Column="5"
           Content="🌽"
@@ -650,7 +661,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H5"
+            <Label Name="H5"
           Grid.Row="7"
           Grid.Column="5"
           Content="🌽"
@@ -662,8 +673,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--7 Column-->
-      <Label Name="A6"
+            <!--7 Column-->
+            <Label Name="A6"
           Grid.Row="0"
           Grid.Column="6"
           Content="🌴"
@@ -675,7 +686,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B6"
+            <Label Name="B6"
           Grid.Row="1"
           Grid.Column="6"
           Content="🌲"
@@ -687,7 +698,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C6"
+            <Label Name="C6"
           Grid.Row="2"
           Grid.Column="6"
           Content="🌲"
@@ -699,7 +710,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D6"
+            <Label Name="D6"
           Grid.Row="3"
           Grid.Column="6"
           Content=""
@@ -711,7 +722,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E6"
+            <Label Name="E6"
           Grid.Row="4"
           Grid.Column="6"
           Content=""
@@ -723,7 +734,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F6"
+            <Label Name="F6"
           Grid.Row="5"
           Grid.Column="6"
           Content="🌻"
@@ -735,7 +746,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G6"
+            <Label Name="G6"
           Grid.Row="6"
           Grid.Column="6"
           Content="🌽"
@@ -747,7 +758,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H6"
+            <Label Name="H6"
           Grid.Row="7"
           Grid.Column="6"
           Content="🌽"
@@ -759,8 +770,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--8 Column-->
-      <Label Name="A7"
+            <!--8 Column-->
+            <Label Name="A7"
           Grid.Row="0"
           Grid.Column="7"
           Content="🌲"
@@ -772,7 +783,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B7"
+            <Label Name="B7"
           Grid.Row="1"
           Grid.Column="7"
           Content="🌲"
@@ -784,7 +795,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C7"
+            <Label Name="C7"
           Grid.Row="2"
           Grid.Column="7"
           Content="🌲"
@@ -796,7 +807,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D7"
+            <Label Name="D7"
           Grid.Row="3"
           Grid.Column="7"
           Content="🌲"
@@ -808,7 +819,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E7"
+            <Label Name="E7"
           Grid.Row="4"
           Grid.Column="7"
           Content=""
@@ -820,7 +831,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F7"
+            <Label Name="F7"
           Grid.Row="5"
           Grid.Column="7"
           Content=""
@@ -832,7 +843,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G7"
+            <Label Name="G7"
           Grid.Row="6"
           Grid.Column="7"
           Content="🌊"
@@ -844,7 +855,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H7"
+            <Label Name="H7"
           Grid.Row="7"
           Grid.Column="7"
           Content="🌊"
@@ -856,8 +867,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--9 Column-->
-      <Label Name="A8"
+            <!--9 Column-->
+            <Label Name="A8"
           Grid.Row="0"
           Grid.Column="8"
           Content="🌲"
@@ -869,7 +880,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B8"
+            <Label Name="B8"
           Grid.Row="1"
           Grid.Column="8"
           Content="🌲"
@@ -881,7 +892,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C8"
+            <Label Name="C8"
           Grid.Row="2"
           Grid.Column="8"
           Content="🌲"
@@ -893,7 +904,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D8"
+            <Label Name="D8"
           Grid.Row="3"
           Grid.Column="8"
           Content=""
@@ -905,7 +916,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E8"
+            <Label Name="E8"
           Grid.Row="4"
           Grid.Column="8"
           Content=""
@@ -917,7 +928,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F8"
+            <Label Name="F8"
           Grid.Row="5"
           Grid.Column="8"
           Content=""
@@ -929,7 +940,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G8"
+            <Label Name="G8"
           Grid.Row="6"
           Grid.Column="8"
           Content=""
@@ -941,7 +952,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H8"
+            <Label Name="H8"
           Grid.Row="7"
           Grid.Column="8"
           Content="🌊"
@@ -953,8 +964,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--10 Column-->
-      <Label Name="A9"
+            <!--10 Column-->
+            <Label Name="A9"
           Grid.Row="0"
           Grid.Column="9"
           Content="🌲"
@@ -966,7 +977,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B9"
+            <Label Name="B9"
           Grid.Row="1"
           Grid.Column="9"
           Content="🌲"
@@ -978,7 +989,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C9"
+            <Label Name="C9"
           Grid.Row="2"
           Grid.Column="9"
           Content="🌲"
@@ -990,7 +1001,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D9"
+            <Label Name="D9"
           Grid.Row="3"
           Grid.Column="9"
           Content=""
@@ -1002,7 +1013,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E9"
+            <Label Name="E9"
           Grid.Row="4"
           Grid.Column="9"
           Content=""
@@ -1013,7 +1024,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F9"
+            <Label Name="F9"
           Grid.Row="5"
           Grid.Column="9"
           Content=""
@@ -1025,7 +1036,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G9"
+            <Label Name="G9"
           Grid.Row="6"
           Grid.Column="9"
           Content=""
@@ -1037,7 +1048,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H9"
+            <Label Name="H9"
           Grid.Row="7"
           Grid.Column="9"
           Content=" "
@@ -1049,8 +1060,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--11 Column-->
-      <Label Name="A10"
+            <!--11 Column-->
+            <Label Name="A10"
           Grid.Row="0"
           Grid.Column="10"
           Content="🌲"
@@ -1062,7 +1073,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B10"
+            <Label Name="B10"
           Grid.Row="1"
           Grid.Column="10"
           Content="🌲"
@@ -1074,7 +1085,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C10"
+            <Label Name="C10"
           Grid.Row="2"
           Grid.Column="10"
           Content="🌲"
@@ -1086,7 +1097,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D10"
+            <Label Name="D10"
           Grid.Row="3"
           Grid.Column="10"
           Content=""
@@ -1098,7 +1109,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E10"
+            <Label Name="E10"
           Grid.Row="4"
           Grid.Column="10"
           Content=""
@@ -1109,7 +1120,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F10"
+            <Label Name="F10"
           Grid.Row="5"
           Grid.Column="10"
           Content="🌲"
@@ -1121,7 +1132,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G10"
+            <Label Name="G10"
           Grid.Row="6"
           Grid.Column="10"
           Content="🌲"
@@ -1133,7 +1144,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H10"
+            <Label Name="H10"
           Grid.Row="7"
           Grid.Column="10"
           Content="🌲"
@@ -1145,8 +1156,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--12 Column-->
-      <Label Name="A11"
+            <!--12 Column-->
+            <Label Name="A11"
           Grid.Row="0"
           Grid.Column="11"
           Content="🌲"
@@ -1158,7 +1169,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B11"
+            <Label Name="B11"
           Grid.Row="1"
           Grid.Column="11"
           Content="🌲"
@@ -1170,7 +1181,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C11"
+            <Label Name="C11"
           Grid.Row="2"
           Grid.Column="11"
           Content="🌲"
@@ -1182,7 +1193,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D11"
+            <Label Name="D11"
           Grid.Row="3"
           Grid.Column="11"
           Content="🌲"
@@ -1194,7 +1205,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E11"
+            <Label Name="E11"
           Grid.Row="4"
           Grid.Column="11"
           Content="🌲"
@@ -1205,7 +1216,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F11"
+            <Label Name="F11"
           Grid.Row="5"
           Grid.Column="11"
           Content="🌲"
@@ -1217,7 +1228,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G11"
+            <Label Name="G11"
           Grid.Row="6"
           Grid.Column="11"
           Content="🌲"
@@ -1229,7 +1240,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H11"
+            <Label Name="H11"
           Grid.Row="7"
           Grid.Column="11"
           Content="🌲"
@@ -1241,8 +1252,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--13 Column-->
-      <Label Name="A12"
+            <!--13 Column-->
+            <Label Name="A12"
           Grid.Row="0"
           Grid.Column="12"
           Content=""
@@ -1254,7 +1265,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B12"
+            <Label Name="B12"
           Grid.Row="1"
           Grid.Column="12"
           Content="🌲"
@@ -1266,7 +1277,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C12"
+            <Label Name="C12"
           Grid.Row="2"
           Grid.Column="12"
           Content="🌲"
@@ -1278,7 +1289,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D12"
+            <Label Name="D12"
           Grid.Row="3"
           Grid.Column="12"
           Content="🌲"
@@ -1290,7 +1301,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E12"
+            <Label Name="E12"
           Grid.Row="4"
           Grid.Column="12"
           Content="🌲"
@@ -1302,7 +1313,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F12"
+            <Label Name="F12"
           Grid.Row="5"
           Grid.Column="12"
           Content="🌲"
@@ -1314,7 +1325,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G12"
+            <Label Name="G12"
           Grid.Row="6"
           Grid.Column="12"
           Content="🌲"
@@ -1326,7 +1337,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H12"
+            <Label Name="H12"
           Grid.Row="7"
           Grid.Column="12"
           Content="🌲"
@@ -1338,8 +1349,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--14 Column-->
-      <Label Name="A13"
+            <!--14 Column-->
+            <Label Name="A13"
           Grid.Row="0"
           Grid.Column="13"
           Content="🌊"
@@ -1351,7 +1362,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B13"
+            <Label Name="B13"
           Grid.Row="1"
           Grid.Column="13"
           Content=""
@@ -1363,7 +1374,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C13"
+            <Label Name="C13"
           Grid.Row="2"
           Grid.Column="13"
           Content=""
@@ -1375,7 +1386,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D13"
+            <Label Name="D13"
           Grid.Row="3"
           Grid.Column="13"
           Content=""
@@ -1387,7 +1398,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E13"
+            <Label Name="E13"
           Grid.Row="4"
           Grid.Column="13"
           Content="🌲"
@@ -1399,7 +1410,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F13"
+            <Label Name="F13"
           Grid.Row="5"
           Grid.Column="13"
           Content="🌲"
@@ -1411,7 +1422,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G13"
+            <Label Name="G13"
           Grid.Row="6"
           Grid.Column="13"
           Content="🌲"
@@ -1423,7 +1434,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H13"
+            <Label Name="H13"
           Grid.Row="7"
           Grid.Column="13"
           Content="🌲"
@@ -1435,8 +1446,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--15 Column-->
-      <Label Name="A14"
+            <!--15 Column-->
+            <Label Name="A14"
           Grid.Row="0"
           Grid.Column="14"
           Content="🌊"
@@ -1448,7 +1459,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B14"
+            <Label Name="B14"
           Grid.Row="1"
           Grid.Column="14"
           Content="🌊"
@@ -1460,7 +1471,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C14"
+            <Label Name="C14"
           Grid.Row="2"
           Grid.Column="14"
           Content="🌊"
@@ -1472,7 +1483,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D14"
+            <Label Name="D14"
           Grid.Row="3"
           Grid.Column="14"
           Content="🌊"
@@ -1484,7 +1495,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E14"
+            <Label Name="E14"
           Grid.Row="4"
           Grid.Column="14"
           Content=""
@@ -1496,7 +1507,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F14"
+            <Label Name="F14"
           Grid.Row="5"
           Grid.Column="14"
           Content="🌲"
@@ -1508,7 +1519,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G14"
+            <Label Name="G14"
           Grid.Row="6"
           Grid.Column="14"
           Content="🌲"
@@ -1520,7 +1531,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H14"
+            <Label Name="H14"
           Grid.Row="7"
           Grid.Column="14"
           Content="🌲"
@@ -1532,8 +1543,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--16 Column-->
-      <Label Name="A15"
+            <!--16 Column-->
+            <Label Name="A15"
           Grid.Row="0"
           Grid.Column="15"
           Content="⛰"
@@ -1545,7 +1556,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B15"
+            <Label Name="B15"
           Grid.Row="1"
           Grid.Column="15"
           Content="⛰"
@@ -1557,7 +1568,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C15"
+            <Label Name="C15"
           Grid.Row="2"
           Grid.Column="15"
           Content="⛰"
@@ -1569,7 +1580,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D15"
+            <Label Name="D15"
           Grid.Row="3"
           Grid.Column="15"
           Content="🌊"
@@ -1581,7 +1592,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E15"
+            <Label Name="E15"
           Grid.Row="4"
           Grid.Column="15"
           Content="🌊"
@@ -1593,7 +1604,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F15"
+            <Label Name="F15"
           Grid.Row="5"
           Grid.Column="15"
           Content=""
@@ -1605,7 +1616,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G15"
+            <Label Name="G15"
           Grid.Row="6"
           Grid.Column="15"
           Content="🌲"
@@ -1617,7 +1628,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H15"
+            <Label Name="H15"
           Grid.Row="7"
           Grid.Column="15"
           Content="🌲"
@@ -1629,8 +1640,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--17 Column-->
-      <Label Name="A16"
+            <!--17 Column-->
+            <Label Name="A16"
           Grid.Row="0"
           Grid.Column="16"
           Content="🏜"
@@ -1642,7 +1653,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B16"
+            <Label Name="B16"
           Grid.Row="1"
           Grid.Column="16"
           Content="🏜"
@@ -1654,7 +1665,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C16"
+            <Label Name="C16"
           Grid.Row="2"
           Grid.Column="16"
           Content="⛰"
@@ -1666,7 +1677,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D16"
+            <Label Name="D16"
           Grid.Row="3"
           Grid.Column="16"
           Content="🐻"
@@ -1678,7 +1689,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E16"
+            <Label Name="E16"
           Grid.Row="4"
           Grid.Column="16"
           Content="🐻"
@@ -1690,7 +1701,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F16"
+            <Label Name="F16"
           Grid.Row="5"
           Grid.Column="16"
           Content="🌊"
@@ -1702,7 +1713,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G16"
+            <Label Name="G16"
           Grid.Row="6"
           Grid.Column="16"
           Content=""
@@ -1714,7 +1725,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H16"
+            <Label Name="H16"
           Grid.Row="7"
           Grid.Column="16"
           Content="🌲"
@@ -1726,8 +1737,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--18 Column-->
-      <Label Name="A17"
+            <!--18 Column-->
+            <Label Name="A17"
           Grid.Row="0"
           Grid.Column="17"
           Content="🏜"
@@ -1739,7 +1750,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B17"
+            <Label Name="B17"
           Grid.Row="1"
           Grid.Column="17"
           Content="🏜"
@@ -1751,7 +1762,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C17"
+            <Label Name="C17"
           Grid.Row="2"
           Grid.Column="17"
           Content="🏜"
@@ -1763,7 +1774,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D17"
+            <Label Name="D17"
           Grid.Row="3"
           Grid.Column="17"
           Content="⛰"
@@ -1775,7 +1786,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E17"
+            <Label Name="E17"
           Grid.Row="4"
           Grid.Column="17"
           Content="⛰"
@@ -1787,7 +1798,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F17"
+            <Label Name="F17"
           Grid.Row="5"
           Grid.Column="17"
           Content="🌊"
@@ -1799,7 +1810,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G17"
+            <Label Name="G17"
           Grid.Row="6"
           Grid.Column="17"
           Content=""
@@ -1811,7 +1822,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H17"
+            <Label Name="H17"
           Grid.Row="7"
           Grid.Column="17"
           Content="🌲"
@@ -1823,8 +1834,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--19 Column-->
-      <Label Name="A18"
+            <!--19 Column-->
+            <Label Name="A18"
           Grid.Row="0"
           Grid.Column="18"
           Content="🏜"
@@ -1836,7 +1847,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B18"
+            <Label Name="B18"
           Grid.Row="1"
           Grid.Column="18"
           Content="🏜"
@@ -1848,7 +1859,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C18"
+            <Label Name="C18"
           Grid.Row="2"
           Grid.Column="18"
           Content="🐪"
@@ -1860,7 +1871,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D18"
+            <Label Name="D18"
           Grid.Row="3"
           Grid.Column="18"
           Content="🏜"
@@ -1872,7 +1883,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E18"
+            <Label Name="E18"
           Grid.Row="4"
           Grid.Column="18"
           Content="⛰"
@@ -1884,7 +1895,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F18"
+            <Label Name="F18"
           Grid.Row="5"
           Grid.Column="18"
           Content="🌊"
@@ -1896,7 +1907,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G18"
+            <Label Name="G18"
           Grid.Row="6"
           Grid.Column="18"
           Content=""
@@ -1908,7 +1919,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H18"
+            <Label Name="H18"
           Grid.Row="7"
           Grid.Column="18"
           Content="🌲"
@@ -1920,8 +1931,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--20 Column-->
-      <Label Name="A19"
+            <!--20 Column-->
+            <Label Name="A19"
           Grid.Row="0"
           Grid.Column="19"
           Content="🏜"
@@ -1933,7 +1944,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B19"
+            <Label Name="B19"
           Grid.Row="1"
           Grid.Column="19"
           Content="🏜"
@@ -1945,7 +1956,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C19"
+            <Label Name="C19"
           Grid.Row="2"
           Grid.Column="19"
           Content="🏜"
@@ -1957,7 +1968,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D19"
+            <Label Name="D19"
           Grid.Row="3"
           Grid.Column="19"
           Content="🏜"
@@ -1969,7 +1980,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E19"
+            <Label Name="E19"
           Grid.Row="4"
           Grid.Column="19"
           Content="⛰"
@@ -1981,7 +1992,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F19"
+            <Label Name="F19"
           Grid.Row="5"
           Grid.Column="19"
           Content="🌊"
@@ -1993,7 +2004,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G19"
+            <Label Name="G19"
           Grid.Row="6"
           Grid.Column="19"
           Content=""
@@ -2005,7 +2016,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H19"
+            <Label Name="H19"
           Grid.Row="7"
           Grid.Column="19"
           Content="🌲"
@@ -2017,8 +2028,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--21 Column-->
-      <Label Name="A20"
+            <!--21 Column-->
+            <Label Name="A20"
           Grid.Row="0"
           Grid.Column="20"
            Content="🐪"
@@ -2030,7 +2041,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B20"
+            <Label Name="B20"
           Grid.Row="1"
           Grid.Column="20"
       Content="🏜"
@@ -2042,7 +2053,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C20"
+            <Label Name="C20"
           Grid.Row="2"
           Grid.Column="20"
             Content="🏜"
@@ -2054,7 +2065,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D20"
+            <Label Name="D20"
           Grid.Row="3"
           Grid.Column="20"
           Content="🏜"
@@ -2066,7 +2077,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E20"
+            <Label Name="E20"
           Grid.Row="4"
           Grid.Column="20"
           Content="🏜"
@@ -2078,7 +2089,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F20"
+            <Label Name="F20"
           Grid.Row="5"
           Grid.Column="20"
           Content=""
@@ -2090,7 +2101,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G20"
+            <Label Name="G20"
           Grid.Row="6"
           Grid.Column="20"
           Content="🌊"
@@ -2102,7 +2113,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H20"
+            <Label Name="H20"
           Grid.Row="7"
           Grid.Column="20"
           Content=""
@@ -2114,8 +2125,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--22 Column-->
-      <Label Name="A21"
+            <!--22 Column-->
+            <Label Name="A21"
           Grid.Row="0"
           Grid.Column="21"
           Content="🏜"
@@ -2127,7 +2138,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B21"
+            <Label Name="B21"
           Grid.Row="1"
           Grid.Column="21"
       Content="🏜"
@@ -2139,7 +2150,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C21"
+            <Label Name="C21"
           Grid.Row="2"
           Grid.Column="21"
             Content="🏜"
@@ -2151,7 +2162,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D21"
+            <Label Name="D21"
           Grid.Row="3"
           Grid.Column="21"
            Content="🏜"
@@ -2163,7 +2174,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E21"
+            <Label Name="E21"
           Grid.Row="4"
           Grid.Column="21"
            Content="🏜"
@@ -2174,7 +2185,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F21"
+            <Label Name="F21"
           Grid.Row="5"
           Grid.Column="21"
           Content="🌲"
@@ -2186,7 +2197,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G21"
+            <Label Name="G21"
           Grid.Row="6"
           Grid.Column="21"
           Content=""
@@ -2198,7 +2209,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H21"
+            <Label Name="H21"
           Grid.Row="7"
           Grid.Column="21"
           Content="🌊"
@@ -2210,8 +2221,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--23 Column-->
-      <Label Name="A22"
+            <!--23 Column-->
+            <Label Name="A22"
           Grid.Row="0"
           Grid.Column="22"
           Content="🏜"
@@ -2223,7 +2234,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B22"
+            <Label Name="B22"
           Grid.Row="1"
           Grid.Column="22"
            Content="🏜"
@@ -2235,7 +2246,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C22"
+            <Label Name="C22"
           Grid.Row="2"
           Grid.Column="22"
             Content="🐪"
@@ -2247,7 +2258,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D22"
+            <Label Name="D22"
           Grid.Row="3"
           Grid.Column="22"
           Content="🏜"
@@ -2259,7 +2270,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E22"
+            <Label Name="E22"
           Grid.Row="4"
           Grid.Column="22"
            Content="🏜"
@@ -2271,7 +2282,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F22"
+            <Label Name="F22"
           Grid.Row="5"
           Grid.Column="22"
           Content="🌲"
@@ -2283,7 +2294,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G22"
+            <Label Name="G22"
           Grid.Row="6"
           Grid.Column="22"
           Content=""
@@ -2295,7 +2306,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H22"
+            <Label Name="H22"
           Grid.Row="7"
           Grid.Column="22"
           Content="🌊"
@@ -2307,8 +2318,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--24 Column-->
-      <Label Name="A23"
+            <!--24 Column-->
+            <Label Name="A23"
           Grid.Row="0"
           Grid.Column="23"
           Content="🏜"
@@ -2320,7 +2331,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B23"
+            <Label Name="B23"
           Grid.Row="1"
           Grid.Column="23"
           Content="🏜"
@@ -2332,7 +2343,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C23"
+            <Label Name="C23"
           Grid.Row="2"
           Grid.Column="23"
          Content="🏜"
@@ -2344,7 +2355,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D23"
+            <Label Name="D23"
           Grid.Row="3"
           Grid.Column="23"
             Content="🏜"
@@ -2356,7 +2367,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E23"
+            <Label Name="E23"
           Grid.Row="4"
           Grid.Column="23"
           Content="🌲"
@@ -2368,7 +2379,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F23"
+            <Label Name="F23"
           Grid.Row="5"
           Grid.Column="23"
           Content="🌲"
@@ -2380,7 +2391,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G23"
+            <Label Name="G23"
           Grid.Row="6"
           Grid.Column="23"
           Content=""
@@ -2392,7 +2403,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H23"
+            <Label Name="H23"
           Grid.Row="7"
           Grid.Column="23"
           Content="🌊"
@@ -2404,8 +2415,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--25 Column-->
-      <Label Name="A24"
+            <!--25 Column-->
+            <Label Name="A24"
           Grid.Row="0"
           Grid.Column="24"
           Content="🏜"
@@ -2417,7 +2428,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B24"
+            <Label Name="B24"
           Grid.Row="1"
           Grid.Column="24"
            Content="🏜"
@@ -2429,7 +2440,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C24"
+            <Label Name="C24"
           Grid.Row="2"
           Grid.Column="24"
           Content="🌲"
@@ -2441,7 +2452,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D24"
+            <Label Name="D24"
           Grid.Row="3"
           Grid.Column="24"
           Content="🌲"
@@ -2453,7 +2464,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E24"
+            <Label Name="E24"
           Grid.Row="4"
           Grid.Column="24"
           Content="🌲"
@@ -2465,7 +2476,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F24"
+            <Label Name="F24"
           Grid.Row="5"
           Grid.Column="24"
           Content="🌲"
@@ -2477,7 +2488,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G24"
+            <Label Name="G24"
           Grid.Row="6"
           Grid.Column="24"
           Content=""
@@ -2489,7 +2500,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H24"
+            <Label Name="H24"
           Grid.Row="7"
           Grid.Column="24"
           Content="🌊"
@@ -2501,8 +2512,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--26 Column-->
-      <Label Name="A25"
+            <!--26 Column-->
+            <Label Name="A25"
           Grid.Row="0"
           Grid.Column="25"
            Content="🏜"
@@ -2514,7 +2525,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B25"
+            <Label Name="B25"
           Grid.Row="1"
           Grid.Column="25"
           Content="🌲"
@@ -2526,7 +2537,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C25"
+            <Label Name="C25"
           Grid.Row="2"
           Grid.Column="25"
           Content="🌲"
@@ -2538,7 +2549,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D25"
+            <Label Name="D25"
           Grid.Row="3"
           Grid.Column="25"
           Content="🌲"
@@ -2550,7 +2561,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E25"
+            <Label Name="E25"
           Grid.Row="4"
           Grid.Column="25"
           Content="🌲"
@@ -2562,7 +2573,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F25"
+            <Label Name="F25"
           Grid.Row="5"
           Grid.Column="25"
           Content="🌲"
@@ -2574,7 +2585,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G25"
+            <Label Name="G25"
           Grid.Row="6"
           Grid.Column="25"
           Content=""
@@ -2586,7 +2597,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H25"
+            <Label Name="H25"
           Grid.Row="7"
           Grid.Column="25"
           Content="🌊"
@@ -2598,8 +2609,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--27 Column-->
-      <Label Name="A26"
+            <!--27 Column-->
+            <Label Name="A26"
           Grid.Row="0"
           Grid.Column="26"
           Content="🌲"
@@ -2611,7 +2622,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B26"
+            <Label Name="B26"
           Grid.Row="1"
           Grid.Column="26"
           Content="🌲"
@@ -2623,7 +2634,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C26"
+            <Label Name="C26"
           Grid.Row="2"
           Grid.Column="26"
           Content="🌲"
@@ -2635,7 +2646,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D26"
+            <Label Name="D26"
           Grid.Row="3"
           Grid.Column="26"
           Content="🌲"
@@ -2647,7 +2658,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E26"
+            <Label Name="E26"
           Grid.Row="4"
           Grid.Column="26"
           Content="🌲"
@@ -2659,7 +2670,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F26"
+            <Label Name="F26"
           Grid.Row="5"
           Grid.Column="26"
           Content="🌲"
@@ -2671,7 +2682,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G26"
+            <Label Name="G26"
           Grid.Row="6"
           Grid.Column="26"
           Content="🌲"
@@ -2683,7 +2694,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H26"
+            <Label Name="H26"
           Grid.Row="7"
           Grid.Column="26"
           Content=""
@@ -2695,8 +2706,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--28 Column-->
-      <Label Name="A27"
+            <!--28 Column-->
+            <Label Name="A27"
           Grid.Row="0"
           Grid.Column="27"
           Content=" "
@@ -2708,7 +2719,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B27"
+            <Label Name="B27"
           Grid.Row="1"
           Grid.Column="27"
           Content="🌲"
@@ -2720,7 +2731,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C27"
+            <Label Name="C27"
           Grid.Row="2"
           Grid.Column="27"
           Content="🌲"
@@ -2732,7 +2743,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D27"
+            <Label Name="D27"
           Grid.Row="3"
           Grid.Column="27"
           Content="🌲"
@@ -2744,7 +2755,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E27"
+            <Label Name="E27"
           Grid.Row="4"
           Grid.Column="27"
           Content="🌲"
@@ -2756,7 +2767,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F27"
+            <Label Name="F27"
           Grid.Row="5"
           Grid.Column="27"
           Content="🌲"
@@ -2768,7 +2779,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G27"
+            <Label Name="G27"
           Grid.Row="6"
           Grid.Column="27"
           Content="🌲"
@@ -2780,7 +2791,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H27"
+            <Label Name="H27"
           Grid.Row="7"
           Grid.Column="27"
           Content="🌲"
@@ -2792,8 +2803,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--29 Column-->
-      <Label Name="A28"
+            <!--29 Column-->
+            <Label Name="A28"
           Grid.Row="0"
           Grid.Column="28"
           Content=" "
@@ -2805,7 +2816,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B28"
+            <Label Name="B28"
           Grid.Row="1"
           Grid.Column="28"
           Content=" "
@@ -2817,7 +2828,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C28"
+            <Label Name="C28"
           Grid.Row="2"
           Grid.Column="28"
           Content=" "
@@ -2829,7 +2840,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D28"
+            <Label Name="D28"
           Grid.Row="3"
           Grid.Column="28"
           Content="🌲"
@@ -2841,7 +2852,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E28"
+            <Label Name="E28"
           Grid.Row="4"
           Grid.Column="28"
           Content="🌲"
@@ -2853,7 +2864,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F28"
+            <Label Name="F28"
           Grid.Row="5"
           Grid.Column="28"
           Content="🌲"
@@ -2865,7 +2876,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G28"
+            <Label Name="G28"
           Grid.Row="6"
           Grid.Column="28"
           Content="🌲"
@@ -2877,7 +2888,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H28"
+            <Label Name="H28"
           Grid.Row="7"
           Grid.Column="28"
           Content="❄"
@@ -2889,8 +2900,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--30 Column-->
-      <Label Name="A29"
+            <!--30 Column-->
+            <Label Name="A29"
           Grid.Row="0"
           Grid.Column="29"
           Content="☠"
@@ -2902,7 +2913,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B29"
+            <Label Name="B29"
           Grid.Row="1"
           Grid.Column="29"
           Content="☠"
@@ -2914,7 +2925,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C29"
+            <Label Name="C29"
           Grid.Row="2"
           Grid.Column="29"
           Content=" "
@@ -2926,7 +2937,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D29"
+            <Label Name="D29"
           Grid.Row="3"
           Grid.Column="29"
           Content="🌲"
@@ -2938,7 +2949,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E29"
+            <Label Name="E29"
           Grid.Row="4"
           Grid.Column="29"
           Content="🌲"
@@ -2949,7 +2960,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F29"
+            <Label Name="F29"
           Grid.Row="5"
           Grid.Column="29"
           Content="🌲"
@@ -2961,7 +2972,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G29"
+            <Label Name="G29"
           Grid.Row="6"
           Grid.Column="29"
           Content="❄"
@@ -2973,7 +2984,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H29"
+            <Label Name="H29"
           Grid.Row="7"
           Grid.Column="29"
           Content="🐧"
@@ -2985,8 +2996,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--31 Column-->
-      <Label Name="A30"
+            <!--31 Column-->
+            <Label Name="A30"
           Grid.Row="0"
           Grid.Column="30"
           Content="🌋"
@@ -2998,7 +3009,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B30"
+            <Label Name="B30"
           Grid.Row="1"
           Grid.Column="30"
           Content="🐲"
@@ -3010,7 +3021,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C30"
+            <Label Name="C30"
           Grid.Row="2"
           Grid.Column="30"
           Content="☠"
@@ -3022,7 +3033,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D30"
+            <Label Name="D30"
           Grid.Row="3"
           Grid.Column="30"
           Content=""
@@ -3034,7 +3045,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E30"
+            <Label Name="E30"
           Grid.Row="4"
           Grid.Column="30"
           Content="🌲"
@@ -3046,7 +3057,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F30"
+            <Label Name="F30"
           Grid.Row="5"
           Grid.Column="30"
           Content="🌲"
@@ -3058,7 +3069,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G30"
+            <Label Name="G30"
           Grid.Row="6"
           Grid.Column="30"
           Content="❄"
@@ -3070,7 +3081,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H30"
+            <Label Name="H30"
           Grid.Row="7"
           Grid.Column="30"
           Content="🏔"
@@ -3082,8 +3093,8 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <!--32 Column-->
-      <Label Name="A31"
+            <!--32 Column-->
+            <Label Name="A31"
           Grid.Row="0"
           Grid.Column="31"
           Content="💎"
@@ -3095,7 +3106,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="B31"
+            <Label Name="B31"
           Grid.Row="1"
           Grid.Column="31"
           Content="🌋"
@@ -3107,7 +3118,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="C31"
+            <Label Name="C31"
           Grid.Row="2"
           Grid.Column="31"
           Content="☠"
@@ -3119,7 +3130,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="D31"
+            <Label Name="D31"
           Grid.Row="3"
           Grid.Column="31"
           Content="☠"
@@ -3131,7 +3142,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="E31"
+            <Label Name="E31"
           Grid.Row="4"
           Grid.Column="31"
           Content=" "
@@ -3143,7 +3154,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="F31"
+            <Label Name="F31"
           Grid.Row="5"
           Grid.Column="31"
           Content="🌲"
@@ -3155,7 +3166,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="G31"
+            <Label Name="G31"
           Grid.Row="6"
           Grid.Column="31"
           Content="❄"
@@ -3167,7 +3178,7 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-      <Label Name="H31"
+            <Label Name="H31"
           Grid.Row="7"
           Grid.Column="31"
           Content="🏔"
@@ -3179,11 +3190,6 @@
           BorderThickness="1"
           FontSize="17"
           Background="White"/>
-
-
-
+        </Grid>
     </Grid>
-
-  </Grid>
 </Window>
-

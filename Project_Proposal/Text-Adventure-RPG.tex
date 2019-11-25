@@ -740,28 +740,38 @@ The requirements were gathered by researching and thinking of what would be the 
 \subsection{Interface Mockups}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\linewidth]{interface}
+	\includegraphics[width=0.5\linewidth]{interface_v2}
 	\caption{The base game GUI so far.}
-	\label{fig:interface}
+	\label{fig:interfacev2}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{player_inventory}
+	\caption{What the inventory will look like.}
+	\label{fig:playerinventory}
+\end{figure}
+
+\section{Project Timeline}
+This is the timeline of our project. The following figure shows all of the dates, as well as what was or will be completed, the date it was started and the date it is aimed to be finished, as well as some additional notes to go along with the timeline.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{timeline}
+	\caption{Overall project timeline from start to finish with possible dates.}
+	\label{fig:timeline}
+\end{figure}
+
+\section{Project Structure}
+The game starts off with a character creation screen, where the player chooses their name, and class. Once this is selected, the window closes and the main game window appears. The player's name and class choices will be reflected within the main game window. The player will have access to their inventory, dialogues from any quests, current and completed questions, and the map of the game. The map is based on a tile set of unicode characters, which is 32x8 (256) tiles. 
+
+\subsection{UML Outline}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{uml}
+	\caption{UML for player classes and character creation.}
+	\label{fig:uml}
 \end{figure}
 
 \iffalse % comment out the rest
-
-\section{Project Timeline}
-Go back to your notes and look up a typical project development life cycle for the Waterfall approach.  How will you follow this life cycle over the remainder of this semester?  This will usually involve a chart showing your proposed timeline, with specific milestones plotted out.  Make sure you have deliverable dates from the course schedule listed, with a plan to meet them (NOTE: these are generally optimistic deadlines).
-
-\section{Project Structure}
-At first, this will be a little empty (it will need to be filled in by the time you turn in your final report).  This is your chance to discuss all of your design decisions (consider this the README's big brother).
-
-\subsection{UML Outline}
-Show the full structure of your program.  Make sure to keep on updating this section as your project evolves (you often start out with one plan, but end up modifying things as you move along).  As a note, while Dia fails miserably at generating pdfs (probably my fault), I have had much success with png files.  Make sure to wrap your images in a \texttt{figure} environment, and to reference with the \texttt{ref} command.  For example, see Figure \ref{cat2}.
-
-\begin{figure}[ht!]
-\includegraphics[scale=1.5]{cat2.jpg}
-\caption{Your figures should be in the \emph{figure} environment, and have captions.  Should also be of diagrams pertaining to your project, not random internet kittens}
-\label{cat2}
-\end{figure}
-
 
 \subsection{Design Patterns Used}
 Make sure to actually use at least 2 design patterns from this class.  This is not normally part of such documentation, but largely just specific to this class -- I want to see you use the patterns!
