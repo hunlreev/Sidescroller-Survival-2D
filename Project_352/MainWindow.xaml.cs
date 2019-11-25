@@ -103,8 +103,8 @@ namespace Project_352
             {
                 if (_warrior.info.exp >= _warrior.info.totalExp)
                 {
-                    // Level 25 is the Max Level
-                    if (_warrior.info.level < 25)
+                    // Level 20 is the Max Level
+                    if (_warrior.info.level < 20)
                     {
                         _warrior.info.level += 1;
                         _warrior.info.exp = 0;
@@ -133,8 +133,8 @@ namespace Project_352
             {
                 if (_mage.info.exp >= _mage.info.totalExp)
                 {
-                    // Level 25 is the Max Level
-                    if (_mage.info.level < 25)
+                    // Level 20 is the Max Level
+                    if (_mage.info.level < 20)
                     {
                         _mage.info.level += 1;
                         _mage.info.exp = 0;
@@ -163,8 +163,8 @@ namespace Project_352
             {
                 if (_rogue.info.exp >= _rogue.info.totalExp)
                 {
-                    // Level 25 is the Max Level
-                    if (_rogue.info.level < 25)
+                    // Level 20 is the Max Level
+                    if (_rogue.info.level < 20)
                     {
                         _rogue.info.level += 1;
                         _rogue.info.exp = 0;
