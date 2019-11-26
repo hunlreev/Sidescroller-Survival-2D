@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
         <!-- Interface for Main Game Window -->
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="283" Margin="11,10,11,0" Stroke="Black" VerticalAlignment="Top" Width="1052"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="10,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="11,301,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="366,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="379" Margin="722,300,0,0" Stroke="Black" VerticalAlignment="Top" Width="340"/>
         <Label Content="Player Information" HorizontalAlignment="Center" Margin="840,300,127,0" VerticalAlignment="Top" Width="107"/>
@@ -52,7 +52,7 @@
         <Button Content="Random Gold" HorizontalAlignment="Left" Margin="850,625,0,0" VerticalAlignment="Top" Width="90" Click="GainGold"/>
         <Button Content="Cheat Code" HorizontalAlignment="Left" Margin="850,650,0,0" VerticalAlignment="Top" Width="90" Click="TonsOfEXP"/>
         <!--Declaration of the Map. 32x8-->
-        <Grid x:Name="Map" HorizontalAlignment="Left" Height="283" VerticalAlignment="Top" Width="1052" Margin="10,12,0,-112" ShowGridLines="True" >
+        <Grid x:Name="Map" HorizontalAlignment="Left" Height="283" VerticalAlignment="Top" Width="1052" Margin="10,12,0,-112" ShowGridLines="True"  >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -102,6 +102,7 @@
           Grid.Row="0"
           Grid.Column="0"
           Content="🏝"
+         
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -576,7 +577,7 @@
           Content="🌽"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
-          VerticalAlignment="Center"
+          VerticalAlignment="Top"
           VerticalContentAlignment="Center"
           BorderBrush="Black"
           BorderThickness="1"
@@ -1057,7 +1058,7 @@
             <Label Name="H9"
           Grid.Row="7"
           Grid.Column="9"
-          Content=" "
+          Content="🌲"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1065,7 +1066,8 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White"/>
+          Background="White">
+            </Label>
             <!--11 Column-->
             <Label Name="A10"
           Grid.Row="0"
@@ -3197,5 +3199,9 @@
           FontSize="17"
           Background="White"/>
         </Grid>
+        <Button x:Name="Up_Arrow" Content="⮝" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,548,0,0" VerticalAlignment="Top" Width="64" Click="Up_Arrow_Click"/>
+        <Button x:Name="Down_Arrow"  Content="⮟" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,602,0,0" VerticalAlignment="Top" Width="64" Click="Down_Arrow_Click"/>
+        <Button x:Name="Left_Arrow" Content="⮜" FontSize="40"  HorizontalAlignment="Left" Height="48" Margin="77,602,0,0" VerticalAlignment="Top" Width="64" Click="Left_Arrow_Click"/>
+        <Button x:Name="Right_Arrow" Content="⮞" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="215,602,0,0" VerticalAlignment="Top" Width="64" Click="Right_Arrow_Click"/>
     </Grid>
 </Window>

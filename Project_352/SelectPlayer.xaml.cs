@@ -47,6 +47,7 @@ namespace Project_352
             _class = "Warrior";
             Warrior warrior = create.Warrior(_name, _class);
             this.warrior = warrior;
+            
         }
         private void SelectMage(object sender, RoutedEventArgs e)
         {
