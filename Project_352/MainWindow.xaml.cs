@@ -433,6 +433,7 @@ namespace Project_352
                 Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
                 Previous_Temp_Pos = Next_Temp_Pos;
                 Player_Position = Next_Tile;
+                Player_Movement++;
 
             }
         }
@@ -450,6 +451,7 @@ namespace Project_352
                 Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
                 Previous_Temp_Pos = Next_Temp_Pos;
                 Player_Position = Next_Tile;
+                Player_Movement++;
 
             }
 
@@ -468,6 +470,7 @@ namespace Project_352
                 Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
                 Previous_Temp_Pos = Next_Temp_Pos;
                 Player_Position = Next_Tile;
+                Player_Movement++;
             }
         }
 
@@ -484,6 +487,7 @@ namespace Project_352
                 Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
                 Previous_Temp_Pos = Next_Temp_Pos;
                 Player_Position = Next_Tile;
+                Player_Movement++;
 
             }
 
