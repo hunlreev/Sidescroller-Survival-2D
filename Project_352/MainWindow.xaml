@@ -46,9 +46,9 @@
         <Label x:Name="intelligence" Content="Intelligence: " HorizontalAlignment="Left" Margin="953,479,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
         <Label x:Name="dexterity" Content="Dexterity: " HorizontalAlignment="Left" Margin="953,505,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
         <Label x:Name="damage" Content="Player Damage: " HorizontalAlignment="Left" Margin="728,548,0,0" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.856,0.577"/>
-        <Button Content="Lvl 1 Rat" HorizontalAlignment="Left" Margin="492,377,0,0" VerticalAlignment="Top" Width="90" Click="KillRat"/>
-        <Button Content="Lvl 10 Goblin" HorizontalAlignment="Left" Margin="492,493,0,0" VerticalAlignment="Top" Width="90" Click="KillGoblin"/>
-        <Button Content="Lvl 15 Ogre" HorizontalAlignment="Left" Margin="492,602,0,0" VerticalAlignment="Top" Width="90" Click="KillOgre"/>
+        <Button x:Name="rat" Content="Lvl 1 Rat" HorizontalAlignment="Left" Margin="492,377,0,0" VerticalAlignment="Top" Width="90" Click="KillRat"/>
+        <Button x:Name="goblin" Content="Lvl 10 Goblin" HorizontalAlignment="Left" Margin="492,493,0,0" VerticalAlignment="Top" Width="90" Click="KillGoblin" Opacity="0.90" IsEnabled="False"/>
+        <Button x:Name="ogre" Content="Lvl 15 Ogre" HorizontalAlignment="Left" Margin="492,602,0,0" VerticalAlignment="Top" Width="90" Click="KillOgre" Opacity="0.90" IsEnabled="False"/>
         <Button Content="Gamble for Gold" HorizontalAlignment="Left" Margin="838,625,0,0" VerticalAlignment="Top" Width="120" Click="GainGold"/>
         <Button Content="Cheat Code" HorizontalAlignment="Left" Margin="850,650,0,0" VerticalAlignment="Top" Width="90" Click="TonsOfEXP"/>
         <!--Declaration of the Map. 32x8-->

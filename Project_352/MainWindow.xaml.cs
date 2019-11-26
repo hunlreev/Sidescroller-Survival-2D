@@ -135,6 +135,19 @@ namespace Project_352
                         _warrior.attr.intelligence += 1;
 
                         ShowPlayerInfo(sender, e);
+
+                        // Check to see if Player Level is 10 (unlock the goblin)
+                        if (_warrior.info.level == 10)
+                        {
+                            goblin.Opacity = 1;
+                            goblin.IsEnabled = true;
+                        }
+                        // Check to see if Player Level is 15 (unlock the ogre)
+                        if (_warrior.info.level == 15)
+                        {
+                            ogre.Opacity = 1;
+                            ogre.IsEnabled = true;
+                        }
                     }
                     else
                     {
@@ -165,6 +178,19 @@ namespace Project_352
                         _mage.attr.intelligence += 3;
 
                         ShowPlayerInfo(sender, e);
+
+                        // Check to see if Player Level is 10 (unlock the goblin)
+                        if (_mage.info.level == 10)
+                        {
+                            goblin.Opacity = 1;
+                            goblin.IsEnabled = true;
+                        }
+                        // Check to see if Player Level is 15 (unlock the ogre)
+                        if (_mage.info.level == 15)
+                        {
+                            ogre.Opacity = 1;
+                            ogre.IsEnabled = true;
+                        }
                     }
                     else
                     {
@@ -195,6 +221,19 @@ namespace Project_352
                         _rogue.attr.intelligence += 1;
 
                         ShowPlayerInfo(sender, e);
+
+                        // Check to see if Player Level is 10 (unlock the goblin)
+                        if (_rogue.info.level == 10)
+                        {
+                            goblin.Opacity = 1;
+                            goblin.IsEnabled = true;
+                        }
+                        // Check to see if Player Level is 15 (unlock the ogre)
+                        if (_rogue.info.level == 15)
+                        {
+                            ogre.Opacity = 1;
+                            ogre.IsEnabled = true;
+                        }
                     }
                     else
                     {
