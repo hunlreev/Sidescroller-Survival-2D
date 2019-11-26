@@ -108,13 +108,13 @@ namespace Project_352
                     {
                         _warrior.info.level += 1;
                         _warrior.info.exp = 0;
-                        _warrior.info.totalExp = (int)Math.Pow(_warrior.info.totalExp, 1.035);
-                        _warrior.stats.health += 10;
-                        _warrior.stats.totalHealth += 10;
-                        _warrior.stats.stamina += 5;
-                        _warrior.stats.totalStamina += 5;
-                        _warrior.stats.mana += 5;
-                        _warrior.stats.totalMana += 5;
+                        _warrior.info.totalExp = (int)Math.Pow(_warrior.info.totalExp, 1.038);
+                        _warrior.stats.health += (int)(_warrior.attr.endurance * 0.5);
+                        _warrior.stats.totalHealth += (int)(_warrior.attr.endurance * 0.5);
+                        _warrior.stats.stamina += (int)(_warrior.attr.dexterity * 0.5);
+                        _warrior.stats.totalStamina += (int)(_warrior.attr.dexterity * 0.5);
+                        _warrior.stats.mana += (int)(_warrior.attr.intelligence * 0.5);
+                        _warrior.stats.totalMana += (int)(_warrior.attr.intelligence * 0.5);
                         _warrior.attr.strength += 3;
                         _warrior.attr.endurance += 2;
                         _warrior.attr.dexterity += 1;
@@ -139,12 +139,12 @@ namespace Project_352
                         _mage.info.level += 1;
                         _mage.info.exp = 0;
                         _mage.info.totalExp = (int)Math.Pow(_mage.info.totalExp, 1.035);
-                        _mage.stats.health += 5;
-                        _mage.stats.totalHealth += 5;
-                        _mage.stats.stamina += 5;
-                        _mage.stats.totalStamina += 5;
-                        _mage.stats.mana += 10;
-                        _mage.stats.totalMana += 10;
+                        _mage.stats.health += (int)(_mage.attr.endurance * 0.5);
+                        _mage.stats.totalHealth += (int)(_mage.attr.endurance * 0.5);
+                        _mage.stats.stamina += (int)(_mage.attr.dexterity * 0.5);
+                        _mage.stats.totalStamina += (int)(_mage.attr.dexterity * 0.5);
+                        _mage.stats.mana += (int)(_mage.attr.intelligence * 0.5);
+                        _mage.stats.totalMana += (int)(_mage.attr.intelligence * 0.5);
                         _mage.attr.strength += 2;
                         _mage.attr.endurance += 1;
                         _mage.attr.dexterity += 1;
@@ -168,13 +168,13 @@ namespace Project_352
                     {
                         _rogue.info.level += 1;
                         _rogue.info.exp = 0;
-                        _rogue.info.totalExp = (int)Math.Pow(_rogue.info.totalExp, 1.035);
-                        _rogue.stats.health += 5;
-                        _rogue.stats.totalHealth += 5;
-                        _rogue.stats.stamina += 10;
-                        _rogue.stats.totalStamina += 10;
-                        _rogue.stats.mana += 5;
-                        _rogue.stats.totalMana += 5;
+                        _rogue.info.totalExp = (int)Math.Pow(_rogue.info.totalExp, 1.0369);
+                        _rogue.stats.health += (int)(_rogue.attr.endurance * 0.5);
+                        _rogue.stats.totalHealth += (int)(_rogue.attr.endurance * 0.5);
+                        _rogue.stats.stamina += (int)(_rogue.attr.dexterity * 0.5);
+                        _rogue.stats.totalStamina += (int)(_rogue.attr.dexterity * 0.5);
+                        _rogue.stats.mana += (int)(_rogue.attr.intelligence * 0.5);
+                        _rogue.stats.totalMana += (int)(_rogue.attr.intelligence * 0.5);
                         _rogue.attr.strength += 2;
                         _rogue.attr.endurance += 1;
                         _rogue.attr.dexterity += 3;
@@ -225,23 +225,32 @@ namespace Project_352
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
-                _warrior.info.exp += goblin.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_warrior.info.level >= 10)
+                {
+                    _warrior.info.exp += goblin.Exp();
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
             {
-                _mage.info.exp += goblin.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_mage.info.level >= 10)
+                {
+                    _mage.info.exp += goblin.Exp();
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                }
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
             {
-                _rogue.info.exp += goblin.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_rogue.info.level >= 10)
+                {
+                    _rogue.info.exp += goblin.Exp();
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                }
             }
         }
         private void KillOgre(object sender, EventArgs e)
@@ -252,48 +261,66 @@ namespace Project_352
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
-                _warrior.info.exp += ogre.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_warrior.info.level >= 15)
+                {
+                    _warrior.info.exp += ogre.Exp();
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
             {
-                _mage.info.exp += ogre.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_mage.info.level >= 15)
+                {
+                    _mage.info.exp += ogre.Exp();
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                }
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
             {
-                _rogue.info.exp += ogre.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_rogue.info.level >= 15)
+                {
+                    _rogue.info.exp += ogre.Exp();
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                }
             }
         }
         // Gain random amount of gold (for debugging)
         private void GainGold(object sender, EventArgs e)
         {
             Random rand = new Random();
-            int gold = rand.Next(3, 12);
+            int gold = rand.Next(-10, 20);
 
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
-                _warrior.info.gold += gold;
-                ShowPlayerInfo(sender, e);
+                if (_warrior.info.gold + gold >= 0)
+                {
+                    _warrior.info.gold += gold;
+                    ShowPlayerInfo(sender, e);
+                }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
             {
-                _mage.info.gold += gold;
-                ShowPlayerInfo(sender, e);
+                if (_mage.info.gold + gold >= 0)
+                {
+                    _mage.info.gold += gold;
+                    ShowPlayerInfo(sender, e);
+                }
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
             {
-                _rogue.info.gold += gold;
-                ShowPlayerInfo(sender, e);
+                if (_rogue.info.gold + gold >= 0)
+                {
+                    _rogue.info.gold += gold;
+                    ShowPlayerInfo(sender, e);
+                }
             }
         }
         // A cheat code for getting tons of exp (for debugging)

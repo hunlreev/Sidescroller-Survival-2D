@@ -15,7 +15,7 @@ namespace Project_352
     // Contains Level, Gold, EXP, and TotalEXP
     public struct Information
     {
-        public int level;    // level of player, level cap at 15
+        public int level;    // level of player, level cap at 20
         public int gold;     // currency for player, buy and sell items
         public int exp;      // current amount of experience
         public int totalExp; // experience needed to reach next level
@@ -34,8 +34,8 @@ namespace Project_352
     public struct Attributes
     {
         public int strength;     // effects amount of physical damage done
-        public int endurance;    // effects amount of health player has
-        public int intelligence; // effects amount of magical damage done, amount of mana player has
-        public int dexterity;    // effects how often attacks are missed, attack bonus to rogues, amount of stamina player has
+        public int endurance;    // effects amount of health player has, attack bonus to warriors
+        public int intelligence; // effects amount of mana player has, attack bonus to mages
+        public int dexterity;    // effects amount of stamina player has, attack bonus to rogues
     }
 }

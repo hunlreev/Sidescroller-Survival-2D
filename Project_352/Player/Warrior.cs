@@ -22,7 +22,7 @@ namespace Project_352
             this.classification = classification;
             info.level = 1;
             info.gold = 0;
-            info.exp = 0; // Debug
+            info.exp = 0; 
             info.totalExp = 50;
             stats.health = 100;
             stats.totalHealth = 100;
@@ -38,7 +38,7 @@ namespace Project_352
         // Base damage the player does, accounts for strength stat and weapon damage
         public double DoDamage()
         {
-            return 0.30 * (attr.strength + (attr.endurance * 0.25));
+            return 0.5 * (attr.strength + (attr.endurance * 0.25));
         }
 
         public string name;

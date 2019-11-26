@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Enemy\Enemies.cs" />
+    <Compile Include="Enemy\EnemyStats.cs" />
     <Compile Include="Functionality\CombatSystem.cs" />
     <Compile Include="Functionality\PlayerCreation.cs" />
     <Compile Include="Player\Mage.cs" />
