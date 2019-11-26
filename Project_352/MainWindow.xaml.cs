@@ -57,6 +57,11 @@ namespace Project_352
                 intelligence.Content = "Intelligence: " + _warrior.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _warrior.attr.dexterity;
                 damage.Content = "Player Damage: " + _warrior.DoDamage();
+                if (Player_Movement == 0)
+                {
+                    Player_Class = "🛡";
+                    H4.Content = "🛡";
+                }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
@@ -75,6 +80,11 @@ namespace Project_352
                 intelligence.Content = "Intelligence: " + _mage.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _mage.attr.dexterity;
                 damage.Content = "Player Damage: " + _mage.DoDamage();
+                if (Player_Movement == 0)
+                {
+                    Player_Class = "🧙";
+                    H4.Content = "🧙";
+                }
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
@@ -93,6 +103,10 @@ namespace Project_352
                 intelligence.Content = "Intelligence: " + _rogue.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _rogue.attr.dexterity;
                 damage.Content = "Player Damage: " + _rogue.DoDamage();
+                if (Player_Movement == 0) {
+                    Player_Class = "🗡";
+                    H4.Content = "🗡";
+                }
             }
         }
         // Levels System for the Player (subject to be tweaked in the future)
@@ -357,5 +371,84 @@ namespace Project_352
         private Warrior _warrior;
         private Mage _mage;
         private Rogue _rogue;
+
+        private int Player_Position = 39;
+        private int Player_Movement = 0;
+        private int Previous_Tile;
+        private int Next_Tile;
+        private string Previous_Temp_Pos = "🌽";
+        private string Player_Class;
+        private string Next_Temp_Pos;
+
+
+        public void Up_Arrow_Click(object sender, RoutedEventArgs e)
+        {
+           if( Player_Position%8 > 0 && Player_Position < 256 )
+            {
+                Previous_Tile = Player_Position;
+                Next_Tile = Player_Position - 1;
+
+                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                Previous_Temp_Pos = Next_Temp_Pos;
+                Player_Position = Next_Tile;
+
+            }
+        }
+
+        private void Down_Arrow_Click(object sender, RoutedEventArgs e)
+        {
+            if (Player_Position%8 +1 != 8 && Player_Position < 256)
+            {
+                Previous_Tile = Player_Position;
+                Next_Tile = Player_Position + 1;
+
+                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                Previous_Temp_Pos = Next_Temp_Pos;
+                Player_Position = Next_Tile;
+
+            }
+
+        }
+
+        private void Left_Arrow_Click(object sender, RoutedEventArgs e)
+        {
+            if (Player_Position-8 > 0)
+            {
+                Previous_Tile = Player_Position;
+                Next_Tile = Player_Position - 8;
+
+                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                Previous_Temp_Pos = Next_Temp_Pos;
+                Player_Position = Next_Tile;
+            }
+        }
+
+        private void Right_Arrow_Click(object sender, RoutedEventArgs e)
+        {
+            if (Player_Position + 8 <256)
+            {
+                Previous_Tile = Player_Position;
+                Next_Tile = Player_Position + 8;
+
+                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                Previous_Temp_Pos = Next_Temp_Pos;
+                Player_Position = Next_Tile;
+
+            }
+
+        }
+        
     }
 }
