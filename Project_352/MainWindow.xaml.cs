@@ -61,7 +61,8 @@ namespace Project_352
                 {
                     Player_Class = "🛡";
                     H4.Content = "🛡";
-                }
+                    Player_Color = new SolidColorBrush(Colors.Red);
+    }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
@@ -84,6 +85,7 @@ namespace Project_352
                 {
                     Player_Class = "🧙";
                     H4.Content = "🧙";
+                    Player_Color = new SolidColorBrush(Colors.Purple);
                 }
             }
             // For the Rogue
@@ -106,6 +108,7 @@ namespace Project_352
                 if (Player_Movement == 0) {
                     Player_Class = "🗡";
                     H4.Content = "🗡";
+                    Player_Color = new SolidColorBrush(Colors.Blue);
                 }
             }
         }
@@ -345,28 +348,48 @@ namespace Project_352
         private Mage _mage;
         private Rogue _rogue;
 
-        private int Player_Position = 39;
+        private int Player_Position = 39;//Player Map Details
         private int Player_Movement = 0;
-        private int Previous_Tile;
+
+        private int Previous_Tile;//Variables for movement
         private int Next_Tile;
-        private string Previous_Temp_Pos = "🌽";
-        private string Player_Class;
+
+        private string Previous_Temp_Pos = "🌽";//Temporary Variables for movement
         private string Next_Temp_Pos;
+
+        private string Player_Class;//Variable to monitor Player's Class
+        private SolidColorBrush Player_Color;
+
+        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.YellowGreen);
+        private Color Temp_Color;
+        private SolidColorBrush Next_Color;
+
+        
+
 
 
         public void Up_Arrow_Click(object sender, RoutedEventArgs e)
         {
-           if( Player_Position%8 > 0 && Player_Position < 256 )
+            if (Player_Position % 8 > 0 && Player_Position < 256)
             {
-                Previous_Tile = Player_Position;
+                Previous_Tile = Player_Position;//Calculates movement
                 Next_Tile = Player_Position - 1;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+                
 
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Previous_Temp_Pos = Next_Temp_Pos;
+                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+                
+
+                Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                Previous_Color = Next_Color;
                 Player_Position = Next_Tile;
+                Player_Movement++;
 
             }
         }
@@ -379,11 +402,19 @@ namespace Project_352
                 Next_Tile = Player_Position + 1;
 
                 Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
 
                 Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
                 Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
                 Previous_Temp_Pos = Next_Temp_Pos;
+                Previous_Color = Next_Color;
                 Player_Position = Next_Tile;
+                Player_Movement++;
 
             }
 
@@ -391,17 +422,25 @@ namespace Project_352
 
         private void Left_Arrow_Click(object sender, RoutedEventArgs e)
         {
-            if (Player_Position-8 > 0)
+            if (Player_Position-8 > -1)
             {
                 Previous_Tile = Player_Position;
                 Next_Tile = Player_Position - 8;
 
                 Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
 
                 Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
                 Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
                 Previous_Temp_Pos = Next_Temp_Pos;
+                Previous_Color = Next_Color;
                 Player_Position = Next_Tile;
+                Player_Movement++;
             }
         }
 
@@ -413,15 +452,24 @@ namespace Project_352
                 Next_Tile = Player_Position + 8;
 
                 Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
 
                 Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
                 Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
                 Previous_Temp_Pos = Next_Temp_Pos;
+                Previous_Color = Next_Color;
                 Player_Position = Next_Tile;
+                Player_Movement++;
 
             }
 
         }
         
+
     }
 }
