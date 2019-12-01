@@ -1,5 +1,5 @@
 ﻿/* Author: Hunter Reeves
- * Date: 11/22/2019
+ * Date: 11/30/2019
  * File: Enemies.cs
  * Description: The three enemy types you can fight in the game!
  */
@@ -17,21 +17,42 @@ namespace Project_352
     {
         public Rat()
         {
-            stats.health = 50;
-            stats.totalHealth = 50;
+            stats.health = 25;
+            stats.totalHealth = 25;
         }
         public double DoDamage()
         {
-            return 5.25;
+            return rand.Next(1, 3);
         }
         public int Exp()
         {
-            return 10;
+            return rand.Next(35, 50); // fix me, 5-10 exp
+        }
+        public int Gold()
+        {
+            return rand.Next(5, 10);
+        }
+        public string AppearedMessage()
+        {
+            return "A wild rat appeared!\n";
+        }
+        public string DamageMessage()
+        {
+            return "Rat did " + DoDamage() + " damage.\n";
+        }
+        public string DeathMessage()
+        {
+            return "\nYou killed the rat!\n";
+        }
+        public string RanMessage()
+        {
+            return "\nYou successfully ran from the rat!\n";
         }
 
         // Icon for the Rat
         string icon = "🐀";
         public E_Stats stats;
+        public Random rand = new Random();
     }
     // Goblin class, moderate enemy, moderate exp
     public class Goblin
@@ -43,16 +64,33 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return 10.5;
+            return rand.Next(10, 15);
         }
         public int Exp()
         {
-            return 25;
+            return rand.Next(20, 30);
+        }
+        public int Gold()
+        {
+            return rand.Next(10, 15);
+        }
+        public string AppearedMessage()
+        {
+            return "A wild goblin appeared!\n";
+        }
+        public string DamageMessage()
+        {
+            return "Goblin did " + DoDamage() + " damage.\n";
+        }
+        public string DeathMessage()
+        {
+            return " killed the goblin!\n";
         }
 
         // Icon for the Goblin
         string icon = "👺";
         public E_Stats stats;
+        public Random rand = new Random();
     }
     // Ogre class, hardest enemy and the most exp
     public class Ogre
@@ -64,16 +102,33 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return 17.75;
+            return rand.Next(15, 20);
         }
         public int Exp()
         {
-            return 50;
+            return rand.Next(50, 75);
+        }
+        public int Gold()
+        {
+            return rand.Next(20, 30);
+        }
+        public string AppearedMessage()
+        {
+            return "A wild ogre appeared!\n";
+        }
+        public string DamageMessage()
+        {
+            return "Ogre did " + DoDamage() + " damage.\n";
+        }
+        public string DeathMessage()
+        {
+            return " killed the ogre!\n";
         }
 
         // Icon for the Ogre
         string icon = "👹";
         public E_Stats stats;
+        public Random rand = new Random();
     }
     // Dragon class, the final boss
     public class Dragon
@@ -85,15 +140,32 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return 30;
+            return rand.Next(25, 35);
         }
         public int Exp()
         {
-            return 1000;
+            return rand.Next(1000, 1250);
+        }
+        public int Gold()
+        {
+            return rand.Next(250, 500);
+        }
+        public string AppearedMessage()
+        {
+            return "The dragon appeared!\n";
+        }
+        public string DamageMessage()
+        {
+            return "Dragon did " + DoDamage() + " damage.\n";
+        }
+        public string DeathMessage()
+        {
+            return " killed the dragon!\n";
         }
 
         // Icon for the Ogre
         string icon = "🐉";
         public E_Stats stats;
+        public Random rand = new Random();
     }
 }

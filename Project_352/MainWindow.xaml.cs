@@ -36,6 +36,12 @@ namespace Project_352
             _warrior = w;
             _mage = m;
             _rogue = r;
+
+            // Start up message
+            dialog.Text = "Welcome to Text Adventure RPG, Player. " +
+                          "You start off a confused adventure in the middle of a field. " +
+                          "Choose your pathway and go forth to the castle to discover yourself and the role you play in these trying times. " +
+                          "\n\nBegin your adventure now!";
         }
         // Shows information to the user of their player
         private void ShowPlayerInfo(object sender, EventArgs e)
@@ -56,7 +62,6 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _warrior.attr.endurance;
                 intelligence.Content = "Intelligence: " + _warrior.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _warrior.attr.dexterity;
-                damage.Content = "Player Damage: " + _warrior.DoDamage();
                 if (Player_Movement == 0)
                 {
                     Player_Class = "🛡";
@@ -79,7 +84,6 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _mage.attr.endurance;
                 intelligence.Content = "Intelligence: " + _mage.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _mage.attr.dexterity;
-                damage.Content = "Player Damage: " + _mage.DoDamage();
                 if (Player_Movement == 0)
                 {
                     Player_Class = "🧙";
@@ -102,7 +106,6 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _rogue.attr.endurance;
                 intelligence.Content = "Intelligence: " + _rogue.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _rogue.attr.dexterity;
-                damage.Content = "Player Damage: " + _rogue.DoDamage();
                 if (Player_Movement == 0) {
                     Player_Class = "🗡";
                     H4.Content = "🗡";
@@ -134,20 +137,12 @@ namespace Project_352
                         _warrior.attr.dexterity += 1;
                         _warrior.attr.intelligence += 1;
 
-                        ShowPlayerInfo(sender, e);
+                        dialog.Text += _warrior.name + " leveled up! " + '\n';
+                        _warrior.stats.health = _warrior.stats.totalHealth;
+                        _warrior.stats.stamina = _warrior.stats.totalStamina;
+                        _warrior.stats.mana = _warrior.stats.totalMana;
 
-                        // Check to see if Player Level is 10 (unlock the goblin)
-                        if (_warrior.info.level == 10)
-                        {
-                            goblin.Opacity = 1;
-                            goblin.IsEnabled = true;
-                        }
-                        // Check to see if Player Level is 15 (unlock the ogre)
-                        if (_warrior.info.level == 15)
-                        {
-                            ogre.Opacity = 1;
-                            ogre.IsEnabled = true;
-                        }
+                        ShowPlayerInfo(sender, e);
                     }
                     else
                     {
@@ -177,20 +172,12 @@ namespace Project_352
                         _mage.attr.dexterity += 1;
                         _mage.attr.intelligence += 3;
 
-                        ShowPlayerInfo(sender, e);
+                        dialog.Text += _mage.name + " leveled up! " + '\n';
+                        _mage.stats.health = _mage.stats.totalHealth;
+                        _mage.stats.stamina = _mage.stats.totalStamina;
+                        _mage.stats.mana = _mage.stats.totalMana;
 
-                        // Check to see if Player Level is 10 (unlock the goblin)
-                        if (_mage.info.level == 10)
-                        {
-                            goblin.Opacity = 1;
-                            goblin.IsEnabled = true;
-                        }
-                        // Check to see if Player Level is 15 (unlock the ogre)
-                        if (_mage.info.level == 15)
-                        {
-                            ogre.Opacity = 1;
-                            ogre.IsEnabled = true;
-                        }
+                        ShowPlayerInfo(sender, e);
                     }
                     else
                     {
@@ -220,20 +207,12 @@ namespace Project_352
                         _rogue.attr.dexterity += 3;
                         _rogue.attr.intelligence += 1;
 
-                        ShowPlayerInfo(sender, e);
+                        dialog.Text += _rogue.name + " leveled up! " + '\n';
+                        _rogue.stats.health = _rogue.stats.totalHealth;
+                        _rogue.stats.stamina = _rogue.stats.totalStamina;
+                        _rogue.stats.mana = _rogue.stats.totalMana;
 
-                        // Check to see if Player Level is 10 (unlock the goblin)
-                        if (_rogue.info.level == 10)
-                        {
-                            goblin.Opacity = 1;
-                            goblin.IsEnabled = true;
-                        }
-                        // Check to see if Player Level is 15 (unlock the ogre)
-                        if (_rogue.info.level == 15)
-                        {
-                            ogre.Opacity = 1;
-                            ogre.IsEnabled = true;
-                        }
+                        ShowPlayerInfo(sender, e);
                     }
                     else
                     {
@@ -242,45 +221,53 @@ namespace Project_352
                 }
             }
         }
-        // For debugging/testing player level up on exp gain
+        // For killing a rat
         private void KillRat(object sender, EventArgs e)
         {
-            // New rat to kill
-            Rat rat = new Rat();
-
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
-                _warrior.info.exp += rat.Exp();
+                int experience = rat.Exp();
+                int gold = rat.Gold();
+                _warrior.info.exp += experience;
+                _warrior.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
+                dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
             {
-                _mage.info.exp += rat.Exp();
+                int experience = rat.Exp();
+                int gold = rat.Gold();
+                _mage.info.exp += experience;
+                _mage.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
+                dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
             {
-                _rogue.info.exp += rat.Exp();
+                int experience = rat.Exp();
+                int gold = rat.Gold();
+                _rogue.info.exp += experience;
+                _rogue.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
+                dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
             }
         }
+        // For killing a goblin, not finished
         private void KillGoblin(object sender, EventArgs e)
         {
-            // New goblin to kill
-            Goblin goblin = new Goblin();
-
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
                 if (_warrior.info.level >= 10)
                 {
                     _warrior.info.exp += goblin.Exp();
+                    _warrior.info.gold += goblin.Gold();
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
                 }
@@ -291,6 +278,7 @@ namespace Project_352
                 if (_mage.info.level >= 10)
                 {
                     _mage.info.exp += goblin.Exp();
+                    _mage.info.gold += goblin.Gold();
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
                 }
@@ -301,22 +289,22 @@ namespace Project_352
                 if (_rogue.info.level >= 10)
                 {
                     _rogue.info.exp += goblin.Exp();
+                    _rogue.info.gold += goblin.Gold();
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
                 }
             }
         }
+        // For killing an ogre, not finished
         private void KillOgre(object sender, EventArgs e)
         {
-            // New ogre to kill
-            Ogre ogre = new Ogre();
-
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
                 if (_warrior.info.level >= 15)
                 {
                     _warrior.info.exp += ogre.Exp();
+                    _warrior.info.gold += ogre.Gold();
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
                 }
@@ -327,6 +315,7 @@ namespace Project_352
                 if (_mage.info.level >= 15)
                 {
                     _mage.info.exp += ogre.Exp();
+                    _mage.info.gold += ogre.Gold();
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
                 }
@@ -337,68 +326,10 @@ namespace Project_352
                 if (_rogue.info.level >= 15)
                 {
                     _rogue.info.exp += ogre.Exp();
+                    _rogue.info.gold += ogre.Gold();
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
                 }
-            }
-        }
-        // Gain random amount of gold (for debugging)
-        private void GainGold(object sender, EventArgs e)
-        {
-            Random rand = new Random();
-            int gold = rand.Next(-10, 20);
-
-            // For the Warrior
-            if (_mage == null && _rogue == null)
-            {
-                if (_warrior.info.gold + gold >= 0)
-                {
-                    _warrior.info.gold += gold;
-                    ShowPlayerInfo(sender, e);
-                }
-            }
-            // For the Mage
-            if (_warrior == null && _rogue == null)
-            {
-                if (_mage.info.gold + gold >= 0)
-                {
-                    _mage.info.gold += gold;
-                    ShowPlayerInfo(sender, e);
-                }
-            }
-            // For the Rogue
-            if (_warrior == null && _mage == null)
-            {
-                if (_rogue.info.gold + gold >= 0)
-                {
-                    _rogue.info.gold += gold;
-                    ShowPlayerInfo(sender, e);
-                }
-            }
-        }
-        // A cheat code for getting tons of exp (for debugging)
-        private void TonsOfEXP(object sender, EventArgs e)
-        {
-            // For the Warrior
-            if (_mage == null && _rogue == null)
-            {
-                _warrior.info.exp += 1000;
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
-            }
-            // For the Mage
-            if (_warrior == null && _rogue == null)
-            {
-                _mage.info.exp += 1000;
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
-            }
-            // For the Rogue
-            if (_warrior == null && _mage == null)
-            {
-                _rogue.info.exp += 1000;
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
             }
         }
         // Press ESC to close the window
@@ -410,6 +341,10 @@ namespace Project_352
         private Warrior _warrior;
         private Mage _mage;
         private Rogue _rogue;
+        private Rat rat;
+        private Goblin goblin;
+        private Ogre ogre;
+        private Random rand = new Random();
 
         private int Player_Position = 39;
         private int Player_Movement = 0;
@@ -418,76 +353,662 @@ namespace Project_352
         private string Previous_Temp_Pos = "🌽";
         private string Player_Class;
         private string Next_Temp_Pos;
-
+        private double ratDamage;
 
         public void Up_Arrow_Click(object sender, RoutedEventArgs e)
         {
            if( Player_Position%8 > 0 && Player_Position < 256 )
             {
-                Previous_Tile = Player_Position;
-                Next_Tile = Player_Position - 1;
+                // Use stamina for every tile move
+                if (_mage == null && _rogue == null)
+                {
+                   if (_warrior.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position - 1;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
 
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Previous_Temp_Pos = Next_Temp_Pos;
-                Player_Position = Next_Tile;
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
 
+                        // Use stamina
+                        _warrior.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                    }
+                   else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position - 1;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _mage.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _mage == null)
+                {
+                    if (_rogue.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position - 1;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _rogue.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+
+                NewEnemy(sender, e);
             }
         }
-
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
         {
             if (Player_Position%8 +1 != 8 && Player_Position < 256)
             {
-                Previous_Tile = Player_Position;
-                Next_Tile = Player_Position + 1;
+                // Use stamina for every tile move
+                if (_mage == null && _rogue == null)
+                {
+                    if (_warrior.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position + 1;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
 
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Previous_Temp_Pos = Next_Temp_Pos;
-                Player_Position = Next_Tile;
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
 
+                        // Use stamina
+                        _warrior.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position + 1;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _mage.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _mage == null)
+                {
+                    if (_rogue.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position + 1;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _rogue.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+
+                NewEnemy(sender, e);
             }
-
         }
-
         private void Left_Arrow_Click(object sender, RoutedEventArgs e)
         {
             if (Player_Position-8 > 0)
             {
-                Previous_Tile = Player_Position;
-                Next_Tile = Player_Position - 8;
+                // Use stamina for every tile move
+                if (_mage == null && _rogue == null)
+                {
+                    if (_warrior.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position - 8;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
 
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Previous_Temp_Pos = Next_Temp_Pos;
-                Player_Position = Next_Tile;
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _warrior.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position - 8;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _mage.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _mage == null)
+                {
+                    if (_rogue.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position - 8;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _rogue.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+
+                NewEnemy(sender, e);
             }
         }
-
         private void Right_Arrow_Click(object sender, RoutedEventArgs e)
         {
             if (Player_Position + 8 <256)
             {
-                Previous_Tile = Player_Position;
-                Next_Tile = Player_Position + 8;
+                // Use stamina for every tile move
+                if (_mage == null && _rogue == null)
+                {
+                    if (_warrior.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position + 8;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
 
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Previous_Temp_Pos = Next_Temp_Pos;
-                Player_Position = Next_Tile;
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
 
+                        // Use stamina
+                        _warrior.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position + 8;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _mage.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+                if (_warrior == null && _mage == null)
+                {
+                    if (_rogue.stats.stamina - 10 >= 0)
+                    {
+                        Previous_Tile = Player_Position;
+                        Next_Tile = Player_Position + 8;
+
+                        Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
+
+                        Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
+                        Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
+                        Previous_Temp_Pos = Next_Temp_Pos;
+                        Player_Position = Next_Tile;
+
+                        // Use stamina
+                        _rogue.stats.stamina -= 10;
+                        stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                    }
+                    else
+                    {
+                        Previous_Tile = Player_Position;
+                    }
+                }
+
+                NewEnemy(sender, e);
+            }
+        }
+        // Handles enemy appearance in map and combat system
+        private void NewEnemy(object sender, RoutedEventArgs e)
+        {
+            // Enemy has 10% chance of appearing on any tile
+            int chance = rand.Next(1, 3);
+
+            // For the Warrior
+            if (_mage == null && _rogue == null)
+            {
+                if (_warrior.info.level < 10 && _warrior.stats.stamina >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_warrior.info.level >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_warrior.info.level >= 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 3)
+                    {
+                        ogre = new Ogre();
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+            }
+            // For the Mage
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.info.level < 10 && _mage.stats.stamina >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_mage.info.level >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_mage.info.level >= 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 3)
+                    {
+                        ogre = new Ogre();
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+            }
+            // For the Rogue
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.info.level < 10 && _rogue.stats.stamina >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_rogue.info.level >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_rogue.info.level >= 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 3)
+                    {
+                        ogre = new Ogre();
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
             }
 
+            dialog.ScrollToEnd();
         }
-        
+        private void Player_Attack(object sender, RoutedEventArgs e)
+        {
+            if (goblin == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null)
+                    {
+                        dialog.Text += "There is nothing to attack.\n";
+                    }
+                    else if (rat.stats.health - playerDamage > 0)
+                    {
+                        ratDamage = rat.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        rat.stats.health -= (int)playerDamage;
+                        dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _warrior.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += rat.DeathMessage();
+                        KillRat(sender, e);
+                        rat = null;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null)
+                    {
+                        dialog.Text += "There is nothing to attack.\n";
+                    }
+                    else if (rat.stats.health - playerDamage > 0)
+                    {
+                        ratDamage = rat.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        rat.stats.health -= (int)playerDamage;
+                        dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _mage.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += rat.DeathMessage();
+                        KillRat(sender, e);
+                        rat = null;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null)
+                    {
+                        dialog.Text += "There is nothing to attack.\n";
+                    }
+                    else if (rat.stats.health - playerDamage > 0)
+                    {
+                        ratDamage = rat.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        rat.stats.health -= (int)playerDamage;
+                        dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _rogue.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += rat.DeathMessage();
+                        KillRat(sender, e);
+                        rat = null;
+                    }
+                }
+            }
+        }
+        private void Player_Run(object sender, EventArgs e)
+        {
+            // 25% chance to run away from an enemy
+            int chance = rand.Next(1, 4);
+
+            dialog.ScrollToEnd();
+
+            // If there is a rat, you can run from it. If you run away, the rat disappears
+            if (goblin == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    if (rat == null)
+                    {
+                        dialog.Text += "There is nothing to run from.\n";
+                    }
+                    else if (chance == 1)
+                    {
+                        dialog.Text += rat.RanMessage();
+                        rat = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ratDamage = rat.DoDamage();
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _warrior.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+
+                }
+            }
+        }
+        private void Player_Rest(object sender, EventArgs e)
+        {
+            dialog.ScrollToEnd();
+
+            // For warrior
+            if (_mage == null && _rogue == null)
+            {
+                if (rat != null)
+                {
+                    dialog.Text += "Now's not the time to rest!\n";
+                }
+                else if (_warrior.stats.stamina + 10 <= _warrior.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _warrior.stats.stamina += 10;
+                    stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                }
+                else
+                {
+                    dialog.Text += "Resting now would be a waste of time...\n";
+                }
+            }
+            // For mage
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.stats.stamina + 10 <= _mage.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _mage.stats.stamina += 10;
+                    stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                }
+                else
+                {
+                    dialog.Text += "Resting now would be a waste of time...\n";
+                }
+            }
+            // For rogue
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.stats.stamina + 10 <= _rogue.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _rogue.stats.stamina += 10;
+                    stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                }
+                else
+                {
+                    dialog.Text += "Resting now would be a waste of time...\n";
+                }
+            }
+        }
     }
 }
