@@ -45,12 +45,13 @@
         <Label x:Name="endurance" Content="Endurance: " HorizontalAlignment="Left" Margin="728,505,0,0" VerticalAlignment="Top" Width="130"/>
         <Label x:Name="intelligence" Content="Intelligence: " HorizontalAlignment="Left" Margin="953,479,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
         <Label x:Name="dexterity" Content="Dexterity: " HorizontalAlignment="Left" Margin="953,505,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
-        <Label x:Name="damage" Content="Player Damage: " HorizontalAlignment="Left" Margin="728,548,0,0" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.856,0.577"/>
-        <Button Content="Lvl 1 Rat" HorizontalAlignment="Left" Margin="492,377,0,0" VerticalAlignment="Top" Width="90" Click="KillRat"/>
-        <Button Content="Lvl 10 Goblin" HorizontalAlignment="Left" Margin="492,493,0,0" VerticalAlignment="Top" Width="90" Click="KillGoblin"/>
-        <Button Content="Lvl 15 Ogre" HorizontalAlignment="Left" Margin="492,602,0,0" VerticalAlignment="Top" Width="90" Click="KillOgre"/>
-        <Button Content="Random Gold" HorizontalAlignment="Left" Margin="850,625,0,0" VerticalAlignment="Top" Width="90" Click="GainGold"/>
-        <Button Content="Cheat Code" HorizontalAlignment="Left" Margin="850,650,0,0" VerticalAlignment="Top" Width="90" Click="TonsOfEXP"/>
+        <!--Test Text Area-->
+        <TextBox x:Name="dialog" MaxHeight="300" TextWrapping="Wrap" Text="" Margin="378,312,380,20" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
+        <Button x:Name="Attack" Content="Attack" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="77,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Attack"/>
+        <Button x:Name="Rest"  Content="Rest" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="146,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Rest"/>
+        <Button x:Name="Run"  Content="Run" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="215,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Run"/>
+        <Button x:Name="Heal" Content="Heal" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="77,567,0,0" VerticalAlignment="Top" Width="64" Click="Player_Heal"/>
+        <Button x:Name="Flames"  Content="Flames" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="215,567,0,0" VerticalAlignment="Top" Width="64" Click="Player_Flames" IsEnabled="False"/>
         <!--Declaration of the Map. 32x8-->
         <Grid x:Name="Map" HorizontalAlignment="Left" Height="283" VerticalAlignment="Top" Width="1052" Margin="10,12,0,-112" ShowGridLines="True"  >
             <Grid.ColumnDefinitions>

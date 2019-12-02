@@ -36,6 +36,18 @@ namespace Project_352
             _warrior = w;
             _mage = m;
             _rogue = r;
+
+            // Check to see if player is a mage
+            if (_warrior == null && _rogue == null)
+            {
+                Flames.IsEnabled = true;
+            }
+
+            // Start up message
+            dialog.Text = "Welcome to Text Adventure RPG, Player. " +
+                          "You start off a confused adventure in the middle of a field. " +
+                          "Choose your pathway and go forth to the castle to discover yourself and the role you play in these trying times. " +
+                          "\n\nBegin your adventure now!";
         }
         // Shows information to the user of their player
         private void ShowPlayerInfo(object sender, EventArgs e)
@@ -56,7 +68,6 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _warrior.attr.endurance;
                 intelligence.Content = "Intelligence: " + _warrior.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _warrior.attr.dexterity;
-                damage.Content = "Player Damage: " + _warrior.DoDamage();
                 if (Player_Movement == 0)
                 {
                     Player_Class = "🛡";
@@ -80,7 +91,6 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _mage.attr.endurance;
                 intelligence.Content = "Intelligence: " + _mage.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _mage.attr.dexterity;
-                damage.Content = "Player Damage: " + _mage.DoDamage();
                 if (Player_Movement == 0)
                 {
                     Player_Class = "🧙";
@@ -104,7 +114,6 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _rogue.attr.endurance;
                 intelligence.Content = "Intelligence: " + _rogue.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _rogue.attr.dexterity;
-                damage.Content = "Player Damage: " + _rogue.DoDamage();
                 if (Player_Movement == 0) {
                     Player_Class = "🗡";
                     H4.Content = "🗡";
@@ -137,6 +146,11 @@ namespace Project_352
                         _warrior.attr.dexterity += 1;
                         _warrior.attr.intelligence += 1;
 
+                        dialog.Text += _warrior.name + " leveled up! " + '\n';
+                        _warrior.stats.health = _warrior.stats.totalHealth;
+                        _warrior.stats.stamina = _warrior.stats.totalStamina;
+                        _warrior.stats.mana = _warrior.stats.totalMana;
+
                         ShowPlayerInfo(sender, e);
                     }
                     else
@@ -166,6 +180,11 @@ namespace Project_352
                         _mage.attr.endurance += 1;
                         _mage.attr.dexterity += 1;
                         _mage.attr.intelligence += 3;
+
+                        dialog.Text += _mage.name + " leveled up! " + '\n';
+                        _mage.stats.health = _mage.stats.totalHealth;
+                        _mage.stats.stamina = _mage.stats.totalStamina;
+                        _mage.stats.mana = _mage.stats.totalMana;
 
                         ShowPlayerInfo(sender, e);
                     }
@@ -197,6 +216,11 @@ namespace Project_352
                         _rogue.attr.dexterity += 3;
                         _rogue.attr.intelligence += 1;
 
+                        dialog.Text += _rogue.name + " leveled up! " + '\n';
+                        _rogue.stats.health = _rogue.stats.totalHealth;
+                        _rogue.stats.stamina = _rogue.stats.totalStamina;
+                        _rogue.stats.mana = _rogue.stats.totalMana;
+
                         ShowPlayerInfo(sender, e);
                     }
                     else
@@ -209,133 +233,130 @@ namespace Project_352
         // For debugging/testing player level up on exp gain
         private void KillRat(object sender, EventArgs e)
         {
-            // New rat to kill
-            Rat rat = new Rat();
-
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
-                _warrior.info.exp += rat.Exp();
+                int experience = rat.Exp();
+                int gold = rat.Gold();
+                _warrior.info.exp += experience;
+                _warrior.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
             {
-                _mage.info.exp += rat.Exp();
+                int experience = rat.Exp();
+                int gold = rat.Gold();
+                _mage.info.exp += experience;
+                _mage.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
             {
-                _rogue.info.exp += rat.Exp();
+                int experience = rat.Exp();
+                int gold = rat.Gold();
+                _rogue.info.exp += experience;
+                _rogue.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
         }
+        // For killing a goblin, not finished
         private void KillGoblin(object sender, EventArgs e)
         {
-            // New goblin to kill
-            Goblin goblin = new Goblin();
-
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
-                _warrior.info.exp += goblin.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_warrior.info.level >= 10)
+                {
+                    int experience = goblin.Exp();
+                    int gold = goblin.Gold();
+                    _warrior.info.exp += experience;
+                    _warrior.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
             {
-                _mage.info.exp += goblin.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_mage.info.level >= 10)
+                {
+                    int experience = goblin.Exp();
+                    int gold = goblin.Gold();
+                    _mage.info.exp += experience;
+                    _mage.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
             {
-                _rogue.info.exp += goblin.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_rogue.info.level >= 10)
+                {
+                    int experience = goblin.Exp();
+                    int gold = goblin.Gold();
+                    _rogue.info.exp += experience;
+                    _rogue.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
             }
         }
+        // For killing an ogre, not finished
         private void KillOgre(object sender, EventArgs e)
         {
-            // New ogre to kill
-            Ogre ogre = new Ogre();
-
             // For the Warrior
             if (_mage == null && _rogue == null)
             {
-                _warrior.info.exp += ogre.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_warrior.info.level >= 15)
+                {
+                    int experience = ogre.Exp();
+                    int gold = ogre.Gold();
+                    _warrior.info.exp += experience;
+                    _warrior.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
             {
-                _mage.info.exp += ogre.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_mage.info.level >= 15)
+                {
+                    int experience = ogre.Exp();
+                    int gold = ogre.Gold();
+                    _mage.info.exp += experience;
+                    _mage.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
             {
-                _rogue.info.exp += ogre.Exp();
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
-            }
-        }
-        // Gain random amount of gold (for debugging)
-        private void GainGold(object sender, EventArgs e)
-        {
-            Random rand = new Random();
-            int gold = rand.Next(3, 12);
-
-            // For the Warrior
-            if (_mage == null && _rogue == null)
-            {
-                _warrior.info.gold += gold;
-                ShowPlayerInfo(sender, e);
-            }
-            // For the Mage
-            if (_warrior == null && _rogue == null)
-            {
-                _mage.info.gold += gold;
-                ShowPlayerInfo(sender, e);
-            }
-            // For the Rogue
-            if (_warrior == null && _mage == null)
-            {
-                _rogue.info.gold += gold;
-                ShowPlayerInfo(sender, e);
-            }
-        }
-        // A cheat code for getting tons of exp (for debugging)
-        private void TonsOfEXP(object sender, EventArgs e)
-        {
-            // For the Warrior
-            if (_mage == null && _rogue == null)
-            {
-                _warrior.info.exp += 1000;
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
-            }
-            // For the Mage
-            if (_warrior == null && _rogue == null)
-            {
-                _mage.info.exp += 1000;
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
-            }
-            // For the Rogue
-            if (_warrior == null && _mage == null)
-            {
-                _rogue.info.exp += 1000;
-                LevelUp(sender, e);
-                ShowPlayerInfo(sender, e);
+                if (_rogue.info.level >= 15)
+                {
+                    int experience = ogre.Exp();
+                    int gold = ogre.Gold();
+                    _rogue.info.exp += experience;
+                    _rogue.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
             }
         }
         // Press ESC to close the window
@@ -347,6 +368,10 @@ namespace Project_352
         private Warrior _warrior;
         private Mage _mage;
         private Rogue _rogue;
+        private Rat rat;
+        private Goblin goblin;
+        private Ogre ogre;
+        private Random rand = new Random();
 
         private int Player_Position = 39;//Player Map Details
         private int Player_Movement = 0;
@@ -360,11 +385,17 @@ namespace Project_352
         private string Player_Class;//Variable to monitor Player's Class
         private SolidColorBrush Player_Color;
 
-        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.YellowGreen);
+        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.Yellow);
         private Color Temp_Color;
         private SolidColorBrush Next_Color;
 
-        
+        private double ratDamage;
+        private double goblinDamage;
+        private double ogreDamage;
+
+        private bool Fighting = false;
+
+
 
 
 
@@ -372,50 +403,189 @@ namespace Project_352
         {
             if (Player_Position % 8 > 0 && Player_Position < 256)
             {
-                Previous_Tile = Player_Position;//Calculates movement
-                Next_Tile = Player_Position - 1;
+                if (Fighting == false)
+                {
+                    if (_mage == null && _rogue == null)
+                    {
+                        if (_warrior.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position - 1;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
-                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
-                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
-                
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
 
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
-                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
-                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
-                
 
-                Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
-                Previous_Color = Next_Color;
-                Player_Position = Next_Tile;
-                Player_Movement++;
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
 
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _warrior.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _rogue == null)
+                    {
+                        if (_mage.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position - 1;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _mage.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _mage == null)
+                    {
+                        if (_rogue.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position - 1;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _rogue.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                        }
+                    }
+                    NewEnemy(sender, e);
+                }
             }
         }
 
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
         {
-            if (Player_Position%8 +1 != 8 && Player_Position < 256)
+            if (Player_Position % 8 + 1 != 8 && Player_Position < 256)
             {
-                Previous_Tile = Player_Position;
-                Next_Tile = Player_Position + 1;
+                if (Fighting == false)
+                {
+                    if (_mage == null && _rogue == null)
+                    {
+                        if (_warrior.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position + 1;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
-                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
-                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
-
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
-                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
 
 
-                Previous_Temp_Pos = Next_Temp_Pos;
-                Previous_Color = Next_Color;
-                Player_Position = Next_Tile;
-                Player_Movement++;
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
 
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _warrior.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _rogue == null)
+                    {
+                        if (_mage.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position + 1;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _mage.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _mage == null)
+                    {
+                        if (_rogue.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position + 1;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _rogue.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                        }
+                    }
+                    NewEnemy(sender, e);
+                }
             }
 
         }
@@ -424,23 +594,94 @@ namespace Project_352
         {
             if (Player_Position-8 > -1)
             {
-                Previous_Tile = Player_Position;
-                Next_Tile = Player_Position - 8;
+                if (Fighting == false)
+                {
+                    if (_mage == null && _rogue == null)
+                    {
+                        if (_warrior.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position - 8;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
-                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
-                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
-
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
-                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
 
 
-                Previous_Temp_Pos = Next_Temp_Pos;
-                Previous_Color = Next_Color;
-                Player_Position = Next_Tile;
-                Player_Movement++;
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _warrior.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _rogue == null)
+                    {
+                        if (_mage.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position - 8;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _mage.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _mage == null)
+                    {
+                        if (_rogue.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position - 8;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _rogue.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                        }
+                    }
+                    NewEnemy(sender, e);
+                }
             }
         }
 
@@ -448,28 +689,1030 @@ namespace Project_352
         {
             if (Player_Position + 8 <256)
             {
-                Previous_Tile = Player_Position;
-                Next_Tile = Player_Position + 8;
+                if (Fighting == false)
+                {
+                    if (_mage == null && _rogue == null)
+                    {
+                        if (_warrior.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position + 8;
 
-                Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));
-                Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
-                Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
-
-                Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);
-                Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);
-                Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
-                Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
 
 
-                Previous_Temp_Pos = Next_Temp_Pos;
-                Previous_Color = Next_Color;
-                Player_Position = Next_Tile;
-                Player_Movement++;
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
 
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _warrior.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _rogue == null)
+                    {
+                        if (_mage.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position + 8;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _mage.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                        }
+                    }
+                    if (_warrior == null && _mage == null)
+                    {
+                        if (_rogue.stats.stamina - 10 >= 0)
+                        {
+                            Previous_Tile = Player_Position;//Calculates movement
+                            Next_Tile = Player_Position + 8;
+
+                            Next_Temp_Pos = Convert.ToString(Map.Children[Next_Tile].GetValue(ContentProperty));//Converts to map value
+                            Temp_Color = (Color)ColorConverter.ConvertFromString(Convert.ToString(Map.Children[Next_Tile].GetValue(ForegroundProperty)));//Converts Grid Data to a string then to a color
+                            Next_Color = new SolidColorBrush(Temp_Color);//sets the Solidcolorbrush to the next color previously converted
+
+
+                            Map.Children[Next_Tile].SetValue(ContentProperty, Player_Class);//Moves the player
+                            Map.Children[Previous_Tile].SetValue(ContentProperty, Previous_Temp_Pos);//Replaces last tile
+                            Map.Children[Next_Tile].SetValue(ForegroundProperty, Player_Color);//Changes color to player
+                            Map.Children[Previous_Tile].SetValue(ForegroundProperty, Previous_Color);//Replaces last tile color
+
+
+                            Previous_Temp_Pos = Next_Temp_Pos;//Sets the new values for next movement
+                            Previous_Color = Next_Color;
+                            Player_Position = Next_Tile;
+                            Player_Movement++;
+
+                            // Use stamina
+                            _rogue.stats.stamina -= 10;
+                            stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                        }
+                    }
+                    NewEnemy(sender, e);
+                }
             }
 
         }
-        
 
+        private void NewEnemy(object sender, RoutedEventArgs e)
+        {
+            // Enemy has 25% chance of appearing on any tile
+            int chance = rand.Next(1, 4);
+
+            // For the Warrior
+            if (_mage == null && _rogue == null)
+            {
+                if (_warrior.info.level < 10 && _warrior.stats.stamina >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_warrior.info.level >= 10 && _warrior.info.level < 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        Fighting = true;
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_warrior.info.level >= 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        Fighting = true;
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 3)
+                    {
+                        ogre = new Ogre();
+                        Fighting = true;
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+            }
+            // For the Mage
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.info.level < 10 && _mage.stats.stamina >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_mage.info.level >= 10 && _mage.info.level < 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        Fighting = true;
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_mage.info.level >= 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        Fighting = true;
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 3)
+                    {
+                        ogre = new Ogre();
+                        Fighting = true;
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+            }
+            // For the Rogue
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.info.level < 10 && _rogue.stats.stamina >= 10)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_rogue.info.level >= 10 && _rogue.info.level < 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        Fighting = true;
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+                if (_rogue.info.level >= 15)
+                {
+                    if (chance == 1)
+                    {
+                        rat = new Rat();
+                        Fighting = true;
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 2)
+                    {
+                        goblin = new Goblin();
+                        Fighting = true;
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (chance == 3)
+                    {
+                        ogre = new Ogre();
+                        Fighting = true;
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                }
+            }
+
+            dialog.ScrollToEnd();
+        }
+
+        // Handles player attack depending on class and enemy that appears
+        private void Player_Attack(object sender, RoutedEventArgs e)
+        {
+            if (rat == null && goblin == null && ogre == null)
+            {
+                dialog.Text += "There is nothing to attack.\n";
+            }
+            // For a rat
+            else if (goblin == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (goblin == null && ogre == null)
+                    {
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _warrior.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_warrior.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            Fighting = false;
+                            rat = null;
+                        }
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (goblin == null && ogre == null)
+                    {
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _mage.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            Fighting = false;
+                            rat = null;
+                        }
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (goblin == null && ogre == null)
+                    {
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _rogue.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_rogue.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            Fighting = false;
+                            rat = null;
+                        }
+                    }
+                }
+            }
+            // For a goblin
+            else if (rat == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null && ogre == null)
+                    {
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _warrior.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_warrior.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            Fighting = false;
+                            goblin = null;
+                        }
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null && ogre == null)
+                    {
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _mage.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            Fighting = false;
+                            goblin = null;
+                        }
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null && ogre == null)
+                    {
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _rogue.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_rogue.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            Fighting = false;
+                            goblin = null;
+                        }
+                    }
+                }
+            }
+            // For a ogre
+            else if (rat == null && goblin == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (ogre.stats.health - playerDamage > 0)
+                    {
+                        ogreDamage = ogre.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        ogre.stats.health -= (int)playerDamage;
+                        dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _warrior.stats.health -= (int)ogreDamage;
+
+                        // Handles player death
+                        if (_warrior.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += ogre.DeathMessage();
+                        KillOgre(sender, e);
+                        Fighting = false;
+                        ogre = null;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (ogre.stats.health - playerDamage > 0)
+                    {
+                        ogreDamage = ogre.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        ogre.stats.health -= (int)playerDamage;
+                        dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _mage.stats.health -= (int)ogreDamage;
+
+                        // Handles player death
+                        if (_mage.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += ogre.DeathMessage();
+                        KillOgre(sender, e);
+                        Fighting = false;
+                        ogre = null;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (ogre.stats.health - playerDamage > 0)
+                    {
+                        ogreDamage = ogre.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        ogre.stats.health -= (int)playerDamage;
+                        dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _rogue.stats.health -= (int)ogreDamage;
+
+                        // Handles player death
+                        if (_rogue.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += ogre.DeathMessage();
+                        KillOgre(sender, e);
+                        Fighting = false;
+                        ogre = null;
+                    }
+                }
+            }
+        }
+
+        // Allows player to run from enemy
+        private void Player_Run(object sender, EventArgs e)
+        {
+            // 25% chance to run away from an enemy
+            int chance = rand.Next(1, 4);
+
+            dialog.ScrollToEnd();
+
+            if (rat == null && goblin == null && ogre == null)
+            {
+                dialog.Text += "There is nothing to run from.\n";
+            }
+            // For a rat appearing
+            else if (goblin == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    if (chance == 1)
+                    {
+                        dialog.Text += "You successfully ran away from the rat!\n";
+                        rat = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ratDamage = rat.DoDamage();
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _warrior.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    if (chance == 2)
+                    {
+                        dialog.Text += "You successfully ran away from the rat!\n";
+                        rat = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ratDamage = rat.DoDamage();
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _mage.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    if (chance == 3)
+                    {
+                        dialog.Text += "You successfully ran away from the rat!\n";
+                        rat = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ratDamage = rat.DoDamage();
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _rogue.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                }
+            }
+            // For a goblin appearing
+            else if (rat == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    if (chance == 1)
+                    {
+                        dialog.Text += "You successfully ran away from the goblin!\n";
+                        goblin = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        goblinDamage = goblin.DoDamage();
+                        dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                        _warrior.stats.health -= (int)goblinDamage;
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    if (chance == 2)
+                    {
+                        dialog.Text += "You successfully ran away from the goblin!\n";
+                        goblin = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        goblinDamage = goblin.DoDamage();
+                        dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                        _mage.stats.health -= (int)goblinDamage;
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    if (chance == 3)
+                    {
+                        dialog.Text += "You successfully ran away from the goblin!\n";
+                        goblin = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        goblinDamage = goblin.DoDamage();
+                        dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                        _rogue.stats.health -= (int)goblinDamage;
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                }
+            }
+            // For a ogre appearing
+            else if (rat == null && goblin == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    if (chance == 1)
+                    {
+                        dialog.Text += "You successfully ran away from the ogre!\n";
+                        ogre = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ogreDamage = ogre.DoDamage();
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _warrior.stats.health -= (int)ogreDamage;
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    if (chance == 2)
+                    {
+                        dialog.Text += "You successfully ran away from the ogre!\n";
+                        ogre = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ogreDamage = ogre.DoDamage();
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _mage.stats.health -= (int)ogreDamage;
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    if (chance == 3)
+                    {
+                        dialog.Text += "You successfully ran away from the ogre!\n";
+                        ogre = null;
+                        Fighting = false;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ogreDamage = ogre.DoDamage();
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _rogue.stats.health -= (int)ogreDamage;
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                }
+            }
+        }
+
+        // Allows player to rest and restore stamina
+        private void Player_Rest(object sender, EventArgs e)
+        {
+            dialog.ScrollToEnd();
+
+            // For warrior
+            if (_mage == null && _rogue == null)
+            {
+                if (rat != null)
+                {
+                    dialog.Text += "Now's not the time to rest!\n";
+                }
+                else if (_warrior.stats.stamina + 10 <= _warrior.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _warrior.stats.stamina += 10;
+                    stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                }
+                else
+                {
+                    dialog.Text += "Resting now would be a waste of time...\n";
+                }
+            }
+            // For mage
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.stats.stamina + 10 <= _mage.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _mage.stats.stamina += 10;
+                    stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                }
+                else
+                {
+                    dialog.Text += "Resting now would be a waste of time...\n";
+                }
+            }
+            // For rogue
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.stats.stamina + 10 <= _rogue.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _rogue.stats.stamina += 10;
+                    stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                }
+                else
+                {
+                    dialog.Text += "Resting now would be a waste of time...\n";
+                }
+            }
+        }
+
+        // Spells for the Player the use
+        private void Player_Heal(object sender, EventArgs e)
+        {
+            dialog.ScrollToEnd();
+
+            if (_mage == null && _rogue == null)
+            {
+                if (_warrior.stats.mana - 10 > 0 && _warrior.stats.health < _warrior.stats.totalHealth - 10)
+                {
+                    dialog.Text += "You casted the heal spell.\n";
+                    dialog.Text += "Replenished 10 HP!\n";
+                    _warrior.stats.health += 10;
+                    _warrior.stats.mana -= 10;
+                    health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
+                }
+                else
+                {
+                    dialog.Text += "Failed to cast heal.\n";
+                }
+            }
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.stats.mana - 10 > 0 && _mage.stats.health < _mage.stats.totalHealth - 10)
+                {
+                    dialog.Text += "You casted the heal spell.\n";
+                    dialog.Text += "Replenished 10 HP!\n";
+                    _mage.stats.health += 10;
+                    _mage.stats.mana -= 10;
+                    health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                }
+                else
+                {
+                    dialog.Text += "Failed to cast heal.\n";
+                }
+            }
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.stats.mana - 10 > 0 && _rogue.stats.health < _rogue.stats.totalHealth - 10)
+                {
+                    dialog.Text += "You casted the heal spell.\n";
+                    dialog.Text += "Replenished 10 HP!\n";
+                    _rogue.stats.health += 10;
+                    _rogue.stats.mana -= 10;
+                    health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    mana.Content = "Mana: " + _rogue.stats.mana + "/" + _rogue.stats.totalMana;
+                }
+                else
+                {
+                    dialog.Text += "Failed to cast heal.\n";
+                }
+            }
+        }
+
+        // Only available for the mage class
+        private void Player_Flames(object sender, EventArgs e)
+        {
+            dialog.ScrollToEnd();
+
+            if (rat == null && goblin == null && ogre == null)
+            {
+                dialog.Text += "There is nothing to attack.\n";
+            }
+            // For rat
+            else if (goblin == null && ogre == null)
+            {
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.mana - 10 > 0)
+                    {
+                        double playerDamage = _mage.Flames();
+
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
+
+                            _mage.stats.mana -= 10;
+                            dialog.Text += "Flames did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _mage.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                            mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            Fighting = false;
+                            rat = null;
+                        }
+                    }
+                }
+            }
+            // For goblin
+            else if (rat == null && ogre == null)
+            {
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.mana - 10 > 0)
+                    {
+                        double playerDamage = _mage.Flames();
+
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            _mage.stats.mana -= 10;
+                            dialog.Text += "Flames did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _mage.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                            mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            Fighting = false;
+                            goblin = null;
+                        }
+                    }
+                }
+            }
+            // For ogre
+            else if (rat == null && goblin == null)
+            {
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.mana - 10 > 0)
+                    {
+                        double playerDamage = _mage.Flames();
+
+                        if (ogre.stats.health - playerDamage > 0)
+                        {
+                            ogreDamage = ogre.DoDamage();
+
+                            _mage.stats.mana -= 10;
+                            dialog.Text += "Flames did " + playerDamage + " damage.\n";
+                            ogre.stats.health -= (int)playerDamage;
+                            dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                            dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                            _mage.stats.health -= (int)ogreDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                            mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                        }
+                        else
+                        {
+                            dialog.Text += ogre.DeathMessage();
+                            KillOgre(sender, e);
+                            Fighting = false;
+                            ogre = null;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
