@@ -698,8 +698,8 @@ namespace Project_352
         // Handles enemy appearance in map and combat system
         private void NewEnemy(object sender, RoutedEventArgs e)
         {
-            // Enemy has 20% chance of appearing on any tile
-            int chance = rand.Next(1, 5);
+            // Enemy has 25% chance of appearing on any tile
+            int chance = rand.Next(1, 4);
 
             // For the Warrior
             if (_mage == null && _rogue == null)

@@ -22,11 +22,11 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(1, 3);
+            return rand.Next(2, 5);
         }
         public int Exp()
         {
-            return rand.Next(5, 10);
+            return rand.Next(25, 50);
         }
         public int Gold()
         {
@@ -64,7 +64,7 @@ namespace Project_352
         }
         public int Exp()
         {
-            return rand.Next(15, 20); 
+            return rand.Next(50, 100); 
         }
         public int Gold()
         {
@@ -102,7 +102,7 @@ namespace Project_352
         }
         public int Exp()
         {
-            return rand.Next(50, 75);
+            return rand.Next(125, 250);
         }
         public int Gold()
         {
