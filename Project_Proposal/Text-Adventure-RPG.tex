@@ -474,7 +474,7 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-Text Adventure RPG (better name to come) will be a game similar to something like Dungeons and Dragons. Our target audience is someone who enjoys fun RPG style games. So far, we have our repo set up with our individual branches. We have also created a mock-up for the GUI interface of the game.
+Text Adventure RPG is a game that is a throw back to the first RPGs of its kind. It focuses on literal text based output and all of the graphics are centered around unicode characters. Our target audience is someone who enjoys fun RPG style games. The game has character creation where the player can choose one of three classes. Controls exist for the player to move around the map, along with a story to interact with. The combat system is more or less fleshed out, with a somewhat complex leveling system as well.
 \end{abstract}
 
 %As the comment below states, you usually only do these when you're doing a final submission of a paper, to make it easier to find your work when searching.
@@ -535,7 +535,7 @@ Text Adventure RPG (better name to come) will be a game similar to something lik
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-Text Adventure RPG will be a text-based RPG adventure game that allows the player to explore a text-filled world, pick a class, level up, gain gold and loot. Game development is an interesting area and we are looking forward to learning more about what all of that entails. The majority of the game will be text based. We hope to achieve this with minimal graphics, aside from a few images to make the visuals a bit more interesting.
+Text Adventure RPG is a text-based RPG adventure game that allows the player to explore a text-filled world, pick a class, level up, fight enemies, and gain gold. Game development is an interesting area and we are looking forward to learning more about what all of that entails. The majority of the game will be text based. We hope to achieve this with minimal graphics, aside from a few images to make the visuals a bit more interesting. Our way of going about this was through the use of unicode characters.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -634,12 +634,13 @@ Text Adventure RPG will be a text-based RPG adventure game that allows the playe
 
 \subsection{Background}
 
-Our game, as has been previously mentioned, is going to be a text based adventure. Text based adventure games involve text information around every event that occurs within the game. It will be strictly GUI based with text for every event that happens. From picking up loot and gaining gold/experience to fighting goblins.
+Our game, as has been previously mentioned, is a text based adventure. Text based adventure games involve text information around every event that occurs within the game. It will be strictly GUI based with text for every event that happens. From picking up loot and gaining gold/experience to fighting rats, goblins, and ogres.
 
 Creating a world for others to explore is a very exciting task to take on. Being able to take part in this project is something we have both always wanted to do. This project should not be too difficult, with a scope that won't be too large for the semester. The game will also be single player, for simplicity.
 
 \subsection{Challenges}
 The feature that will be most challenging to add to this game will be the interaction of the player with the items, or loot, they come across in their journey. 
+Another challenge that we came across during development was the character creation. That ended up being a bit more complex than previously thought.
 
 \section{Scope}
 Due to the game being more text-based, the scope is easier to handle. It involves some basic gameplay mechanics, the storyline, and how the player will interact with the world. It also includes our two stretch goals that we want to complete if we have the time.\\
@@ -653,13 +654,13 @@ The story will be pretty simple given the time we have. It will most likely invo
 \textit{3. Class Selection\\}
 We are thinking about three classes. A warrior, mage, and thief. Pretty basic selection and shouldn't take much to implement. They will vary in starting stats and abilities/weapon choice.\\
 
-\textit{4. Obtain/Use Loot\\}
-Obtaining and using loot will be as simple as seeing some text appear and then the appropriate changes regarding the loot obtained or used. It could be a weapon swap, using a potion, or getting a quest item.\\
+\textit{4. Gold and Leveling System\\}
+Pretty straightforward. Include a way to obtain gold and perhaps have a small shop to buy and sell goods. As well as the leveling system based on gaining experience from quests and defeated enemies in the world.\\
 
 \textbf{Stretch Goals\\}
 
-\textit{5. Gold and Leveling System\\}
-Pretty straightforward. Include a way to obtain gold and perhaps have a small shop to buy and sell goods. As well as the leveling system based on gaining experience from quests and defeated enemies in the world.\\
+\textit{5. Obtain/Use Loot\\}
+Obtaining and using loot will be as simple as seeing some text appear and then the appropriate changes regarding the loot obtained or used. It could be a weapon swap, using a potion, or getting a quest item.\\
 
 \textit{6. Different Locations/Areas\\}
 The starting location will be a sewer type location after the player gets out of prison. We hope to also add a few more areas. Perhaps a city and a forest for the player to explore.\\
@@ -685,26 +686,26 @@ The requirements were gathered by researching and thinking of what would be the 
 \begin{itemize}
 \item[Use Case:] 1
 \item[Name:] Select a Class
-\item[Description:] The player will need to do this almost at the start of the game. They will choose whether they want to be a Warrior, Mage, or Thief class. As they click on the class, they will see the stat spread and starting gear of each class. Once they pick the class they want, they will click "Select" and they will start the game with the class they selected.
+\item[Description:] The player will need to do this almost at the start of the game. They will choose whether they want to be a Warrior, Mage, or Thief class. Once they pick the class they want, they will click "Select" and they will start the game with the class they selected.
 \end{itemize}
 
 
 \begin{enumerate}
 \item Player clicks on a class within the GUI.
 \item Player reads and decides on which class they want to have.
-\item Player clicks "Select" on the class they want and obtain the gear and stats associated with that class.\\
+\item Player clicks "Select" on the class they want and obtain stats associated with that class.\\
 \end{enumerate}
 
 \begin{itemize}
 	\item[Use Caser:] 2
 	\item[Name:] Attack an Enemy
-	\item[Description:] You will come across enemies in the game, some pretty immediately into starting out. When you enter combat with a rat, the rat will attack and dialogue will appear to indicate this. Something like "A rat has appeared. It caused X damage." The player will now see an option to attack the rat with their weapon. More dialogue will appear to show this. "You have caused X damage to the rat."
+	\item[Description:] You will come across enemies in the game, some pretty immediately into starting out. When you enter combat with a rat for example, the rat will attack and dialogue will appear to indicate this. Something like "A rat has appeared. It caused X damage." The player will now see an option to attack the rat with their weapon. More dialogue will appear to show this. "You have caused X damage to the rat."
 \end{itemize}
 
 \begin{enumerate}
 	\item Player initiates combat with an enemy.
 	\item Player fights the enemy until one of them dies.
-	\item Player will either defeat the enemy or respawn.\\
+	\item Player will either defeat the enemy or the game closes (permadeath).\\
 \end{enumerate}
 
 \begin{itemize}
@@ -725,11 +726,11 @@ The requirements were gathered by researching and thinking of what would be the 
 		\hline
 		Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 		\hline \hline
-		1 & Select a Class & Player & Easy & 1\\
+		1 & Select a Class & Player & Medium & 1\\
 		\hline
-		2 & Attack an Enemy & Player & Easy & 1\\
+		2 & Attack an Enemy & Player & Medium & 1\\
 		\hline
-		3 & Obtain Loot & Player & Easy & 1\\
+		3 & Obtain Loot & Player & Easy & 2\\
 		\hline
 		
 	\end{tabular}
@@ -737,23 +738,18 @@ The requirements were gathered by researching and thinking of what would be the 
 	\label{tab:useCaseIndex}
 \end{table}
 
-\subsection{Interface Mockups}
+\subsection{Interface Mockup}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{interface_v2}
-	\caption{The base game GUI so far.}
+	\includegraphics[width=0.25\linewidth]{interface_v2}
+	\caption{The base game GUI.}
 	\label{fig:interfacev2}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\linewidth]{player_inventory}
-	\caption{What the inventory will look like.}
-	\label{fig:playerinventory}
 \end{figure}
 
 \section{Project Timeline}
-This is the timeline of our project. The following figure shows all of the dates, as well as what was or will be completed, the date it was started and the date it is aimed to be finished, as well as some additional notes to go along with the timeline.
-\begin{figure}[h]
+This is the timeline of our project. The following figure shows all of the dates, as well as what was or will be completed, the date it was started and the date it is aimed to be finished, as well as some additional notes to go along with the timeline.\\
+This is located below at the bottom of this proposal.
+\begin{figure}[b]
 	\centering
 	\includegraphics[width=0.9\linewidth]{timeline}
 	\caption{Overall project timeline from start to finish with possible dates.}
@@ -761,31 +757,46 @@ This is the timeline of our project. The following figure shows all of the dates
 \end{figure}
 
 \section{Project Structure}
-The game starts off with a character creation screen, where the player chooses their name, and class. Once this is selected, the window closes and the main game window appears. The player's name and class choices will be reflected within the main game window. The player will have access to their inventory, dialogues from any quests, current and completed questions, and the map of the game. The map is based on a tile set of unicode characters, which is 32x8 (256) tiles. 
+The game starts off with a character creation screen, where the player chooses their name, and class. Once this is selected, the window closes and the main game window appears. The player's name and class choices will be reflected within the main game window. The player will have access to their dialogues from any quests, current and completed quests, and the map of the game. The map is based on a tile set of unicode characters, which is 32x8 (256) tiles. A player can enter combat with enemies and level up.
 
 \subsection{UML Outline}
-\begin{figure}[h]
+The UML that lists the player creation in it's entirety is down below.
+
+\begin{figure}[b]
 	\centering
-	\includegraphics[width=1\linewidth]{uml}
-	\caption{UML for player classes and character creation.}
+	\includegraphics[width=0.9\linewidth]{uml}
+	\caption{UML for player classes and character creation. Abstract Factory Pattern.}
 	\label{fig:uml}
 \end{figure}
-
-\iffalse % comment out the rest
+\begin{figure}[b]
+	\includegraphics[width=0.9\linewidth]{uml_2}
+	\caption{UML for obtaining the four storyline items. Observer Pattern.}
+	\label{fig:uml2}
+\end{figure}
 
 \subsection{Design Patterns Used}
-Make sure to actually use at least 2 design patterns from this class.  This is not normally part of such documentation, but largely just specific to this class -- I want to see you use the patterns!
+The first design pattern was utilized in character creation - the Abstract Factory. The other design pattern is the Observer pattern, which is used for the story and quests. It also handles the three boss fights as well.
 
 
 \section{Results}
-This section will start out a little vague, but it should grow as your project evolves.  With each deliverable you hand in, give me a final summary of where your project stands.  By the end, this should be a reflective section discussing how many of your original goals you managed to attain/how many desired use cases you implemented/how many extra features you added.
+\textit{1. Interactive GUI for Gameplay\\}
+The GUI for the overall gameplay wasn't too difficult to get going. Get some map controls, combat controls, and we were home free.\\
+
+\textit{2. The Story\\}
+The storyline is also pretty straight forward. Have the player interact with the story and complete some quests for completeness.\\
+
+\textit{3. Class Selection\\}
+Class selection/character creation was difficult. It was hard to figure out how to handle other classes being null when you only select one class each game run. Because of this, we have tons of null checks in our code. It's sloppy, but I had no idea how else to manage this issue.\\
+
+\textit{4. Gold and Leveling System\\}
+Gold/Leveling system as well as the combat system wasn't too hard to implement. The only issue is all of the conditionals for the logic to get it all to work. This is also sloppy, but again - not really sure how else to tackle this kind of mechanic.\\
 
 \subsection{Future Work}
-Where are you going next with your project?
-For early deliverables, what are your next steps?  (HINT: you will typically want to look back at your timeline and evaluate: did you meet your expected goals?  Are you ahead of schedule?  Did you decide to shift gears and implement a new feature?)
-By the end, what do you plan on doing with this project?  Will you try to sell it?  Set it on fire?  Link to it on your resume and forget it exists?
+I am not sure if we are going to continue work on this or not. Perhaps if we added more to it and cleaned it up a bit, we could potentially put it on the Steam gamestore. But we are not sure.
+We accomplished everything we set out to do and then some. The only thing we wish we had implemented was the inventory system and items.
+All in all, this was a fun project. We enjoyed working on it, despite dealing with the wonkiness of WPF. Perhaps we will transfer this idea over to a sufficient game engine.
 
-
+\iffalse % comment out the rest
 
 
 
