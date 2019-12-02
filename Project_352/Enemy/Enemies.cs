@@ -26,7 +26,7 @@ namespace Project_352
         }
         public int Exp()
         {
-            return rand.Next(35, 50); // fix me, 5-10 exp
+            return rand.Next(5, 10);
         }
         public int Gold()
         {
@@ -44,10 +44,6 @@ namespace Project_352
         {
             return "\nYou killed the rat!\n";
         }
-        public string RanMessage()
-        {
-            return "\nYou successfully ran from the rat!\n";
-        }
 
         // Icon for the Rat
         string icon = "🐀";
@@ -64,11 +60,11 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(10, 15);
+            return rand.Next(5, 10);
         }
         public int Exp()
         {
-            return rand.Next(20, 30);
+            return rand.Next(15, 20); 
         }
         public int Gold()
         {
@@ -84,7 +80,7 @@ namespace Project_352
         }
         public string DeathMessage()
         {
-            return " killed the goblin!\n";
+            return "You killed the goblin!\n";
         }
 
         // Icon for the Goblin
@@ -122,7 +118,7 @@ namespace Project_352
         }
         public string DeathMessage()
         {
-            return " killed the ogre!\n";
+            return "You killed the ogre!\n";
         }
 
         // Icon for the Ogre

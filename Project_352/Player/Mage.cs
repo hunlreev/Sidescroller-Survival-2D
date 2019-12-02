@@ -40,6 +40,10 @@ namespace Project_352
         {
             return 0.5 * (attr.strength + (attr.intelligence * 0.25));
         }
+        public double Flames()
+        {
+            return DoDamage() + 6;
+        }
 
         public string name;
         public string classification;

@@ -37,6 +37,12 @@ namespace Project_352
             _mage = m;
             _rogue = r;
 
+            // Check to see if player is a mage
+            if (_warrior == null && _rogue == null)
+            {
+                Flames.IsEnabled = true;
+            }
+
             // Start up message
             dialog.Text = "Welcome to Text Adventure RPG, Player. " +
                           "You start off a confused adventure in the middle of a field. " +
@@ -233,7 +239,7 @@ namespace Project_352
                 _warrior.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
@@ -244,7 +250,7 @@ namespace Project_352
                 _mage.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
@@ -255,7 +261,7 @@ namespace Project_352
                 _rogue.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
         }
         // For killing a goblin, not finished
@@ -266,10 +272,13 @@ namespace Project_352
             {
                 if (_warrior.info.level >= 10)
                 {
-                    _warrior.info.exp += goblin.Exp();
-                    _warrior.info.gold += goblin.Gold();
+                    int experience = goblin.Exp();
+                    int gold = goblin.Gold();
+                    _warrior.info.exp += experience;
+                    _warrior.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Mage
@@ -277,10 +286,13 @@ namespace Project_352
             {
                 if (_mage.info.level >= 10)
                 {
-                    _mage.info.exp += goblin.Exp();
-                    _mage.info.gold += goblin.Gold();
+                    int experience = goblin.Exp();
+                    int gold = goblin.Gold();
+                    _mage.info.exp += experience;
+                    _mage.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Rogue
@@ -288,10 +300,13 @@ namespace Project_352
             {
                 if (_rogue.info.level >= 10)
                 {
-                    _rogue.info.exp += goblin.Exp();
-                    _rogue.info.gold += goblin.Gold();
+                    int experience = goblin.Exp();
+                    int gold = goblin.Gold();
+                    _rogue.info.exp += experience;
+                    _rogue.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
         }
@@ -303,10 +318,13 @@ namespace Project_352
             {
                 if (_warrior.info.level >= 15)
                 {
-                    _warrior.info.exp += ogre.Exp();
-                    _warrior.info.gold += ogre.Gold();
+                    int experience = ogre.Exp();
+                    int gold = ogre.Gold();
+                    _warrior.info.exp += experience;
+                    _warrior.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Mage
@@ -314,10 +332,13 @@ namespace Project_352
             {
                 if (_mage.info.level >= 15)
                 {
-                    _mage.info.exp += ogre.Exp();
-                    _mage.info.gold += ogre.Gold();
+                    int experience = ogre.Exp();
+                    int gold = ogre.Gold();
+                    _mage.info.exp += experience;
+                    _mage.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Rogue
@@ -325,10 +346,13 @@ namespace Project_352
             {
                 if (_rogue.info.level >= 15)
                 {
-                    _rogue.info.exp += ogre.Exp();
-                    _rogue.info.gold += ogre.Gold();
+                    int experience = ogre.Exp();
+                    int gold = ogre.Gold();
+                    _rogue.info.exp += experience;
+                    _rogue.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
         }
@@ -354,6 +378,10 @@ namespace Project_352
         private string Player_Class;
         private string Next_Temp_Pos;
         private double ratDamage;
+        private double goblinDamage;
+        private double ogreDamage;
+
+        // Make it to where the player CANNOT move when in a battle
 
         public void Up_Arrow_Click(object sender, RoutedEventArgs e)
         {
@@ -670,8 +698,8 @@ namespace Project_352
         // Handles enemy appearance in map and combat system
         private void NewEnemy(object sender, RoutedEventArgs e)
         {
-            // Enemy has 10% chance of appearing on any tile
-            int chance = rand.Next(1, 3);
+            // Enemy has 20% chance of appearing on any tile
+            int chance = rand.Next(1, 5);
 
             // For the Warrior
             if (_mage == null && _rogue == null)
@@ -685,7 +713,7 @@ namespace Project_352
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
-                if (_warrior.info.level >= 10)
+                if (_warrior.info.level >= 10 && _warrior.info.level < 15)
                 {
                     if (chance == 1)
                     {
@@ -734,7 +762,7 @@ namespace Project_352
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
-                if (_mage.info.level >= 10)
+                if (_mage.info.level >= 10 && _mage.info.level < 15)
                 {
                     if (chance == 1)
                     {
@@ -783,7 +811,7 @@ namespace Project_352
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
-                if (_rogue.info.level >= 10)
+                if (_rogue.info.level >= 10 && _rogue.info.level < 15)
                 {
                     if (chance == 1)
                     {
@@ -823,9 +851,15 @@ namespace Project_352
 
             dialog.ScrollToEnd();
         }
+        // Handles player attack depending on class and enemy that appears
         private void Player_Attack(object sender, RoutedEventArgs e)
         {
-            if (goblin == null && ogre == null)
+            if (rat == null && goblin == null && ogre == null)
+            {
+                dialog.Text += "There is nothing to attack.\n";
+            }
+            // For a rat
+            else if (goblin == null && ogre == null)
             {
                 // For warrior
                 if (_mage == null && _rogue == null)
@@ -834,26 +868,32 @@ namespace Project_352
 
                     dialog.ScrollToEnd();
 
-                    if (rat == null)
+                    if (goblin == null && ogre == null)
                     {
-                        dialog.Text += "There is nothing to attack.\n";
-                    }
-                    else if (rat.stats.health - playerDamage > 0)
-                    {
-                        ratDamage = rat.DoDamage();
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
 
-                        dialog.Text += "You did " + playerDamage + " damage.\n";
-                        rat.stats.health -= (int)playerDamage;
-                        dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
-                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
-                        _warrior.stats.health -= (int)ratDamage;
-                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
-                    }
-                    else
-                    {
-                        dialog.Text += rat.DeathMessage();
-                        KillRat(sender, e);
-                        rat = null;
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _warrior.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_warrior.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            rat = null;
+                        }
                     }
                 }
                 // For mage
@@ -863,26 +903,32 @@ namespace Project_352
 
                     dialog.ScrollToEnd();
 
-                    if (rat == null)
+                    if (goblin == null && ogre == null)
                     {
-                        dialog.Text += "There is nothing to attack.\n";
-                    }
-                    else if (rat.stats.health - playerDamage > 0)
-                    {
-                        ratDamage = rat.DoDamage();
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
 
-                        dialog.Text += "You did " + playerDamage + " damage.\n";
-                        rat.stats.health -= (int)playerDamage;
-                        dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
-                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
-                        _mage.stats.health -= (int)ratDamage;
-                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
-                    }
-                    else
-                    {
-                        dialog.Text += rat.DeathMessage();
-                        KillRat(sender, e);
-                        rat = null;
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _mage.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            rat = null;
+                        }
                     }
                 }
                 // For rogue
@@ -892,30 +938,246 @@ namespace Project_352
 
                     dialog.ScrollToEnd();
 
-                    if (rat == null)
+                    if (goblin == null && ogre == null)
                     {
-                        dialog.Text += "There is nothing to attack.\n";
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _rogue.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_rogue.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            rat = null;
+                        }
                     }
-                    else if (rat.stats.health - playerDamage > 0)
+                }
+            }
+            // For a goblin
+            else if (rat == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null && ogre == null)
                     {
-                        ratDamage = rat.DoDamage();
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _warrior.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_warrior.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            goblin = null;
+                        }
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null && ogre == null)
+                    {
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _mage.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            goblin = null;
+                        }
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (rat == null && ogre == null)
+                    {
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            dialog.Text += "You did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _rogue.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_rogue.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            goblin = null;
+                        }
+                    }
+                }
+            }
+            // For a ogre
+            else if (rat == null && goblin == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (ogre.stats.health - playerDamage > 0)
+                    {
+                        ogreDamage = ogre.DoDamage();
 
                         dialog.Text += "You did " + playerDamage + " damage.\n";
-                        rat.stats.health -= (int)playerDamage;
-                        dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
-                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
-                        _rogue.stats.health -= (int)ratDamage;
+                        ogre.stats.health -= (int)playerDamage;
+                        dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _warrior.stats.health -= (int)ogreDamage;
+
+                        // Handles player death
+                        if (_warrior.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += ogre.DeathMessage();
+                        KillOgre(sender, e);
+                        ogre = null;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (ogre.stats.health - playerDamage > 0)
+                    {
+                        ogreDamage = ogre.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        ogre.stats.health -= (int)playerDamage;
+                        dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _mage.stats.health -= (int)ogreDamage;
+
+                        // Handles player death
+                        if (_mage.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += ogre.DeathMessage();
+                        KillOgre(sender, e);
+                        ogre = null;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (ogre.stats.health - playerDamage > 0)
+                    {
+                        ogreDamage = ogre.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        ogre.stats.health -= (int)playerDamage;
+                        dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _rogue.stats.health -= (int)ogreDamage;
+
+                        // Handles player death
+                        if (_rogue.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
                         health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
                     }
                     else
                     {
-                        dialog.Text += rat.DeathMessage();
-                        KillRat(sender, e);
-                        rat = null;
+                        dialog.Text += ogre.DeathMessage();
+                        KillOgre(sender, e);
+                        ogre = null;
                     }
                 }
             }
         }
+        // Allows player to run from enemy
         private void Player_Run(object sender, EventArgs e)
         {
             // 25% chance to run away from an enemy
@@ -923,19 +1185,19 @@ namespace Project_352
 
             dialog.ScrollToEnd();
 
-            // If there is a rat, you can run from it. If you run away, the rat disappears
-            if (goblin == null && ogre == null)
+            if (rat == null && goblin == null && ogre == null)
+            {
+                dialog.Text += "There is nothing to run from.\n";
+            }
+            // For a rat appearing
+            else if (goblin == null && ogre == null)
             {
                 // For warrior
                 if (_mage == null && _rogue == null)
                 {
-                    if (rat == null)
+                    if (chance == 1)
                     {
-                        dialog.Text += "There is nothing to run from.\n";
-                    }
-                    else if (chance == 1)
-                    {
-                        dialog.Text += rat.RanMessage();
+                        dialog.Text += "You successfully ran away from the rat!\n";
                         rat = null;
                     }
                     else
@@ -950,15 +1212,150 @@ namespace Project_352
                 // For mage
                 if (_warrior == null && _rogue == null)
                 {
-
+                    if (chance == 2)
+                    {
+                        dialog.Text += "You successfully ran away from the rat!\n";
+                        rat = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ratDamage = rat.DoDamage();
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _mage.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
                 }
                 // For rogue
                 if (_warrior == null && _mage == null)
                 {
-
+                    if (chance == 3)
+                    {
+                        dialog.Text += "You successfully ran away from the rat!\n";
+                        rat = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ratDamage = rat.DoDamage();
+                        dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                        _rogue.stats.health -= (int)ratDamage;
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                }
+            }
+            // For a goblin appearing
+            else if (rat == null && ogre == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    if (chance == 1)
+                    {
+                        dialog.Text += "You successfully ran away from the goblin!\n";
+                        goblin = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        goblinDamage = goblin.DoDamage();
+                        dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                        _warrior.stats.health -= (int)goblinDamage;
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    if (chance == 2)
+                    {
+                        dialog.Text += "You successfully ran away from the goblin!\n";
+                        goblin = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        goblinDamage = goblin.DoDamage();
+                        dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                        _mage.stats.health -= (int)goblinDamage;
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    if (chance == 3)
+                    {
+                        dialog.Text += "You successfully ran away from the goblin!\n";
+                        goblin = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        goblinDamage = goblin.DoDamage();
+                        dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                        _rogue.stats.health -= (int)goblinDamage;
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                }
+            }
+            // For a ogre appearing
+            else if (rat == null && goblin == null)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    if (chance == 1)
+                    {
+                        dialog.Text += "You successfully ran away from the ogre!\n";
+                        ogre = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ogreDamage = ogre.DoDamage();
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _warrior.stats.health -= (int)ogreDamage;
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    if (chance == 2)
+                    {
+                        dialog.Text += "You successfully ran away from the ogre!\n";
+                        ogre = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ogreDamage = ogre.DoDamage();
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _mage.stats.health -= (int)ogreDamage;
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    if (chance == 3)
+                    {
+                        dialog.Text += "You successfully ran away from the ogre!\n";
+                        ogre = null;
+                    }
+                    else
+                    {
+                        dialog.Text += "You can't escape!\n";
+                        ogreDamage = ogre.DoDamage();
+                        dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                        _rogue.stats.health -= (int)ogreDamage;
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
                 }
             }
         }
+        // Allows player to rest and restore stamina
         private void Player_Rest(object sender, EventArgs e)
         {
             dialog.ScrollToEnd();
@@ -1007,6 +1404,184 @@ namespace Project_352
                 else
                 {
                     dialog.Text += "Resting now would be a waste of time...\n";
+                }
+            }
+        }
+        // Spells for the Player the use
+        private void Player_Heal(object sender, EventArgs e)
+        {
+            dialog.ScrollToEnd();
+
+            if (_mage == null && _rogue == null)
+            {
+                if (_warrior.stats.mana - 10 > 0 && _warrior.stats.health < _warrior.stats.totalHealth - 10)
+                {
+                    dialog.Text += "You casted the heal spell.\n";
+                    dialog.Text += "Replenished 10 HP!\n";
+                    _warrior.stats.health += 10;
+                    _warrior.stats.mana -= 10;
+                    health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
+                }
+                else
+                {
+                    dialog.Text += "Failed to cast heal.\n";
+                }
+            }
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.stats.mana - 10 > 0 && _mage.stats.health < _mage.stats.totalHealth - 10)
+                {
+                    dialog.Text += "You casted the heal spell.\n";
+                    dialog.Text += "Replenished 10 HP!\n";
+                    _mage.stats.health += 10;
+                    _mage.stats.mana -= 10;
+                    health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                }
+                else
+                {
+                    dialog.Text += "Failed to cast heal.\n";
+                }
+            }
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.stats.mana - 10 > 0 && _rogue.stats.health < _rogue.stats.totalHealth - 10)
+                {
+                    dialog.Text += "You casted the heal spell.\n";
+                    dialog.Text += "Replenished 10 HP!\n";
+                    _rogue.stats.health += 10;
+                    _rogue.stats.mana -= 10;
+                    health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    mana.Content = "Mana: " + _rogue.stats.mana + "/" + _rogue.stats.totalMana;
+                }
+                else
+                {
+                    dialog.Text += "Failed to cast heal.\n";
+                }
+            }
+        }
+        // Only available for the mage class
+        private void Player_Flames(object sender, EventArgs e)
+        {
+            dialog.ScrollToEnd();
+
+            if (rat == null && goblin == null && ogre == null)
+            {
+                dialog.Text += "There is nothing to attack.\n";
+            }
+            // For rat
+            else if (goblin == null && ogre == null)
+            {
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.mana - 10 > 0)
+                    {
+                        double playerDamage = _mage.Flames();
+
+                        if (rat.stats.health - playerDamage > 0)
+                        {
+                            ratDamage = rat.DoDamage();
+
+                            _mage.stats.mana -= 10;
+                            dialog.Text += "Flames did " + playerDamage + " damage.\n";
+                            rat.stats.health -= (int)playerDamage;
+                            dialog.Text += "Rat: " + rat.stats.health + "/" + rat.stats.totalHealth + " HP\n";
+                            dialog.Text += "The rat did " + ratDamage + " damage.\n";
+                            _mage.stats.health -= (int)ratDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                            mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                        }
+                        else
+                        {
+                            dialog.Text += rat.DeathMessage();
+                            KillRat(sender, e);
+                            rat = null;
+                        }
+                    }
+                }
+            }
+            // For goblin
+            else if (rat == null && ogre == null)
+            {
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.mana - 10 > 0)
+                    {
+                        double playerDamage = _mage.Flames();
+
+                        if (goblin.stats.health - playerDamage > 0)
+                        {
+                            goblinDamage = goblin.DoDamage();
+
+                            _mage.stats.mana -= 10;
+                            dialog.Text += "Flames did " + playerDamage + " damage.\n";
+                            goblin.stats.health -= (int)playerDamage;
+                            dialog.Text += "Goblin: " + goblin.stats.health + "/" + goblin.stats.totalHealth + " HP\n";
+                            dialog.Text += "The goblin did " + goblinDamage + " damage.\n";
+                            _mage.stats.health -= (int)goblinDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                            mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                        }
+                        else
+                        {
+                            dialog.Text += goblin.DeathMessage();
+                            KillGoblin(sender, e);
+                            goblin = null;
+                        }
+                    }
+                }
+            }
+            // For ogre
+            else if (rat == null && goblin == null)
+            {
+                if (_warrior == null && _rogue == null)
+                {
+                    if (_mage.stats.mana - 10 > 0)
+                    {
+                        double playerDamage = _mage.Flames();
+
+                        if (ogre.stats.health - playerDamage > 0)
+                        {
+                            ogreDamage = ogre.DoDamage();
+
+                            _mage.stats.mana -= 10;
+                            dialog.Text += "Flames did " + playerDamage + " damage.\n";
+                            ogre.stats.health -= (int)playerDamage;
+                            dialog.Text += "Ogre: " + ogre.stats.health + "/" + ogre.stats.totalHealth + " HP\n";
+                            dialog.Text += "The ogre did " + ogreDamage + " damage.\n";
+                            _mage.stats.health -= (int)ogreDamage;
+
+                            // Handles player death
+                            if (_mage.stats.health <= 0)
+                            {
+                                Close();
+                            }
+
+                            health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                            mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                        }
+                        else
+                        {
+                            dialog.Text += ogre.DeathMessage();
+                            KillOgre(sender, e);
+                            ogre = null;
+                        }
+                    }
                 }
             }
         }
