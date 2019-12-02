@@ -395,10 +395,21 @@ namespace Project_352
 
         private bool Fighting = false;//Variable to monitor if in battle or not
 
+        //Questing Variables
+        private bool MetKingFirst = false;// Wake up in the field. Go find the King in the castle to your west. Gives Quest to find the 3 powers of the world
+        private bool MetKingSecond = false;// Aquired the 3 powers of the world
+        private bool Kraken = false;// Receive the Kraken Egg from the island
+        private bool BearClaw = false;// Fight the Bears for the royal claw
+        private bool Blessing = false;// Receive the Emperor Penguins Blessing
+        private bool MeteorPower = false;// After meeting the king the second time with the three powers retrieve the Celestial power of the Meteor to get through the poison to fight the dragon 
+        private bool Dragon = false;
+        
+       
 
 
         public void Up_Arrow_Click(object sender, RoutedEventArgs e)
         {
+           // dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position % 8 > 0 && Player_Position < 256)
             {
                 if (Fighting == false)
@@ -490,10 +501,22 @@ namespace Project_352
                     NewEnemy(sender, e);
                 }
             }
+            if (Player_Position == 0 && Kraken == false)
+            {
+                dialog.Text += "You have obtained the Mighty Kraken's Egg!";
+                Checkbox1.IsChecked = true;
+            }//For Kraken Egg
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true; 
+            }//For Bear Claw
         }
 
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
         {
+           // dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position % 8 + 1 != 8 && Player_Position < 256)
             {
                 if (Fighting == false)
@@ -585,11 +608,52 @@ namespace Project_352
                     NewEnemy(sender, e);
                 }
             }
+            if ( Player_Position == 7)
+            {
+                if( MetKingFirst == false)
+                {
+                    dialog.Text += "\nKing: Welcome young traveler, It seems you are not from this world.\n" +
+                        "King: Alas, I wish we could greet you better but our world is in grave turmoil.\n" +
+                        "King: There be a dragon to the East over the mountains, she is a Fiery Best of Great Magnitude.\n" +
+                        "King: If only we had a hero of legends to save us all. \n\nKing: WHAT!\nKing: You will try to be this world's savior?!\n" +
+                        "King: Bless your soul, young Adventurer. Go see the court Wizard with how to defeat such a beast, he might know.\n\n\n\n\n" +
+                        "Wizard: I see the king wasn't pulling my big toe.\nWizard: You truly are a man of great bravery to be going up against the mighty Fire Breather " +
+                        "of the Eastern Mountains.\nWizard: Or you are a complete idiot and will surely die....\n Wizard: Alas, I've been ordered to give you knowledge" +
+                        " of how to defeat such a might beast.\nWizard: First you must travel to the north and retrieve the Kraken's Egg. It lies on the island guarded " +
+                        "by the tentacruel monster. If you come to the island from the south side you can avoid the monster.\n" +
+                        "Wizard: Next retrieve the Might Bear Claw from the caves north east of here. Be Weary those bears are strong." +
+                        "Wizard: Finally retrieve the Emperor Penguins' might blessing from the icy mountains of the west." +
+                        "Wizard: Now go forth adventurer and try not to die as fast as the others that have come before you";
+                    MetKingFirst = true;
+                    Checkbox1.Content = "Retrieve the Kraken's Egg";
+                    Checkbox1.Opacity = 100;
+                    Checkbox2.Content = "Fight the Mighty Bears for one of their Claw's";
+                    Checkbox2.Opacity = 100;
+                    Checkbox3.Content = "Achieve the Mythical Penguin's Blessing";
+                    Checkbox3.Opacity = 100;
+
+                }
+            }//Meeting the king
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true;
+            }//For Bear Claw
+            if (Player_Position == 231 && Blessing == false)
+            {
+                dialog.Text += "\nEmperor Penguin: I have seen you coming from far away young lad. I admire your bravery and resilience in " +
+                    "in these trying times.Here is my blessing.";
+                Checkbox3.IsChecked = true;
+                Blessing = true;
+            }//For Penguin Blessing
+
 
         }
 
         private void Left_Arrow_Click(object sender, RoutedEventArgs e)
         {
+            //dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position-8 > -1)
             {
                 if (Fighting == false)
@@ -681,10 +745,55 @@ namespace Project_352
                     NewEnemy(sender, e);
                 }
             }
+            if (Player_Position == 7)
+            {
+                if (MetKingFirst == false)
+                {
+                    dialog.Text += "\nKing: Welcome young traveler, It seems you are not from this world.\n" +
+                        "King: Alas, I wish we could greet you better but our world is in grave turmoil.\n" +
+                        "King: There be a dragon to the East over the mountains, she is a Fiery Best of Great Magnitude.\n" +
+                        "King: If only we had a hero of legends to save us all. \n\nKing: WHAT!\nKing: You will try to be this world's savior?!\n" +
+                        "King: Bless your soul, young Adventurer. Go see the court Wizard with how to defeat such a beast, he might know.\n\n\n\n\n" +
+                        "Wizard: I see the king wasn't pulling my big toe.\nWizard: You truly are a man of great bravery to be going up against the mighty Fire Breather " +
+                        "of the Eastern Mountains.\nWizard: Or you are a complete idiot and will surely die....\n Wizard: Alas, I've been ordered to give you knowledge" +
+                        " of how to defeat such a might beast.\nWizard: First you must travel to the north and retrieve the Kraken's Egg. It lies on the island guarded " +
+                        "by the tentacruel monster. If you come to the island from the south side you can avoid the monster.\n" +
+                        "Wizard: Next retrieve the Might Bear Claw from the caves north east of here. Be Weary those bears are strong." +
+                        "Wizard: Finally retrieve the Emperor Penguins' might blessing from the icy mountains of the west." +
+                        "Wizard: Now go forth adventurer and try not to die as fast as the others that have come before you";
+                    MetKingFirst = true;
+                    Checkbox1.Content = "Retrieve the Kraken's Egg";
+                    Checkbox1.Opacity = 100;
+                    Checkbox2.Content = "Fight the Mighty Bears for one of their Claw's";
+                    Checkbox2.Opacity = 100;
+                    Checkbox3.Content = "Achieve the Mythical Penguin's Blessing";
+                    Checkbox3.Opacity = 100;
+
+                }
+            }//Meeting the king
+            if (Player_Position == 0 && Kraken == false)
+            {
+                dialog.Text += "You have obtained the Mighty Kraken's Egg!";
+                Checkbox1.IsChecked = true;
+            }//For Kraken Egg
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true;
+            }//For Bear Claw
+            if (Player_Position == 231 && Blessing == false)
+            {
+                dialog.Text += "\nEmperor Penguin: I have seen you coming from far away young lad. I admire your bravery and resilience in " +
+                    "in these trying times.Here is my blessing.";
+                Checkbox3.IsChecked = true;
+                Blessing = true;
+            }//For Penguin Blessing
         }
 
         private void Right_Arrow_Click(object sender, RoutedEventArgs e)
         {
+            //dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position + 8 <256)
             {
                 if (Fighting == false)
@@ -776,7 +885,19 @@ namespace Project_352
                     NewEnemy(sender, e);
                 }
             }
-
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true;
+            }//For Bear Claw
+            if ( Player_Position == 231 && Blessing == false)
+            {
+                dialog.Text += "\nEmperor Penguin: I have seen you coming from far away young lad. I admire your bravery and resilience in " +
+                    "in these trying times.Here is my blessing.";
+                Checkbox3.IsChecked = true;
+                Blessing = true;
+            }//For Penguin Blessing
         }
 
         private void NewEnemy(object sender, RoutedEventArgs e)
