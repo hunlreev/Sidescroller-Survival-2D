@@ -46,7 +46,7 @@
         <Label x:Name="intelligence" Content="Intelligence: " HorizontalAlignment="Left" Margin="953,479,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
         <Label x:Name="dexterity" Content="Dexterity: " HorizontalAlignment="Left" Margin="953,505,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
         <!--Test Text Area-->
-        <TextBox x:Name="dialog" MaxHeight="300" TextWrapping="Wrap" Text="" Margin="378,312,368,20" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="dialog" MaxHeight="300" TextWrapping="Wrap" Text="" Margin="378,312,380,20" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
         <Button x:Name="Attack" Content="Attack" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="77,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Attack"/>
         <Button x:Name="Rest"  Content="Rest" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="146,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Rest"/>
         <Button x:Name="Run"  Content="Run" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="215,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Run"/>
@@ -55,40 +55,38 @@
         <!--Declaration of the Map. 32x8-->
         <Grid x:Name="Map" HorizontalAlignment="Left" Height="283" VerticalAlignment="Top" Width="1052" Margin="10,12,0,-112" ShowGridLines="True"  >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="13*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="31*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="32*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35*"/>
@@ -105,7 +103,7 @@
           Grid.Row="0"
           Grid.Column="0"
           Content="🏝"
-         
+          Foreground="OrangeRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -113,11 +111,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="B0"
           Grid.Row="1"
           Grid.Column="0"
           Content="🌊"
+                   Foreground="DarkBlue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -125,10 +124,11 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="C0"
           Grid.Row="2"
           Grid.Column="0"
+                   Foreground="DarkBlue"
           Content="🌊"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -137,11 +137,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="D0"
           Grid.Row="3"
           Grid.Column="0"
           Content="🏖"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -149,11 +150,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="E0"
           Grid.Row="4"
           Grid.Column="0"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -161,11 +163,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F0"
           Grid.Row="5"
           Grid.Column="0"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -173,11 +176,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="G0"
           Grid.Row="6"
           Grid.Column="0"
           Content="🏠"
+                   Foreground="DarkRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -185,11 +189,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="H0"
           Grid.Row="7"
           Grid.Column="0"
           Content="🏰"
+                   Foreground="Purple"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -197,12 +202,13 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <!--2 Column-->
             <Label Name="A1"
           Grid.Row="0"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🐙"
+          Foreground="HotPink"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -213,8 +219,9 @@
           Background="White"/>
             <Label Name="B1"
           Grid.Row="1"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🌊"
+                   Foreground="DarkBlue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -225,8 +232,9 @@
           Background="White"/>
             <Label Name="C1"
           Grid.Row="2"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🏖"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -237,8 +245,9 @@
           Background="White"/>
             <Label Name="D1"
           Grid.Row="3"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -249,8 +258,9 @@
           Background="White"/>
             <Label Name="E1"
           Grid.Row="4"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -258,11 +268,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F1"
           Grid.Row="5"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -273,8 +284,9 @@
           Background="White"/>
             <Label Name="G1"
           Grid.Row="6"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🏠"
+                   Foreground="DarkRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -285,8 +297,9 @@
           Background="White"/>
             <Label Name="H1"
           Grid.Row="7"
-          Grid.Column="2"
+          Grid.Column="1"
           Content="🏠"
+                   Foreground="DarkRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -298,8 +311,9 @@
             <!--3 Column-->
             <Label Name="A2"
           Grid.Row="0"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🌊"
+                   Foreground="DarkBlue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -307,11 +321,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="B2"
           Grid.Row="1"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🌊"
+                   Foreground="DarkBlue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -319,11 +334,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="C2"
           Grid.Row="2"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🏖"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -331,11 +347,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="D2"
           Grid.Row="3"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -343,11 +360,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="E2"
           Grid.Row="4"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -355,11 +373,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="F2"
           Grid.Row="5"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -367,11 +386,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="G2"
           Grid.Row="6"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🏠"
+                   Foreground="DarkRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -379,11 +399,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <Label Name="H2"
           Grid.Row="7"
-          Grid.Column="3"
+          Grid.Column="2"
           Content="🏠"
+                   Foreground="DarkRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -391,12 +412,13 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Grid.ColumnSpan="2"/>
+          Background="White"/>
             <!--4 Column-->
             <Label Name="A3"
           Grid.Row="0"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🌊"
+                   Foreground="DarkBlue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -407,8 +429,9 @@
           Background="White"/>
             <Label Name="B3"
           Grid.Row="1"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🏖"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -419,8 +442,9 @@
           Background="White"/>
             <Label Name="C3"
           Grid.Row="2"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -431,8 +455,9 @@
           Background="White"/>
             <Label Name="D3"
           Grid.Row="3"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -443,8 +468,9 @@
           Background="White"/>
             <Label Name="E3"
           Grid.Row="4"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -452,11 +478,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F3"
           Grid.Row="5"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -467,8 +494,9 @@
           Background="White"/>
             <Label Name="G3"
           Grid.Row="6"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🌽"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -479,8 +507,9 @@
           Background="White"/>
             <Label Name="H3"
           Grid.Row="7"
-          Grid.Column="5"
+          Grid.Column="3"
           Content="🌽"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -492,8 +521,9 @@
             <!--5 Column-->
             <Label Name="A4"
           Grid.Row="0"
-          Grid.Column="6"
+          Grid.Column="4"
           Content="🏖"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -504,8 +534,9 @@
           Background="White"/>
             <Label Name="B4"
           Grid.Row="1"
-          Grid.Column="6"
+          Grid.Column="4"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -516,8 +547,9 @@
           Background="White"/>
             <Label Name="C4"
           Grid.Row="2"
-          Grid.Column="6"
+          Grid.Column="4"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -528,7 +560,7 @@
           Background="White"/>
             <Label Name="D4"
           Grid.Row="3"
-          Grid.Column="6"
+          Grid.Column="4"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -540,8 +572,9 @@
           Background="White"/>
             <Label Name="E4"
           Grid.Row="4"
-          Grid.Column="6"
+          Grid.Column="4"
           Content="🐔"
+                   Foreground="OrangeRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -549,11 +582,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F4"
           Grid.Row="5"
-          Grid.Column="6"
+          Grid.Column="4"
           Content="🐔"
+                   Foreground="OrangeRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -564,8 +598,9 @@
           Background="White"/>
             <Label Name="G4"
           Grid.Row="6"
-          Grid.Column="6"
+          Grid.Column="4"
           Content="🌽"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -576,8 +611,9 @@
           Background="White"/>
             <Label Name="H4"
           Grid.Row="7"
-          Grid.Column="6"
+          Grid.Column="4"
           Content="🌽"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Top"
@@ -589,8 +625,9 @@
             <!--6 Column-->
             <Label Name="A5"
           Grid.Row="0"
-          Grid.Column="7"
+          Grid.Column="5"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -601,8 +638,9 @@
           Background="White"/>
             <Label Name="B5"
           Grid.Row="1"
-          Grid.Column="7"
+          Grid.Column="5"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -613,7 +651,7 @@
           Background="White"/>
             <Label Name="C5"
           Grid.Row="2"
-          Grid.Column="7"
+          Grid.Column="5"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -625,7 +663,7 @@
           Background="White"/>
             <Label Name="D5"
           Grid.Row="3"
-          Grid.Column="7"
+          Grid.Column="5"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -637,7 +675,7 @@
           Background="White"/>
             <Label Name="E5"
           Grid.Row="4"
-          Grid.Column="7"
+          Grid.Column="5"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -646,11 +684,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F5"
           Grid.Row="5"
-          Grid.Column="7"
+          Grid.Column="5"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -661,8 +700,9 @@
           Background="White"/>
             <Label Name="G5"
           Grid.Row="6"
-          Grid.Column="7"
+          Grid.Column="5"
           Content="🌽"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -673,8 +713,9 @@
           Background="White"/>
             <Label Name="H5"
           Grid.Row="7"
-          Grid.Column="7"
+          Grid.Column="5"
           Content="🌽"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -686,8 +727,9 @@
             <!--7 Column-->
             <Label Name="A6"
           Grid.Row="0"
-          Grid.Column="8"
+          Grid.Column="6"
           Content="🌴"
+                   Foreground="GreenYellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -698,8 +740,9 @@
           Background="White"/>
             <Label Name="B6"
           Grid.Row="1"
-          Grid.Column="8"
+          Grid.Column="6"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -710,8 +753,9 @@
           Background="White"/>
             <Label Name="C6"
           Grid.Row="2"
-          Grid.Column="8"
+          Grid.Column="6"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -722,7 +766,7 @@
           Background="White"/>
             <Label Name="D6"
           Grid.Row="3"
-          Grid.Column="8"
+          Grid.Column="6"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -734,7 +778,7 @@
           Background="White"/>
             <Label Name="E6"
           Grid.Row="4"
-          Grid.Column="8"
+          Grid.Column="6"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -746,8 +790,9 @@
           Background="White"/>
             <Label Name="F6"
           Grid.Row="5"
-          Grid.Column="8"
+          Grid.Column="6"
           Content="🌻"
+                   Foreground="YellowGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -758,7 +803,8 @@
           Background="White"/>
             <Label Name="G6"
           Grid.Row="6"
-          Grid.Column="8"
+          Grid.Column="6"
+                   Foreground="Yellow"
           Content="🌽"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -770,8 +816,9 @@
           Background="White"/>
             <Label Name="H6"
           Grid.Row="7"
-          Grid.Column="8"
+          Grid.Column="6"
           Content="🌽"
+                   Foreground="Yellow"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -783,8 +830,9 @@
             <!--8 Column-->
             <Label Name="A7"
           Grid.Row="0"
-          Grid.Column="9"
+          Grid.Column="7"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -795,8 +843,9 @@
           Background="White"/>
             <Label Name="B7"
           Grid.Row="1"
-          Grid.Column="9"
+          Grid.Column="7"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -807,8 +856,9 @@
           Background="White"/>
             <Label Name="C7"
           Grid.Row="2"
-          Grid.Column="9"
+          Grid.Column="7"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -819,8 +869,9 @@
           Background="White"/>
             <Label Name="D7"
           Grid.Row="3"
-          Grid.Column="9"
+          Grid.Column="7"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -831,7 +882,7 @@
           Background="White"/>
             <Label Name="E7"
           Grid.Row="4"
-          Grid.Column="9"
+          Grid.Column="7"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -840,10 +891,10 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F7"
           Grid.Row="5"
-          Grid.Column="9"
+          Grid.Column="7"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -855,8 +906,9 @@
           Background="White"/>
             <Label Name="G7"
           Grid.Row="6"
-          Grid.Column="9"
+          Grid.Column="7"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -867,8 +919,9 @@
           Background="White"/>
             <Label Name="H7"
           Grid.Row="7"
-          Grid.Column="9"
+          Grid.Column="7"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -880,8 +933,9 @@
             <!--9 Column-->
             <Label Name="A8"
           Grid.Row="0"
-          Grid.Column="10"
+          Grid.Column="8"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -892,8 +946,9 @@
           Background="White"/>
             <Label Name="B8"
           Grid.Row="1"
-          Grid.Column="10"
+          Grid.Column="8"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -904,8 +959,9 @@
           Background="White"/>
             <Label Name="C8"
           Grid.Row="2"
-          Grid.Column="10"
+          Grid.Column="8"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -916,7 +972,7 @@
           Background="White"/>
             <Label Name="D8"
           Grid.Row="3"
-          Grid.Column="10"
+          Grid.Column="8"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -928,7 +984,7 @@
           Background="White"/>
             <Label Name="E8"
           Grid.Row="4"
-          Grid.Column="10"
+          Grid.Column="8"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -937,10 +993,10 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F8"
           Grid.Row="5"
-          Grid.Column="10"
+          Grid.Column="8"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -952,7 +1008,7 @@
           Background="White"/>
             <Label Name="G8"
           Grid.Row="6"
-          Grid.Column="10"
+          Grid.Column="8"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -964,8 +1020,9 @@
           Background="White"/>
             <Label Name="H8"
           Grid.Row="7"
-          Grid.Column="10"
+          Grid.Column="8"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -977,8 +1034,9 @@
             <!--10 Column-->
             <Label Name="A9"
           Grid.Row="0"
-          Grid.Column="11"
+          Grid.Column="9"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -989,8 +1047,9 @@
           Background="White"/>
             <Label Name="B9"
           Grid.Row="1"
-          Grid.Column="11"
+          Grid.Column="9"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1001,8 +1060,9 @@
           Background="White"/>
             <Label Name="C9"
           Grid.Row="2"
-          Grid.Column="11"
+          Grid.Column="9"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1013,7 +1073,7 @@
           Background="White"/>
             <Label Name="D9"
           Grid.Row="3"
-          Grid.Column="11"
+          Grid.Column="9"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1025,7 +1085,7 @@
           Background="White"/>
             <Label Name="E9"
           Grid.Row="4"
-          Grid.Column="11"
+          Grid.Column="9"
           Content=""
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1033,10 +1093,10 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F9"
           Grid.Row="5"
-          Grid.Column="11"
+          Grid.Column="9"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1048,7 +1108,7 @@
           Background="White"/>
             <Label Name="G9"
           Grid.Row="6"
-          Grid.Column="11"
+          Grid.Column="9"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1060,8 +1120,9 @@
           Background="White"/>
             <Label Name="H9"
           Grid.Row="7"
-          Grid.Column="11"
+          Grid.Column="9"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1074,8 +1135,9 @@
             <!--11 Column-->
             <Label Name="A10"
           Grid.Row="0"
-          Grid.Column="12"
+          Grid.Column="10"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1086,8 +1148,9 @@
           Background="White"/>
             <Label Name="B10"
           Grid.Row="1"
-          Grid.Column="12"
+          Grid.Column="10"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1098,8 +1161,9 @@
           Background="White"/>
             <Label Name="C10"
           Grid.Row="2"
-          Grid.Column="12"
+          Grid.Column="10"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1110,7 +1174,7 @@
           Background="White"/>
             <Label Name="D10"
           Grid.Row="3"
-          Grid.Column="12"
+          Grid.Column="10"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1122,7 +1186,7 @@
           Background="White"/>
             <Label Name="E10"
           Grid.Row="4"
-          Grid.Column="12"
+          Grid.Column="10"
           Content=""
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1130,11 +1194,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F10"
           Grid.Row="5"
-          Grid.Column="12"
+          Grid.Column="10"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1145,8 +1210,9 @@
           Background="White"/>
             <Label Name="G10"
           Grid.Row="6"
-          Grid.Column="12"
+          Grid.Column="10"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1157,8 +1223,9 @@
           Background="White"/>
             <Label Name="H10"
           Grid.Row="7"
-          Grid.Column="12"
+          Grid.Column="10"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1170,8 +1237,9 @@
             <!--12 Column-->
             <Label Name="A11"
           Grid.Row="0"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1182,8 +1250,9 @@
           Background="White"/>
             <Label Name="B11"
           Grid.Row="1"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1194,8 +1263,9 @@
           Background="White"/>
             <Label Name="C11"
           Grid.Row="2"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1206,8 +1276,9 @@
           Background="White"/>
             <Label Name="D11"
           Grid.Row="3"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1218,19 +1289,21 @@
           Background="White"/>
             <Label Name="E11"
           Grid.Row="4"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
           VerticalContentAlignment="Center"
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F11"
           Grid.Row="5"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1241,8 +1314,9 @@
           Background="White"/>
             <Label Name="G11"
           Grid.Row="6"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1253,8 +1327,9 @@
           Background="White"/>
             <Label Name="H11"
           Grid.Row="7"
-          Grid.Column="13"
+          Grid.Column="11"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1266,7 +1341,7 @@
             <!--13 Column-->
             <Label Name="A12"
           Grid.Row="0"
-          Grid.Column="14"
+          Grid.Column="12"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1278,8 +1353,9 @@
           Background="White"/>
             <Label Name="B12"
           Grid.Row="1"
-          Grid.Column="14"
+          Grid.Column="12"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1290,8 +1366,9 @@
           Background="White"/>
             <Label Name="C12"
           Grid.Row="2"
-          Grid.Column="14"
+          Grid.Column="12"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1302,8 +1379,9 @@
           Background="White"/>
             <Label Name="D12"
           Grid.Row="3"
-          Grid.Column="14"
+          Grid.Column="12"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1314,8 +1392,9 @@
           Background="White"/>
             <Label Name="E12"
           Grid.Row="4"
-          Grid.Column="14"
+          Grid.Column="12"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1323,11 +1402,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F12"
           Grid.Row="5"
-          Grid.Column="14"
+          Grid.Column="12"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1338,8 +1418,9 @@
           Background="White"/>
             <Label Name="G12"
           Grid.Row="6"
-          Grid.Column="14"
+          Grid.Column="12"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1350,8 +1431,9 @@
           Background="White"/>
             <Label Name="H12"
           Grid.Row="7"
-          Grid.Column="14"
+          Grid.Column="12"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1363,8 +1445,9 @@
             <!--14 Column-->
             <Label Name="A13"
           Grid.Row="0"
-          Grid.Column="15"
+          Grid.Column="13"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1375,7 +1458,7 @@
           Background="White"/>
             <Label Name="B13"
           Grid.Row="1"
-          Grid.Column="15"
+          Grid.Column="13"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1387,7 +1470,7 @@
           Background="White"/>
             <Label Name="C13"
           Grid.Row="2"
-          Grid.Column="15"
+          Grid.Column="13"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1399,7 +1482,7 @@
           Background="White"/>
             <Label Name="D13"
           Grid.Row="3"
-          Grid.Column="15"
+          Grid.Column="13"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1411,8 +1494,9 @@
           Background="White"/>
             <Label Name="E13"
           Grid.Row="4"
-          Grid.Column="15"
+          Grid.Column="13"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1420,11 +1504,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F13"
           Grid.Row="5"
-          Grid.Column="15"
+          Grid.Column="13"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1435,8 +1520,9 @@
           Background="White"/>
             <Label Name="G13"
           Grid.Row="6"
-          Grid.Column="15"
+          Grid.Column="13"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1447,8 +1533,9 @@
           Background="White"/>
             <Label Name="H13"
           Grid.Row="7"
-          Grid.Column="15"
+          Grid.Column="13"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1460,8 +1547,9 @@
             <!--15 Column-->
             <Label Name="A14"
           Grid.Row="0"
-          Grid.Column="16"
+          Grid.Column="14"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1472,8 +1560,9 @@
           Background="White"/>
             <Label Name="B14"
           Grid.Row="1"
-          Grid.Column="16"
+          Grid.Column="14"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1484,8 +1573,9 @@
           Background="White"/>
             <Label Name="C14"
           Grid.Row="2"
-          Grid.Column="16"
+          Grid.Column="14"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1496,8 +1586,9 @@
           Background="White"/>
             <Label Name="D14"
           Grid.Row="3"
-          Grid.Column="16"
+          Grid.Column="14"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1508,7 +1599,7 @@
           Background="White"/>
             <Label Name="E14"
           Grid.Row="4"
-          Grid.Column="16"
+          Grid.Column="14"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1517,11 +1608,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F14"
           Grid.Row="5"
-          Grid.Column="16"
+          Grid.Column="14"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1532,8 +1624,9 @@
           Background="White"/>
             <Label Name="G14"
           Grid.Row="6"
-          Grid.Column="16"
+          Grid.Column="14"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1544,8 +1637,9 @@
           Background="White"/>
             <Label Name="H14"
           Grid.Row="7"
-          Grid.Column="16"
+          Grid.Column="14"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1557,8 +1651,9 @@
             <!--16 Column-->
             <Label Name="A15"
           Grid.Row="0"
-          Grid.Column="17"
+          Grid.Column="15"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1569,8 +1664,9 @@
           Background="White"/>
             <Label Name="B15"
           Grid.Row="1"
-          Grid.Column="17"
+          Grid.Column="15"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1581,8 +1677,9 @@
           Background="White"/>
             <Label Name="C15"
           Grid.Row="2"
-          Grid.Column="17"
+          Grid.Column="15"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1593,8 +1690,9 @@
           Background="White"/>
             <Label Name="D15"
           Grid.Row="3"
-          Grid.Column="17"
+          Grid.Column="15"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1605,8 +1703,9 @@
           Background="White"/>
             <Label Name="E15"
           Grid.Row="4"
-          Grid.Column="17"
+          Grid.Column="15"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1614,10 +1713,10 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F15"
           Grid.Row="5"
-          Grid.Column="17"
+          Grid.Column="15"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1629,8 +1728,9 @@
           Background="White"/>
             <Label Name="G15"
           Grid.Row="6"
-          Grid.Column="17"
+          Grid.Column="15"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1641,8 +1741,9 @@
           Background="White"/>
             <Label Name="H15"
           Grid.Row="7"
-          Grid.Column="17"
+          Grid.Column="15"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1654,8 +1755,9 @@
             <!--17 Column-->
             <Label Name="A16"
           Grid.Row="0"
-          Grid.Column="18"
+          Grid.Column="16"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1666,8 +1768,9 @@
           Background="White"/>
             <Label Name="B16"
           Grid.Row="1"
-          Grid.Column="18"
+          Grid.Column="16"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1678,8 +1781,9 @@
           Background="White"/>
             <Label Name="C16"
           Grid.Row="2"
-          Grid.Column="18"
+          Grid.Column="16"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1690,8 +1794,9 @@
           Background="White"/>
             <Label Name="D16"
           Grid.Row="3"
-          Grid.Column="18"
+          Grid.Column="16"
           Content="🐻"
+                   Foreground="SaddleBrown"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1702,8 +1807,9 @@
           Background="White"/>
             <Label Name="E16"
           Grid.Row="4"
-          Grid.Column="18"
+          Grid.Column="16"
           Content="🐻"
+                   Foreground="SaddleBrown"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1711,11 +1817,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F16"
           Grid.Row="5"
-          Grid.Column="18"
+          Grid.Column="16"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1726,7 +1833,7 @@
           Background="White"/>
             <Label Name="G16"
           Grid.Row="6"
-          Grid.Column="18"
+          Grid.Column="16"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1738,8 +1845,9 @@
           Background="White"/>
             <Label Name="H16"
           Grid.Row="7"
-          Grid.Column="18"
+          Grid.Column="16"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1751,8 +1859,9 @@
             <!--18 Column-->
             <Label Name="A17"
           Grid.Row="0"
-          Grid.Column="19"
+          Grid.Column="17"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1763,8 +1872,9 @@
           Background="White"/>
             <Label Name="B17"
           Grid.Row="1"
-          Grid.Column="19"
+          Grid.Column="17"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1775,8 +1885,9 @@
           Background="White"/>
             <Label Name="C17"
           Grid.Row="2"
-          Grid.Column="19"
+          Grid.Column="17"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1787,8 +1898,9 @@
           Background="White"/>
             <Label Name="D17"
           Grid.Row="3"
-          Grid.Column="19"
+          Grid.Column="17"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1799,8 +1911,9 @@
           Background="White"/>
             <Label Name="E17"
           Grid.Row="4"
-          Grid.Column="19"
+          Grid.Column="17"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1808,11 +1921,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F17"
           Grid.Row="5"
-          Grid.Column="19"
+          Grid.Column="17"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1823,7 +1937,7 @@
           Background="White"/>
             <Label Name="G17"
           Grid.Row="6"
-          Grid.Column="19"
+          Grid.Column="17"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1835,8 +1949,9 @@
           Background="White"/>
             <Label Name="H17"
           Grid.Row="7"
-          Grid.Column="19"
+          Grid.Column="17"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1848,8 +1963,9 @@
             <!--19 Column-->
             <Label Name="A18"
           Grid.Row="0"
-          Grid.Column="20"
+          Grid.Column="18"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1860,8 +1976,9 @@
           Background="White"/>
             <Label Name="B18"
           Grid.Row="1"
-          Grid.Column="20"
+          Grid.Column="18"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1872,7 +1989,8 @@
           Background="White"/>
             <Label Name="C18"
           Grid.Row="2"
-          Grid.Column="20"
+          Grid.Column="18"
+                   Foreground="SandyBrown"
           Content="🐪"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1884,8 +2002,9 @@
           Background="White"/>
             <Label Name="D18"
           Grid.Row="3"
-          Grid.Column="20"
+          Grid.Column="18"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1896,8 +2015,9 @@
           Background="White"/>
             <Label Name="E18"
           Grid.Row="4"
-          Grid.Column="20"
+          Grid.Column="18"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1905,11 +2025,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F18"
           Grid.Row="5"
-          Grid.Column="20"
+          Grid.Column="18"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1920,7 +2041,7 @@
           Background="White"/>
             <Label Name="G18"
           Grid.Row="6"
-          Grid.Column="20"
+          Grid.Column="18"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -1932,8 +2053,9 @@
           Background="White"/>
             <Label Name="H18"
           Grid.Row="7"
-          Grid.Column="20"
+          Grid.Column="18"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1945,8 +2067,9 @@
             <!--20 Column-->
             <Label Name="A19"
           Grid.Row="0"
-          Grid.Column="21"
-          Content="🏜"
+          Grid.Column="19"
+          Content="☄"
+                   Foreground="DarkBlue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1957,8 +2080,9 @@
           Background="White"/>
             <Label Name="B19"
           Grid.Row="1"
-          Grid.Column="21"
+          Grid.Column="19"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1969,8 +2093,9 @@
           Background="White"/>
             <Label Name="C19"
           Grid.Row="2"
-          Grid.Column="21"
+          Grid.Column="19"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1981,8 +2106,9 @@
           Background="White"/>
             <Label Name="D19"
           Grid.Row="3"
-          Grid.Column="21"
+          Grid.Column="19"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -1993,8 +2119,9 @@
           Background="White"/>
             <Label Name="E19"
           Grid.Row="4"
-          Grid.Column="21"
+          Grid.Column="19"
           Content="⛰"
+                   Foreground="Black"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2002,11 +2129,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F19"
           Grid.Row="5"
-          Grid.Column="21"
+          Grid.Column="19"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2017,7 +2145,7 @@
           Background="White"/>
             <Label Name="G19"
           Grid.Row="6"
-          Grid.Column="21"
+          Grid.Column="19"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2029,8 +2157,9 @@
           Background="White"/>
             <Label Name="H19"
           Grid.Row="7"
-          Grid.Column="21"
+          Grid.Column="19"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2042,7 +2171,8 @@
             <!--21 Column-->
             <Label Name="A20"
           Grid.Row="0"
-          Grid.Column="22"
+          Grid.Column="20"
+                   Foreground="SandyBrown"
            Content="🐪"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2054,8 +2184,9 @@
           Background="White"/>
             <Label Name="B20"
           Grid.Row="1"
-          Grid.Column="22"
+          Grid.Column="20"
       Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2066,8 +2197,9 @@
           Background="White"/>
             <Label Name="C20"
           Grid.Row="2"
-          Grid.Column="22"
+          Grid.Column="20"
             Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2078,7 +2210,8 @@
           Background="White"/>
             <Label Name="D20"
           Grid.Row="3"
-          Grid.Column="22"
+          Grid.Column="20"
+                   Foreground="Gold"
           Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2090,7 +2223,8 @@
           Background="White"/>
             <Label Name="E20"
           Grid.Row="4"
-          Grid.Column="22"
+          Grid.Column="20"
+                   Foreground="Gold"
           Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2099,10 +2233,10 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F20"
           Grid.Row="5"
-          Grid.Column="22"
+          Grid.Column="20"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2114,8 +2248,9 @@
           Background="White"/>
             <Label Name="G20"
           Grid.Row="6"
-          Grid.Column="22"
+          Grid.Column="20"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2126,7 +2261,7 @@
           Background="White"/>
             <Label Name="H20"
           Grid.Row="7"
-          Grid.Column="22"
+          Grid.Column="20"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2139,8 +2274,9 @@
             <!--22 Column-->
             <Label Name="A21"
           Grid.Row="0"
-          Grid.Column="23"
+          Grid.Column="21"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2151,8 +2287,9 @@
           Background="White"/>
             <Label Name="B21"
           Grid.Row="1"
-          Grid.Column="23"
+          Grid.Column="21"
       Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2163,7 +2300,8 @@
           Background="White"/>
             <Label Name="C21"
           Grid.Row="2"
-          Grid.Column="23"
+          Grid.Column="21"
+                   Foreground="Gold"
             Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2175,7 +2313,8 @@
           Background="White"/>
             <Label Name="D21"
           Grid.Row="3"
-          Grid.Column="23"
+          Grid.Column="21"
+                   Foreground="Gold"
            Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2187,19 +2326,21 @@
           Background="White"/>
             <Label Name="E21"
           Grid.Row="4"
-          Grid.Column="23"
+          Grid.Column="21"
            Content="🏜"
+                   Foreground="Gold"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
           VerticalContentAlignment="Center"
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F21"
           Grid.Row="5"
-          Grid.Column="23"
+          Grid.Column="21"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2210,7 +2351,7 @@
           Background="White"/>
             <Label Name="G21"
           Grid.Row="6"
-          Grid.Column="23"
+          Grid.Column="21"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2222,8 +2363,9 @@
           Background="White"/>
             <Label Name="H21"
           Grid.Row="7"
-          Grid.Column="23"
+          Grid.Column="21"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2235,8 +2377,9 @@
             <!--23 Column-->
             <Label Name="A22"
           Grid.Row="0"
-          Grid.Column="24"
+          Grid.Column="22"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2247,7 +2390,8 @@
           Background="White"/>
             <Label Name="B22"
           Grid.Row="1"
-          Grid.Column="24"
+                   Foreground="Gold"
+          Grid.Column="22"
            Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2259,8 +2403,9 @@
           Background="White"/>
             <Label Name="C22"
           Grid.Row="2"
-          Grid.Column="24"
+          Grid.Column="22"
             Content="🐪"
+                   Foreground="SandyBrown"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2271,7 +2416,8 @@
           Background="White"/>
             <Label Name="D22"
           Grid.Row="3"
-          Grid.Column="24"
+          Grid.Column="22"
+                   Foreground="Gold"
           Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2283,8 +2429,9 @@
           Background="White"/>
             <Label Name="E22"
           Grid.Row="4"
-          Grid.Column="24"
+          Grid.Column="22"
            Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2292,11 +2439,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F22"
           Grid.Row="5"
-          Grid.Column="24"
+          Grid.Column="22"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2307,7 +2455,7 @@
           Background="White"/>
             <Label Name="G22"
           Grid.Row="6"
-          Grid.Column="24"
+          Grid.Column="22"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2319,8 +2467,9 @@
           Background="White"/>
             <Label Name="H22"
           Grid.Row="7"
-          Grid.Column="24"
+          Grid.Column="22"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2332,8 +2481,9 @@
             <!--24 Column-->
             <Label Name="A23"
           Grid.Row="0"
-          Grid.Column="25"
+          Grid.Column="23"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2344,8 +2494,9 @@
           Background="White"/>
             <Label Name="B23"
           Grid.Row="1"
-          Grid.Column="25"
+          Grid.Column="23"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2356,7 +2507,8 @@
           Background="White"/>
             <Label Name="C23"
           Grid.Row="2"
-          Grid.Column="25"
+          Grid.Column="23"
+                   Foreground="Gold"
          Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2368,8 +2520,9 @@
           Background="White"/>
             <Label Name="D23"
           Grid.Row="3"
-          Grid.Column="25"
+          Grid.Column="23"
             Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2380,8 +2533,9 @@
           Background="White"/>
             <Label Name="E23"
           Grid.Row="4"
-          Grid.Column="25"
+          Grid.Column="23"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2389,11 +2543,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F23"
           Grid.Row="5"
-          Grid.Column="25"
+          Grid.Column="23"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2404,7 +2559,7 @@
           Background="White"/>
             <Label Name="G23"
           Grid.Row="6"
-          Grid.Column="25"
+          Grid.Column="23"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2416,8 +2571,9 @@
           Background="White"/>
             <Label Name="H23"
           Grid.Row="7"
-          Grid.Column="25"
+          Grid.Column="23"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2429,8 +2585,9 @@
             <!--25 Column-->
             <Label Name="A24"
           Grid.Row="0"
-          Grid.Column="26"
+          Grid.Column="24"
           Content="🏜"
+                   Foreground="Gold"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2441,7 +2598,8 @@
           Background="White"/>
             <Label Name="B24"
           Grid.Row="1"
-          Grid.Column="26"
+          Grid.Column="24"
+                   Foreground="Gold"
            Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2453,8 +2611,9 @@
           Background="White"/>
             <Label Name="C24"
           Grid.Row="2"
-          Grid.Column="26"
+          Grid.Column="24"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2465,8 +2624,9 @@
           Background="White"/>
             <Label Name="D24"
           Grid.Row="3"
-          Grid.Column="26"
+          Grid.Column="24"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2477,8 +2637,9 @@
           Background="White"/>
             <Label Name="E24"
           Grid.Row="4"
-          Grid.Column="26"
+          Grid.Column="24"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2486,11 +2647,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F24"
           Grid.Row="5"
-          Grid.Column="26"
+          Grid.Column="24"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2501,7 +2663,7 @@
           Background="White"/>
             <Label Name="G24"
           Grid.Row="6"
-          Grid.Column="26"
+          Grid.Column="24"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2513,8 +2675,9 @@
           Background="White"/>
             <Label Name="H24"
           Grid.Row="7"
-          Grid.Column="26"
+          Grid.Column="24"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2526,7 +2689,8 @@
             <!--26 Column-->
             <Label Name="A25"
           Grid.Row="0"
-          Grid.Column="27"
+          Grid.Column="25"
+                   Foreground="Gold"
            Content="🏜"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2538,8 +2702,9 @@
           Background="White"/>
             <Label Name="B25"
           Grid.Row="1"
-          Grid.Column="27"
+          Grid.Column="25"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2550,8 +2715,9 @@
           Background="White"/>
             <Label Name="C25"
           Grid.Row="2"
-          Grid.Column="27"
+          Grid.Column="25"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2562,8 +2728,9 @@
           Background="White"/>
             <Label Name="D25"
           Grid.Row="3"
-          Grid.Column="27"
+          Grid.Column="25"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2574,8 +2741,9 @@
           Background="White"/>
             <Label Name="E25"
           Grid.Row="4"
-          Grid.Column="27"
+          Grid.Column="25"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2583,11 +2751,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F25"
           Grid.Row="5"
-          Grid.Column="27"
+          Grid.Column="25"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2598,7 +2767,7 @@
           Background="White"/>
             <Label Name="G25"
           Grid.Row="6"
-          Grid.Column="27"
+          Grid.Column="25"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2610,8 +2779,9 @@
           Background="White"/>
             <Label Name="H25"
           Grid.Row="7"
-          Grid.Column="27"
+          Grid.Column="25"
           Content="🌊"
+                   Foreground="Blue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2623,8 +2793,9 @@
             <!--27 Column-->
             <Label Name="A26"
           Grid.Row="0"
-          Grid.Column="28"
+          Grid.Column="26"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2635,8 +2806,9 @@
           Background="White"/>
             <Label Name="B26"
           Grid.Row="1"
-          Grid.Column="28"
+          Grid.Column="26"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2647,8 +2819,9 @@
           Background="White"/>
             <Label Name="C26"
           Grid.Row="2"
-          Grid.Column="28"
+          Grid.Column="26"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2659,8 +2832,9 @@
           Background="White"/>
             <Label Name="D26"
           Grid.Row="3"
-          Grid.Column="28"
+          Grid.Column="26"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2671,8 +2845,9 @@
           Background="White"/>
             <Label Name="E26"
           Grid.Row="4"
-          Grid.Column="28"
+          Grid.Column="26"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Top"
@@ -2683,8 +2858,9 @@
           Background="White"/>
             <Label Name="F26"
           Grid.Row="5"
-          Grid.Column="28"
+          Grid.Column="26"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2695,8 +2871,9 @@
           Background="White"/>
             <Label Name="G26"
           Grid.Row="6"
-          Grid.Column="28"
+          Grid.Column="26"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2707,7 +2884,7 @@
           Background="White"/>
             <Label Name="H26"
           Grid.Row="7"
-          Grid.Column="28"
+          Grid.Column="26"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2720,7 +2897,7 @@
             <!--28 Column-->
             <Label Name="A27"
           Grid.Row="0"
-          Grid.Column="29"
+          Grid.Column="27"
           Content=" "
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2732,8 +2909,9 @@
           Background="White"/>
             <Label Name="B27"
           Grid.Row="1"
-          Grid.Column="29"
+          Grid.Column="27"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2744,8 +2922,9 @@
           Background="White"/>
             <Label Name="C27"
           Grid.Row="2"
-          Grid.Column="29"
+          Grid.Column="27"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2756,8 +2935,9 @@
           Background="White"/>
             <Label Name="D27"
           Grid.Row="3"
-          Grid.Column="29"
+          Grid.Column="27"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2768,8 +2948,9 @@
           Background="White"/>
             <Label Name="E27"
           Grid.Row="4"
-          Grid.Column="29"
+          Grid.Column="27"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Top"
@@ -2780,8 +2961,9 @@
           Background="White"/>
             <Label Name="F27"
           Grid.Row="5"
-          Grid.Column="29"
+          Grid.Column="27"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2792,8 +2974,9 @@
           Background="White"/>
             <Label Name="G27"
           Grid.Row="6"
-          Grid.Column="29"
+          Grid.Column="27"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2804,8 +2987,9 @@
           Background="White"/>
             <Label Name="H27"
           Grid.Row="7"
-          Grid.Column="29"
+          Grid.Column="27"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2817,7 +3001,7 @@
             <!--29 Column-->
             <Label Name="A28"
           Grid.Row="0"
-          Grid.Column="30"
+          Grid.Column="28"
           Content=" "
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2829,7 +3013,7 @@
           Background="White"/>
             <Label Name="B28"
           Grid.Row="1"
-          Grid.Column="30"
+          Grid.Column="28"
           Content=" "
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2841,7 +3025,7 @@
           Background="White"/>
             <Label Name="C28"
           Grid.Row="2"
-          Grid.Column="30"
+          Grid.Column="28"
           Content=" "
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2853,8 +3037,9 @@
           Background="White"/>
             <Label Name="D28"
           Grid.Row="3"
-          Grid.Column="30"
+          Grid.Column="28"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2865,8 +3050,9 @@
           Background="White"/>
             <Label Name="E28"
           Grid.Row="4"
-          Grid.Column="30"
+          Grid.Column="28"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2874,11 +3060,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F28"
           Grid.Row="5"
-          Grid.Column="30"
+          Grid.Column="28"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2889,8 +3076,9 @@
           Background="White"/>
             <Label Name="G28"
           Grid.Row="6"
-          Grid.Column="30"
+          Grid.Column="28"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2901,8 +3089,9 @@
           Background="White"/>
             <Label Name="H28"
           Grid.Row="7"
-          Grid.Column="30"
+          Grid.Column="28"
           Content="❄"
+                   Foreground="Aqua"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2914,8 +3103,9 @@
             <!--30 Column-->
             <Label Name="A29"
           Grid.Row="0"
-          Grid.Column="31"
+          Grid.Column="29"
           Content="☠"
+                   Foreground="DarkOliveGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2926,8 +3116,9 @@
           Background="White"/>
             <Label Name="B29"
           Grid.Row="1"
-          Grid.Column="31"
+          Grid.Column="29"
           Content="☠"
+                   Foreground="DarkOliveGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2938,7 +3129,7 @@
           Background="White"/>
             <Label Name="C29"
           Grid.Row="2"
-          Grid.Column="31"
+          Grid.Column="29"
           Content=" "
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -2950,8 +3141,9 @@
           Background="White"/>
             <Label Name="D29"
           Grid.Row="3"
-          Grid.Column="31"
+          Grid.Column="29"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2962,19 +3154,21 @@
           Background="White"/>
             <Label Name="E29"
           Grid.Row="4"
-          Grid.Column="31"
+          Grid.Column="29"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
           VerticalContentAlignment="Center"
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F29"
           Grid.Row="5"
-          Grid.Column="31"
+          Grid.Column="29"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2985,8 +3179,9 @@
           Background="White"/>
             <Label Name="G29"
           Grid.Row="6"
-          Grid.Column="31"
+          Grid.Column="29"
           Content="❄"
+                   Foreground="Aqua"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -2997,7 +3192,7 @@
           Background="White"/>
             <Label Name="H29"
           Grid.Row="7"
-          Grid.Column="31"
+          Grid.Column="29"
           Content="🐧"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -3010,8 +3205,9 @@
             <!--31 Column-->
             <Label Name="A30"
           Grid.Row="0"
-          Grid.Column="32"
+          Grid.Column="30"
           Content="🌋"
+                   Foreground="DarkRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3022,8 +3218,9 @@
           Background="White"/>
             <Label Name="B30"
           Grid.Row="1"
-          Grid.Column="32"
+          Grid.Column="30"
           Content="🐲"
+                   Foreground="Red"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3034,8 +3231,9 @@
           Background="White"/>
             <Label Name="C30"
           Grid.Row="2"
-          Grid.Column="32"
+          Grid.Column="30"
           Content="☠"
+                   Foreground="DarkOliveGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3046,7 +3244,7 @@
           Background="White"/>
             <Label Name="D30"
           Grid.Row="3"
-          Grid.Column="32"
+          Grid.Column="30"
           Content=""
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -3058,8 +3256,9 @@
           Background="White"/>
             <Label Name="E30"
           Grid.Row="4"
-          Grid.Column="32"
+          Grid.Column="30"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3067,11 +3266,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F30"
           Grid.Row="5"
-          Grid.Column="32"
+          Grid.Column="30"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3082,8 +3282,9 @@
           Background="White"/>
             <Label Name="G30"
           Grid.Row="6"
-          Grid.Column="32"
+          Grid.Column="30"
           Content="❄"
+                   Foreground="Aqua"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3094,8 +3295,9 @@
           Background="White"/>
             <Label Name="H30"
           Grid.Row="7"
-          Grid.Column="32"
+          Grid.Column="30"
           Content="🏔"
+                   Foreground="DarkSlateGray"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3107,8 +3309,9 @@
             <!--32 Column-->
             <Label Name="A31"
           Grid.Row="0"
-          Grid.Column="33"
+          Grid.Column="31"
           Content="💎"
+                   Foreground="DarkBlue"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3119,8 +3322,9 @@
           Background="White"/>
             <Label Name="B31"
           Grid.Row="1"
-          Grid.Column="33"
+          Grid.Column="31"
           Content="🌋"
+                   Foreground="DarkRed"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3131,8 +3335,9 @@
           Background="White"/>
             <Label Name="C31"
           Grid.Row="2"
-          Grid.Column="33"
+          Grid.Column="31"
           Content="☠"
+                   Foreground="DarkOliveGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3143,8 +3348,9 @@
           Background="White"/>
             <Label Name="D31"
           Grid.Row="3"
-          Grid.Column="33"
+          Grid.Column="31"
           Content="☠"
+                   Foreground="DarkOliveGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3155,7 +3361,7 @@
           Background="White"/>
             <Label Name="E31"
           Grid.Row="4"
-          Grid.Column="33"
+          Grid.Column="31"
           Content=" "
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
@@ -3164,11 +3370,12 @@
           BorderBrush="Black"
           BorderThickness="1"
           FontSize="17"
-          Background="White" Margin="0,1"/>
+          Background="White"/>
             <Label Name="F31"
           Grid.Row="5"
-          Grid.Column="33"
+          Grid.Column="31"
           Content="🌲"
+                   Foreground="ForestGreen"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3179,8 +3386,9 @@
           Background="White"/>
             <Label Name="G31"
           Grid.Row="6"
-          Grid.Column="33"
+          Grid.Column="31"
           Content="❄"
+                   Foreground="Aqua"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3191,8 +3399,9 @@
           Background="White"/>
             <Label Name="H31"
           Grid.Row="7"
-          Grid.Column="33"
+          Grid.Column="31"
           Content="🏔"
+                   Foreground="DarkSlateGray"
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Center"
           VerticalAlignment="Center"
@@ -3202,9 +3411,17 @@
           FontSize="17"
           Background="White"/>
         </Grid>
-        <Button x:Name="Up_Arrow" Content="⮝" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,540,0,0" VerticalAlignment="Top" Width="64" Click="Up_Arrow_Click"/>
-        <Button x:Name="Down_Arrow"  Content="⮟" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,593,0,0" VerticalAlignment="Top" Width="64" Click="Down_Arrow_Click"/>
-        <Button x:Name="Left_Arrow" Content="⮜" FontSize="40"  HorizontalAlignment="Left" Height="48" Margin="77,593,0,0" VerticalAlignment="Top" Width="64" Click="Left_Arrow_Click"/>
-        <Button x:Name="Right_Arrow" Content="⮞" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="215,593,0,0" VerticalAlignment="Top" Width="64" Click="Right_Arrow_Click"/>
+        <Button x:Name="Up_Arrow" Content="⮝" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,548,0,0" VerticalAlignment="Top" Width="64" Click="Up_Arrow_Click"/>
+        <Button x:Name="Down_Arrow"  Content="⮟" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,602,0,0" VerticalAlignment="Top" Width="64" Click="Down_Arrow_Click"/>
+        <Button x:Name="Left_Arrow" Content="⮜" FontSize="40"  HorizontalAlignment="Left" Height="48" Margin="77,602,0,0" VerticalAlignment="Top" Width="64" Click="Left_Arrow_Click"/>
+        <Button x:Name="Right_Arrow" Content="⮞" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="215,602,0,0" VerticalAlignment="Top" Width="64" Click="Right_Arrow_Click"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="199" Margin="21,314,0,0" Stroke="Black" VerticalAlignment="Top" Width="313"/>
+        <ListView x:Name="Quest_List" HorizontalAlignment="Left" Height="195" Margin="23,316,0,0" VerticalAlignment="Top" Width="309">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
