@@ -1,10 +1,4 @@
-﻿/* Author: Hunter Reeves
- * Date: 11/05/2019
- * File: Statistics.cs
- * Description: All information needed for the Player
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -374,7 +374,7 @@ namespace Project_352
         private Random rand = new Random();
 
         private int Player_Position = 39;//Player Map Details
-        private int Player_Movement = 0;
+        private int Player_Movement = 0;//Total Movements made by the Player
 
         private int Previous_Tile;//Variables for movement
         private int Next_Tile;
@@ -383,19 +383,17 @@ namespace Project_352
         private string Next_Temp_Pos;
 
         private string Player_Class;//Variable to monitor Player's Class
-        private SolidColorBrush Player_Color;
+        private SolidColorBrush Player_Color;//Variable monitoring player's base color
 
-        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.Yellow);
-        private Color Temp_Color;
-        private SolidColorBrush Next_Color;
+        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.Yellow);//Starting color of the spot
+        private Color Temp_Color;//To hold place and to convert from string to color
+        private SolidColorBrush Next_Color;//Placeholder for the next spot's color. To be placed in previous after movement
 
         private double ratDamage;
         private double goblinDamage;
         private double ogreDamage;
 
-        private bool Fighting = false;
-
-
+        private bool Fighting = false;//Variable to monitor if in battle or not
 
 
 
