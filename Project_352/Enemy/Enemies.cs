@@ -1,5 +1,5 @@
 ﻿/* Author: Hunter Reeves
- * Date: 11/30/2019
+ * Date: 11/22/2019
  * File: Enemies.cs
  * Description: The three enemy types you can fight in the game!
  */
@@ -64,7 +64,7 @@ namespace Project_352
         }
         public int Exp()
         {
-            return rand.Next(75, 150); 
+            return rand.Next(50, 100);
         }
         public int Gold()
         {
@@ -102,7 +102,7 @@ namespace Project_352
         }
         public int Exp()
         {
-            return rand.Next(150, 200);
+            return rand.Next(125, 250);
         }
         public int Gold()
         {
@@ -156,7 +156,7 @@ namespace Project_352
         }
         public string DeathMessage()
         {
-            return " killed the dragon!\n";
+            return "You killed the dragon!\n";
         }
 
         // Icon for the Ogre
@@ -164,4 +164,6 @@ namespace Project_352
         public E_Stats stats;
         public Random rand = new Random();
     }
+
+
 }
