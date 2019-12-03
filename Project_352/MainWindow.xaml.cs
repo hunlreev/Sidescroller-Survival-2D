@@ -2438,5 +2438,28 @@ namespace Project_352
                 }
             }
         }
+
+        private void Keyboard(object sender, KeyEventArgs e)//For keyboard movement
+        {
+            if (e.Key == Key.Down || e.Key == Key.S)//Down
+                Down_Arrow_Click(sender, e);
+            if (e.Key == Key.Up || e.Key == Key.W)//Up
+                Up_Arrow_Click(sender, e);
+            if (e.Key == Key.Left || e.Key == Key.A)//Left
+                Left_Arrow_Click(sender, e);
+            if (e.Key == Key.Right || e.Key == Key.D)//Right
+                Right_Arrow_Click(sender, e);
+            if (e.Key == Key.Space)//Attack
+                Player_Attack(sender, e);
+            if (e.Key == Key.H)//Heal
+                Player_Heal(sender, e);
+            if (e.Key == Key.R)//Run
+                Player_Run(sender, e);
+            if (e.Key == Key.LeftShift)//Rest
+                Player_Rest(sender, e);
+            if (e.Key == Key.F)//Flames
+                Player_Flames(sender, e);
+
+        }
     }
 }
