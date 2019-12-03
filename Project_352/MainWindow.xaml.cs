@@ -29,7 +29,6 @@ namespace Project_352
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Initializing the game window
         public MainWindow(Warrior w, Mage m, Rogue r)
         {
             InitializeComponent();
@@ -38,12 +37,10 @@ namespace Project_352
             _mage = m;
             _rogue = r;
 
-
-            // Check to see if player is a mage
             if (_warrior == null && _rogue == null)
             {
                 Flames.IsEnabled = true;
-            }
+            }// Check to see if player is a mage
 
             // Start up message
             dialog.Text = "Welcome to Text Adventure RPG, Player. " +
@@ -51,8 +48,8 @@ namespace Project_352
                           "Choose your pathway and go forth to the castle to discover yourself and the role you play in these trying times. " +
                           "Click an arrow to begin your adventure in the cornfields!"+
                           "\n\nBegin your adventure now!";
-        }
-        // Shows information to the user of their player
+        }       // Initializing the game window
+
         private void ShowPlayerInfo(object sender, EventArgs e)
         {
             // For the Warrior
@@ -123,8 +120,7 @@ namespace Project_352
                     Player_Color = new SolidColorBrush(Colors.Blue);
                 }
             }
-        }
-        // Levels System for the Player (subject to be tweaked in the future)
+        }        // Shows information to the user of their player
         private void LevelUp(object sender, EventArgs e)
         {
             // For the Warrior
@@ -232,8 +228,7 @@ namespace Project_352
                     }
                 }
             }
-        }
-        // For debugging/testing player level up on exp gain
+        }        // Levels System for the Player (subject to be tweaked in the future)
         private void KillRat(object sender, EventArgs e)
         {
             // For the Warrior
@@ -269,8 +264,7 @@ namespace Project_352
                 ShowPlayerInfo(sender, e);
                 dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
-        }
-        // For killing a goblin, not finished
+        }        // For debugging/testing player level up on exp gain
         private void KillGoblin(object sender, EventArgs e)
         {
             // For the Warrior
@@ -315,8 +309,7 @@ namespace Project_352
                     dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
-        }
-        // For killing an ogre, not finished
+        }        // For killing a goblin, not finished
         private void KillOgre(object sender, EventArgs e)
         {
             // For the Warrior
@@ -361,8 +354,7 @@ namespace Project_352
                     dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
-        }
-        //For killing a Kraken
+        }        // For killing an ogre, not finished
         private void KillKraken(object sender, EventArgs e)
         {
             // For the Warrior
@@ -407,8 +399,7 @@ namespace Project_352
                     dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
-        }
-        //For killing a bear
+        }        //For killing a Kraken
         private void Killbear(object sender, EventArgs e)
         {
             // For the Warrior
@@ -453,8 +444,7 @@ namespace Project_352
                     dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
-        }
-        //For killing a dragon
+        }        //For killing a bear
         private void Killdragon(object sender, EventArgs e)
         {
             // For the Warrior
@@ -499,61 +489,64 @@ namespace Project_352
                     dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
-        }
-        // Press ESC to close the window
+        }        //For killing a dragon
+
         private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
         {
             Close();
-        }
-
+        }       // Press ESC to close the window
+        //====================================================================================
+        //Creates all of the players and enemies
         private Warrior _warrior;
         private Mage _mage;
         private Rogue _rogue;
         private Rat rat;
         private Goblin goblin;
         private Ogre ogre;
-        private Dragon dragon; //creates the dragon
-        private Bear bear;//creates the bear
-        private Kraken kraken;//creates the kraken 
-        private Random rand = new Random();//random for the chance of running into an enemy
+        private Dragon dragon; 
+        private Bear bear;
+        private Kraken kraken;
+        private Random rand = new Random();
+        //====================================================================================
+        private int Player_Position = 39;       //Player Map Details
+        private int Player_Movement = 0;        //Total Movements made by the Player
 
-        private int Player_Position = 39;//Player Map Details
-        private int Player_Movement = 0;//Total Movements made by the Player
+        private int Previous_Tile;      //Variable to monitor the Previous tile the player moved to
+        private int Next_Tile;      //Variable to monitor the next tile the player is trying to move to
 
-        private int Previous_Tile;//Variables for movement
-        private int Next_Tile;
-
-        private string Previous_Temp_Pos = "🌽";//Temporary Variables for movement
+        private string Previous_Temp_Pos = "🌽";     //Temporary Variables for movement
         private string Next_Temp_Pos;
 
-        private string Player_Class;//Variable to monitor Player's Class
-        private SolidColorBrush Player_Color;//Variable monitoring player's base color
+        private string Player_Class;        //Variable to monitor Player's Class
+        private SolidColorBrush Player_Color;       //Variable monitoring player's base color
 
-        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.Yellow);//Starting color of the spot
-        private Color Temp_Color;//To hold place and to convert from string to color
-        private SolidColorBrush Next_Color;//Placeholder for the next spot's color. To be placed in previous after movement
-
+        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.Yellow);        //Starting color of the spot
+        private Color Temp_Color;       //To hold place and to convert from string to color
+        private SolidColorBrush Next_Color;     //Placeholder for the next spot's color. To be placed in previous after movement
+        //====================================================================================
+        //Variables for Monitoring Damage amongst the monsters
         private double ratDamage;
         private double goblinDamage;
         private double ogreDamage;
-        private double krakenDamage;//Variable for kraken's damage
-        private double bearDamage;//Variable for bear's damage
-        private double dragonDamage;//Variable for dragon's damage
+        private double krakenDamage;
+        private double bearDamage;
+        private double dragonDamage;
+        //====================================================================================
+        private bool Fighting = false;      //Variable to monitor if in battle or not
 
-        private bool Fighting = false;//Variable to monitor if in battle or not
-
+        //====================================================================================
         //Questing Variables
-        private bool MetKingFirst = false;// Wake up in the field. Go find the King in the castle to your west. Gives Quest to find the 3 powers of the world
-        private bool MetKingSecond = false;// Aquired the 3 powers of the world
-        private bool Kraken = false;// Receive the Kraken Egg from the island
-        private bool KrakenFight = false;//Fight the Kraken if not go to the island from the south
-        private bool BearClaw = false;// Fight the Bears for the royal claw
-        private bool Blessing = false;// Receive the Emperor Penguins Blessing
-        private bool MeteorPower = false;// After meeting the king the second time with the three powers retrieve the Celestial power of the Meteor to get through the poison to fight the dragon 
-        private bool Dragon = false;// To see when the fight with the dragon is over
-        private bool Postgame = false;// To let the player roam free post dragon 
-        
-       
+        private bool MetKingFirst = false;      // Wake up in the field. Go find the King in the castle to your west. Gives Quest to find the 3 powers of the world
+        private bool MetKingSecond = false;     // Aquired the 3 powers of the world
+        private bool Kraken = false;        // Receive the Kraken Egg from the island
+        private bool KrakenFight = false;       //Fight the Kraken if not go to the island from the south
+        private bool BearClaw = false;      // Fight the Bears for the royal claw
+        private bool Blessing = false;      // Receive the Emperor Penguins Blessing
+        private bool MeteorPower = false;       // After meeting the king the second time with the three powers retrieve the Celestial power of the Meteor to get through the poison to fight the dragon 
+        private bool Dragon = false;        // To see when the fight with the dragon is over
+        private bool Postgame = false;      // To let the player roam free post dragon 
+        //====================================================================================
+
 
 
         public void Up_Arrow_Click(object sender, RoutedEventArgs e)
@@ -679,7 +672,7 @@ namespace Project_352
                 dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
                 Postgame = true;
             }//For endgame messeage
-        }//Moves Player and handles events
+        }           //Moves Player and handles events
 
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
         {
@@ -832,7 +825,7 @@ namespace Project_352
             }//For endgame messeage
 
 
-        }//Moves Player and handles events
+        }           //Moves Player and handles events
 
         private void Left_Arrow_Click(object sender, RoutedEventArgs e)
         {
@@ -1001,7 +994,7 @@ namespace Project_352
                 dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
                 Postgame = true;
             }//For endgame messeage
-        }//Moves Player and handles events
+        }           //Moves Player and handles events
 
         private void Right_Arrow_Click(object sender, RoutedEventArgs e)
         {
@@ -1123,7 +1116,7 @@ namespace Project_352
                 dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
                 Postgame = true;
             }//For endgame messeage
-        }//Moves Player and handles events
+        }           //Moves Player and handles events
 
         private void NewEnemy(object sender, RoutedEventArgs e)
         {
@@ -1360,9 +1353,8 @@ namespace Project_352
             }
 
             dialog.ScrollToEnd();
-        }
+        }           //Addes the random chance per movement of an enemy spawning to fight
 
-        // Handles player attack depending on class and enemy that appears
         private void Player_Attack(object sender, RoutedEventArgs e)
         {
             if (rat == null && goblin == null && ogre == null && kraken == null && bear == null && dragon == null)
@@ -2013,9 +2005,8 @@ namespace Project_352
                     }
                 }
             }
-        }
+        }           // Handles player attack depending on class and enemy that appears
 
-        // Allows player to run from enemy
         private void Player_Run(object sender, EventArgs e)
         {
             // 25% chance to run away from an enemy
@@ -2201,9 +2192,8 @@ namespace Project_352
                     }
                 }
             }
-        }
+        }           // Allows player to run from enemy
 
-        // Allows player to rest and restore stamina
         private void Player_Rest(object sender, EventArgs e)
         {
             dialog.ScrollToEnd();
@@ -2257,9 +2247,8 @@ namespace Project_352
                     dialog.Text += "Resting now would be a waste of time...\n";
                 }
             }
-        }
+        }        // Allows player to rest and restore stamina
 
-        // Spells for the Player the use
         private void Player_Heal(object sender, EventArgs e)
         {
             dialog.ScrollToEnd();
@@ -2312,9 +2301,9 @@ namespace Project_352
                     dialog.Text += "Failed to cast heal.\n";
                 }
             }
-        }
+        }        // Healing Spell for the Player the use
 
-        // Only available for the mage class
+
         private void Player_Flames(object sender, EventArgs e)
         {
             dialog.ScrollToEnd();
@@ -2440,9 +2429,9 @@ namespace Project_352
                     }
                 }
             }
-        }
+        }        // Flame spell available for the mage class only
 
-        private void Keyboard(object sender, KeyEventArgs e)//For keyboard movement
+        private void Keyboard(object sender, KeyEventArgs e)         //For keyboard movement
         {
             if (e.Key == Key.Down || e.Key == Key.S)//Down
                 Down_Arrow_Click(sender, e);
