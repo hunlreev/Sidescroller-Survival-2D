@@ -512,10 +512,10 @@ namespace Project_352
         private Rat rat;
         private Goblin goblin;
         private Ogre ogre;
-        private Dragon dragon; 
-        private Bear bear;
-        private Kraken kraken;
-        private Random rand = new Random();
+        private Dragon dragon; //creates the dragon
+        private Bear bear;//creates the bear
+        private Kraken kraken;//creates the kraken 
+        private Random rand = new Random();//random for the chance of running into an enemy
 
         private int Player_Position = 39;//Player Map Details
         private int Player_Movement = 0;//Total Movements made by the Player
@@ -679,7 +679,7 @@ namespace Project_352
                 dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
                 Postgame = true;
             }//For endgame messeage
-        }
+        }//Moves Player and handles events
 
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
         {
@@ -832,7 +832,7 @@ namespace Project_352
             }//For endgame messeage
 
 
-        }
+        }//Moves Player and handles events
 
         private void Left_Arrow_Click(object sender, RoutedEventArgs e)
         {
@@ -1001,7 +1001,7 @@ namespace Project_352
                 dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
                 Postgame = true;
             }//For endgame messeage
-        }
+        }//Moves Player and handles events
 
         private void Right_Arrow_Click(object sender, RoutedEventArgs e)
         {
@@ -1123,12 +1123,12 @@ namespace Project_352
                 dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
                 Postgame = true;
             }//For endgame messeage
-        }
+        }//Moves Player and handles events
 
         private void NewEnemy(object sender, RoutedEventArgs e)
         {
-            // Enemy has 25% chance of appearing on any tile
-            int chance = rand.Next(1, 4);
+            // Enemy has 20% chance of appearing on any tile
+            int chance = rand.Next(1, 5);
 
             // For the Warrior
             if (_mage == null && _rogue == null)
@@ -2218,7 +2218,8 @@ namespace Project_352
                 else if (_warrior.stats.stamina + 10 <= _warrior.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
-                    _warrior.stats.stamina += 10;
+                    _warrior.stats.stamina += 100;
+                    _warrior.stats.mana += 20;
                     stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
                 }
                 else
@@ -2232,7 +2233,8 @@ namespace Project_352
                 if (_mage.stats.stamina + 10 <= _mage.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
-                    _mage.stats.stamina += 10;
+                    _mage.stats.stamina += 100;
+                    _warrior.stats.mana += 50;
                     stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
                 }
                 else
@@ -2246,7 +2248,8 @@ namespace Project_352
                 if (_rogue.stats.stamina + 10 <= _rogue.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
-                    _rogue.stats.stamina += 10;
+                    _rogue.stats.stamina += 100;
+                    _warrior.stats.mana += 20;
                     stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
                 }
                 else
@@ -2267,7 +2270,7 @@ namespace Project_352
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
-                    _warrior.stats.health += 10;
+                    _warrior.stats.health += 25;
                     _warrior.stats.mana -= 10;
                     health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
                     mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
@@ -2283,7 +2286,7 @@ namespace Project_352
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
-                    _mage.stats.health += 10;
+                    _mage.stats.health += 25;
                     _mage.stats.mana -= 10;
                     health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
                     mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
@@ -2299,7 +2302,7 @@ namespace Project_352
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
-                    _rogue.stats.health += 10;
+                    _rogue.stats.health += 25;
                     _rogue.stats.mana -= 10;
                     health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
                     mana.Content = "Mana: " + _rogue.stats.mana + "/" + _rogue.stats.totalMana;
