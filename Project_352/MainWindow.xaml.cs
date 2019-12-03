@@ -1556,7 +1556,7 @@ namespace Project_352
 
             if (_mage == null && _rogue == null)
             {
-                if (_warrior.stats.mana - 10 > 0 && _warrior.stats.health < _warrior.stats.totalHealth - 10)
+                if (_warrior.stats.mana - 10 >= 0 && _warrior.stats.health <= _warrior.stats.totalHealth - 10)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
@@ -1572,7 +1572,7 @@ namespace Project_352
             }
             if (_warrior == null && _rogue == null)
             {
-                if (_mage.stats.mana - 10 > 0 && _mage.stats.health < _mage.stats.totalHealth - 10)
+                if (_mage.stats.mana - 10 >= 0 && _mage.stats.health <= _mage.stats.totalHealth - 10)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
@@ -1588,7 +1588,7 @@ namespace Project_352
             }
             if (_warrior == null && _mage == null)
             {
-                if (_rogue.stats.mana - 10 > 0 && _rogue.stats.health < _rogue.stats.totalHealth - 10)
+                if (_rogue.stats.mana - 10 >= 0 && _rogue.stats.health <= _rogue.stats.totalHealth - 10)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
