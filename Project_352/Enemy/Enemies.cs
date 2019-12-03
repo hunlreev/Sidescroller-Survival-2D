@@ -136,15 +136,15 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(5, 10);
+            return rand.Next(0, 20);
         }
         public int Exp()
         {
-            return rand.Next(50, 100);
+            return rand.Next(100, 250);
         }
         public int Gold()
         {
-            return rand.Next(10, 15);
+            return rand.Next(100, 150);
         }
         public string AppearedMessage()
         {
@@ -208,7 +208,7 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(25, 35);
+            return rand.Next(20, 35);
         }
         public int Exp()
         {
