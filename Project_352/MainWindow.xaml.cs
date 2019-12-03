@@ -371,6 +371,9 @@ namespace Project_352
         private Rat rat;
         private Goblin goblin;
         private Ogre ogre;
+        private Dragon dragon; 
+        private Bear bear;
+        private Kraken kraken;
         private Random rand = new Random();
 
         private int Player_Position = 39;//Player Map Details
@@ -399,6 +402,7 @@ namespace Project_352
         private bool MetKingFirst = false;// Wake up in the field. Go find the King in the castle to your west. Gives Quest to find the 3 powers of the world
         private bool MetKingSecond = false;// Aquired the 3 powers of the world
         private bool Kraken = false;// Receive the Kraken Egg from the island
+        private bool KrakenFight = false;//Fight the Kraken if not go to the island from the south
         private bool BearClaw = false;// Fight the Bears for the royal claw
         private bool Blessing = false;// Receive the Emperor Penguins Blessing
         private bool MeteorPower = false;// After meeting the king the second time with the three powers retrieve the Celestial power of the Meteor to get through the poison to fight the dragon 
@@ -506,12 +510,28 @@ namespace Project_352
                 dialog.Text += "You have obtained the Mighty Kraken's Egg!";
                 Checkbox1.IsChecked = true;
             }//For Kraken Egg
+            if (Player_Position == 8 && KrakenFight == false)
+            {
+
+            }//For the Kraken Fight Also in Left Arrow Click
             if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
             {
                 dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
                 BearClaw = true;
                 Checkbox2.IsChecked = true; 
             }//For Bear Claw
+            if (Player_Position == 153 && MetKingSecond == true)
+            {
+                dialog.Text += "*The Gods Smile Down Upon You. You Receive Their Celestial Powers In Order To Slay The Dragon*";
+                MeteorPower = true;
+                Checkbox4.IsChecked = true;
+                Checkbox5.Content = "SLAY THE DRAGON";
+                Checkbox5.Opacity = 100;
+            }//Gain Celestial powers from the meteor
+            if (Player_Position == 233 && MeteorPower == true)//Fight The Dragon
+            {
+                dialog.Text += "*As you approach the dragon you feel the power of the gods flowing through you*";
+            }
         }
 
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
@@ -633,7 +653,18 @@ namespace Project_352
                     Checkbox3.Opacity = 100;
 
                 }
-            }//Meeting the king
+                if( Kraken == true && BearClaw == true && Blessing == true)
+                {
+                    dialog.Text += "\nKing: Welcome back young adventurer...What!" +
+                        "\nKing: You received all the items. Go see the court wizard now you great Hero!" +
+                        "\nWizard: Welcome back, I have been watching through the mystic pool." +
+                        "\nWizard: Since you have received the mystical items, go forth and go to the celestial crater." +
+                        "\nWizard: There you shall be blessed by the celestial gods and gain the power to kill the great Dragon.";
+                    MetKingSecond = true;
+                    Checkbox4.Content = "Obtain the Celestial Power from the Meteor Crater in the desert";
+                    Checkbox4.Opacity = 100;
+                }
+            }//Meeting the king 1 and 2
             if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
             {
                 dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
@@ -770,12 +801,27 @@ namespace Project_352
                     Checkbox3.Opacity = 100;
 
                 }
-            }//Meeting the king
+                if (Kraken == true && BearClaw == true && Blessing == true)
+                {
+                    dialog.Text += "\nKing: Welcome back young adventurer...What!" +
+                        "\nKing: You received all the items. Go see the court wizard now you great Hero!" +
+                        "\nWizard: Welcome back, I have been watching through the mystic pool." +
+                        "\nWizard: Since you have received the mystical items, go forth and go to the celestial crater." +
+                        "\nWizard: There you shall be blessed by the celestial gods and gain the power to kill the great Dragon.";
+                    MetKingSecond = true;
+                    Checkbox4.Content = "Obtain the Celestial Power from the Meteor Crater in the desert";
+                    Checkbox4.Opacity = 100;
+                }
+            }//Meeting the king 1 and 2
             if (Player_Position == 0 && Kraken == false)
             {
                 dialog.Text += "You have obtained the Mighty Kraken's Egg!";
                 Checkbox1.IsChecked = true;
             }//For Kraken Egg
+            if (Player_Position == 8 && KrakenFight == false)
+            {
+
+            }//For the Kraken Fight Also in Left Arrow Click
             if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
             {
                 dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
@@ -789,6 +835,14 @@ namespace Project_352
                 Checkbox3.IsChecked = true;
                 Blessing = true;
             }//For Penguin Blessing
+            if (Player_Position == 153 && MetKingSecond == true)
+            {
+                dialog.Text += "*The Gods Smile Down Upon You. You Receive Their Celestial Powers In Order To Slay The Dragon*";
+                MeteorPower = true;
+                Checkbox4.IsChecked = true;
+                Checkbox5.Content = "SLAY THE DRAGON";
+                Checkbox5.Opacity = 100;
+            }//Gain Celestial powers from the meteor
         }
 
         private void Right_Arrow_Click(object sender, RoutedEventArgs e)
@@ -898,6 +952,14 @@ namespace Project_352
                 Checkbox3.IsChecked = true;
                 Blessing = true;
             }//For Penguin Blessing
+            if (Player_Position == 153 && MetKingSecond == true)
+            {
+                dialog.Text += "*The Gods Smile Down Upon You. You Receive Their Celestial Powers In Order To Slay The Dragon*";
+                MeteorPower = true;
+                Checkbox4.IsChecked = true;
+                Checkbox5.Content = "SLAY THE DRAGON";
+                Checkbox5.Opacity = 100;
+            }//Gain Celestial powers from the meteor
         }
 
         private void NewEnemy(object sender, RoutedEventArgs e)
