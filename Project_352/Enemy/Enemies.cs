@@ -22,7 +22,7 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(2, 5);
+            return rand.Next(3, 5);
         }
         public int Exp()
         {
@@ -156,7 +156,7 @@ namespace Project_352
         }
         public string DeathMessage()
         {
-            return " killed the dragon!\n";
+            return "You killed the dragon!\n";
         }
 
         // Icon for the Ogre

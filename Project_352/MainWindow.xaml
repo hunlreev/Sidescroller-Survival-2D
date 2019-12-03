@@ -3411,10 +3411,10 @@
           FontSize="17"
           Background="White"/>
         </Grid>
-        <Button x:Name="Up_Arrow" Content="⮝" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,548,0,0" VerticalAlignment="Top" Width="64" Click="Up_Arrow_Click"/>
-        <Button x:Name="Down_Arrow"  Content="⮟" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,602,0,0" VerticalAlignment="Top" Width="64" Click="Down_Arrow_Click"/>
-        <Button x:Name="Left_Arrow" Content="⮜" FontSize="40"  HorizontalAlignment="Left" Height="48" Margin="77,602,0,0" VerticalAlignment="Top" Width="64" Click="Left_Arrow_Click"/>
-        <Button x:Name="Right_Arrow" Content="⮞" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="215,602,0,0" VerticalAlignment="Top" Width="64" Click="Right_Arrow_Click"/>
+        <Button x:Name="Up_Arrow" Content="⮝" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,540,0,0" VerticalAlignment="Top" Width="64" Click="Up_Arrow_Click"/>
+        <Button x:Name="Down_Arrow"  Content="⮟" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="146,593,0,0" VerticalAlignment="Top" Width="64" Click="Down_Arrow_Click"/>
+        <Button x:Name="Left_Arrow" Content="⮜" FontSize="40"  HorizontalAlignment="Left" Height="48" Margin="77,593,0,0" VerticalAlignment="Top" Width="64" Click="Left_Arrow_Click"/>
+        <Button x:Name="Right_Arrow" Content="⮞" FontSize="40" HorizontalAlignment="Left" Height="48" Margin="215,593,0,0" VerticalAlignment="Top" Width="64" Click="Right_Arrow_Click"/>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="199" Margin="21,314,0,0" Stroke="Black" VerticalAlignment="Top" Width="313"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="195" Margin="23,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="308"/>
         <CheckBox x:Name="Checkbox4" IsEnabled="False" Opacity="0" Content="" HorizontalAlignment="Left" Height="31" Margin="26,443,0,0" VerticalAlignment="Top" Width="308"/>
