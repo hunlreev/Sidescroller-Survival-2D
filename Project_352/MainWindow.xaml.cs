@@ -1,5 +1,5 @@
 ﻿/* Name: Hunter Reeves, Billy Gibson
- * Date: 12/02/2019
+ * Date: 11/25/2019
  * File: MainWindow.xaml.cs
  * Description: Main window for the game!
  */
@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Project_352
 {
@@ -48,6 +49,7 @@ namespace Project_352
                           "You start off a confused adventure in the middle of a field. " +
                           "Choose your pathway and go forth to the castle to discover yourself and the role you play in these trying times. " +
                           "\n\nBegin your adventure now!";
+            dialog.Text += "\n\n";
         }
         // Shows information to the user of their player
         private void ShowPlayerInfo(object sender, EventArgs e)
@@ -73,7 +75,7 @@ namespace Project_352
                     Player_Class = "🛡";
                     H4.Content = "🛡";
                     Player_Color = new SolidColorBrush(Colors.Red);
-    }
+                }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
@@ -114,7 +116,8 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _rogue.attr.endurance;
                 intelligence.Content = "Intelligence: " + _rogue.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _rogue.attr.dexterity;
-                if (Player_Movement == 0) {
+                if (Player_Movement == 0)
+                {
                     Player_Class = "🗡";
                     H4.Content = "🗡";
                     Player_Color = new SolidColorBrush(Colors.Blue);
@@ -230,7 +233,7 @@ namespace Project_352
                 }
             }
         }
-        // For killing a rat
+        // For rat
         private void KillRat(object sender, EventArgs e)
         {
             // For the Warrior
@@ -242,7 +245,7 @@ namespace Project_352
                 _warrior.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n\n";
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
@@ -253,7 +256,7 @@ namespace Project_352
                 _mage.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n\n";
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
@@ -264,7 +267,7 @@ namespace Project_352
                 _rogue.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n\n";
             }
         }
         // For killing a goblin
@@ -281,7 +284,7 @@ namespace Project_352
                     _warrior.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
                 }
             }
             // For the Mage
@@ -295,7 +298,7 @@ namespace Project_352
                     _mage.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
                 }
             }
             // For the Rogue
@@ -309,7 +312,7 @@ namespace Project_352
                     _rogue.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
                 }
             }
         }
@@ -327,7 +330,7 @@ namespace Project_352
                     _warrior.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
                 }
             }
             // For the Mage
@@ -341,7 +344,7 @@ namespace Project_352
                     _mage.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
                 }
             }
             // For the Rogue
@@ -355,7 +358,7 @@ namespace Project_352
                     _rogue.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
                 }
             }
         }
@@ -365,15 +368,13 @@ namespace Project_352
             Close();
         }
 
-        // for the potential classes
         private Warrior _warrior;
         private Mage _mage;
         private Rogue _rogue;
-        // for the potential enemies
         private Rat rat;
         private Goblin goblin;
-        private Ogre ogre; 
-        private Random rand = new Random(); // Handle random aspects of the game (the RNG)
+        private Ogre ogre;
+        private Random rand = new Random();
 
         private int Player_Position = 39;//Player Map Details
         private int Player_Movement = 0;//Total Movements made by the Player
@@ -391,15 +392,24 @@ namespace Project_352
         private Color Temp_Color;//To hold place and to convert from string to color
         private SolidColorBrush Next_Color;//Placeholder for the next spot's color. To be placed in previous after movement
 
-        // accounts for damage each enemy might do (if they appear)
         private double ratDamage;
         private double goblinDamage;
         private double ogreDamage;
 
         private bool Fighting = false;//Variable to monitor if in battle or not
 
+        //Questing Variables
+        private bool MetKingFirst = false;// Wake up in the field. Go find the King in the castle to your west. Gives Quest to find the 3 powers of the world
+        private bool MetKingSecond = false;// Aquired the 3 powers of the world
+        private bool Kraken = false;// Receive the Kraken Egg from the island
+        private bool BearClaw = false;// Fight the Bears for the royal claw
+        private bool Blessing = false;// Receive the Emperor Penguins Blessing
+        private bool MeteorPower = false;// After meeting the king the second time with the three powers retrieve the Celestial power of the Meteor to get through the poison to fight the dragon 
+        private bool Dragon = false;
+
         public void Up_Arrow_Click(object sender, RoutedEventArgs e)
         {
+            // dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position % 8 > 0 && Player_Position < 256)
             {
                 if (Fighting == false)
@@ -493,13 +503,25 @@ namespace Project_352
                 else
                 {
                     dialog.ScrollToEnd();
-                    dialog.Text += "You can't move north, you are in a battle!\n";
+                    dialog.Text += "You can't move north because you are in combat!\n";
                 }
             }
+            if (Player_Position == 0 && Kraken == false)
+            {
+                dialog.Text += "You have obtained the Mighty Kraken's Egg!";
+                Checkbox1.IsChecked = true;
+            }//For Kraken Egg
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true;
+            }//For Bear Claw
         }
 
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
         {
+            // dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position % 8 + 1 != 8 && Player_Position < 256)
             {
                 if (Fighting == false)
@@ -593,14 +615,56 @@ namespace Project_352
                 else
                 {
                     dialog.ScrollToEnd();
-                    dialog.Text += "You can't move south, you are in a battle!\n";
+                    dialog.Text += "You can't move south because you are in combat!\n";
                 }
             }
+            if (Player_Position == 7)
+            {
+                if (MetKingFirst == false)
+                {
+                    dialog.Text += "\nKing: Welcome young traveler, It seems you are not from this world.\n" +
+                        "King: Alas, I wish we could greet you better but our world is in grave turmoil.\n" +
+                        "King: There be a dragon to the East over the mountains, she is a Fiery Best of Great Magnitude.\n" +
+                        "King: If only we had a hero of legends to save us all. \n\nKing: WHAT!\nKing: You will try to be this world's savior?!\n" +
+                        "King: Bless your soul, young Adventurer. Go see the court Wizard with how to defeat such a beast, he might know.\n\n\n\n\n" +
+                        "Wizard: I see the king wasn't pulling my big toe.\nWizard: You truly are a man of great bravery to be going up against the mighty Fire Breather " +
+                        "of the Eastern Mountains.\nWizard: Or you are a complete idiot and will surely die....\n Wizard: Alas, I've been ordered to give you knowledge" +
+                        " of how to defeat such a might beast.\nWizard: First you must travel to the north and retrieve the Kraken's Egg. It lies on the island guarded " +
+                        "by the tentacruel monster. If you come to the island from the south side you can avoid the monster.\n" +
+                        "Wizard: Next retrieve the Might Bear Claw from the caves north east of here. Be Weary those bears are strong." +
+                        "Wizard: Finally retrieve the Emperor Penguins' might blessing from the icy mountains of the west." +
+                        "Wizard: Now go forth adventurer and try not to die as fast as the others that have come before you";
+                    MetKingFirst = true;
+                    Checkbox1.Content = "Retrieve the Kraken's Egg";
+                    Checkbox1.Opacity = 100;
+                    Checkbox2.Content = "Fight the Mighty Bears for one of their Claw's";
+                    Checkbox2.Opacity = 100;
+                    Checkbox3.Content = "Achieve the Mythical Penguin's Blessing";
+                    Checkbox3.Opacity = 100;
+
+                }
+            }//Meeting the king
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true;
+            }//For Bear Claw
+            if (Player_Position == 231 && Blessing == false)
+            {
+                dialog.Text += "\nEmperor Penguin: I have seen you coming from far away young lad. I admire your bravery and resilience in " +
+                    "in these trying times.Here is my blessing.";
+                Checkbox3.IsChecked = true;
+                Blessing = true;
+            }//For Penguin Blessing
+
+
         }
 
         private void Left_Arrow_Click(object sender, RoutedEventArgs e)
         {
-            if (Player_Position-8 > -1)
+            //dialog.Text += Player_Position; // For Debugging and story lineup
+            if (Player_Position - 8 > -1)
             {
                 if (Fighting == false)
                 {
@@ -693,14 +757,59 @@ namespace Project_352
                 else
                 {
                     dialog.ScrollToEnd();
-                    dialog.Text += "You can't move west, you are in a battle!\n";
+                    dialog.Text += "You can't move west because you are in combat!\n";
                 }
             }
+            if (Player_Position == 7)
+            {
+                if (MetKingFirst == false)
+                {
+                    dialog.Text += "\nKing: Welcome young traveler, It seems you are not from this world.\n" +
+                        "King: Alas, I wish we could greet you better but our world is in grave turmoil.\n" +
+                        "King: There be a dragon to the East over the mountains, she is a Fiery Best of Great Magnitude.\n" +
+                        "King: If only we had a hero of legends to save us all. \n\nKing: WHAT!\nKing: You will try to be this world's savior?!\n" +
+                        "King: Bless your soul, young Adventurer. Go see the court Wizard with how to defeat such a beast, he might know.\n\n\n\n\n" +
+                        "Wizard: I see the king wasn't pulling my big toe.\nWizard: You truly are a man of great bravery to be going up against the mighty Fire Breather " +
+                        "of the Eastern Mountains.\nWizard: Or you are a complete idiot and will surely die....\n Wizard: Alas, I've been ordered to give you knowledge" +
+                        " of how to defeat such a might beast.\nWizard: First you must travel to the north and retrieve the Kraken's Egg. It lies on the island guarded " +
+                        "by the tentacruel monster. If you come to the island from the south side you can avoid the monster.\n" +
+                        "Wizard: Next retrieve the Might Bear Claw from the caves north east of here. Be Weary those bears are strong." +
+                        "Wizard: Finally retrieve the Emperor Penguins' might blessing from the icy mountains of the west." +
+                        "Wizard: Now go forth adventurer and try not to die as fast as the others that have come before you";
+                    MetKingFirst = true;
+                    Checkbox1.Content = "Retrieve the Kraken's Egg";
+                    Checkbox1.Opacity = 100;
+                    Checkbox2.Content = "Fight the Mighty Bears for one of their Claw's";
+                    Checkbox2.Opacity = 100;
+                    Checkbox3.Content = "Achieve the Mythical Penguin's Blessing";
+                    Checkbox3.Opacity = 100;
+
+                }
+            }//Meeting the king
+            if (Player_Position == 0 && Kraken == false)
+            {
+                dialog.Text += "You have obtained the Mighty Kraken's Egg!";
+                Checkbox1.IsChecked = true;
+            }//For Kraken Egg
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true;
+            }//For Bear Claw
+            if (Player_Position == 231 && Blessing == false)
+            {
+                dialog.Text += "\nEmperor Penguin: I have seen you coming from far away young lad. I admire your bravery and resilience in " +
+                    "in these trying times.Here is my blessing.";
+                Checkbox3.IsChecked = true;
+                Blessing = true;
+            }//For Penguin Blessing
         }
 
         private void Right_Arrow_Click(object sender, RoutedEventArgs e)
         {
-            if (Player_Position + 8 <256)
+            //dialog.Text += Player_Position; // For Debugging and story lineup
+            if (Player_Position + 8 < 256)
             {
                 if (Fighting == false)
                 {
@@ -793,15 +902,28 @@ namespace Project_352
                 else
                 {
                     dialog.ScrollToEnd();
-                    dialog.Text += "You can't move east, you are in a battle!\n";
+                    dialog.Text += "You can't move east because you are in combat!\n";
                 }
             }
+            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                BearClaw = true;
+                Checkbox2.IsChecked = true;
+            }//For Bear Claw
+            if (Player_Position == 231 && Blessing == false)
+            {
+                dialog.Text += "\nEmperor Penguin: I have seen you coming from far away young lad. I admire your bravery and resilience in " +
+                    "in these trying times.Here is my blessing.";
+                Checkbox3.IsChecked = true;
+                Blessing = true;
+            }//For Penguin Blessing
         }
 
         private void NewEnemy(object sender, RoutedEventArgs e)
         {
             // Enemy has 25% chance of appearing on any tile
-            int chance = rand.Next(1, 4);
+            int chance = rand.Next(1, 4); 
 
             // For the Warrior
             if (_mage == null && _rogue == null)
@@ -812,7 +934,7 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -822,14 +944,14 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -839,21 +961,21 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 3)
                     {
                         ogre = new Ogre();
                         Fighting = true;
-                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += ogre.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -867,7 +989,7 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -877,14 +999,14 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -894,21 +1016,21 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 3)
                     {
                         ogre = new Ogre();
                         Fighting = true;
-                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += ogre.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -922,7 +1044,7 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -932,14 +1054,14 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -949,21 +1071,21 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 3)
                     {
                         ogre = new Ogre();
                         Fighting = true;
-                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += ogre.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -975,6 +1097,8 @@ namespace Project_352
         // Handles player attack depending on class and enemy that appears
         private void Player_Attack(object sender, RoutedEventArgs e)
         {
+            dialog.ScrollToEnd();
+
             if (rat == null && goblin == null && ogre == null)
             {
                 dialog.Text += "There is nothing to attack.\n";

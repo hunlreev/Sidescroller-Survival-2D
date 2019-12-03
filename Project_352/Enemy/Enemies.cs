@@ -26,11 +26,11 @@ namespace Project_352
         }
         public int Exp()
         {
-            return rand.Next(25, 50);
+            return rand.Next(50, 100);
         }
         public int Gold()
         {
-            return rand.Next(5, 10);
+            return rand.Next(20, 30);
         }
         public string AppearedMessage()
         {
@@ -64,11 +64,11 @@ namespace Project_352
         }
         public int Exp()
         {
-            return rand.Next(50, 100);
+            return rand.Next(125, 250);
         }
         public int Gold()
         {
-            return rand.Next(10, 15);
+            return rand.Next(25, 50);
         }
         public string AppearedMessage()
         {
@@ -98,15 +98,15 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(15, 20);
+            return rand.Next(10, 15);
         }
         public int Exp()
         {
-            return rand.Next(125, 250);
+            return rand.Next(250, 500);
         }
         public int Gold()
         {
-            return rand.Next(20, 30);
+            return rand.Next(50, 500);
         }
         public string AppearedMessage()
         {
@@ -144,7 +144,7 @@ namespace Project_352
         }
         public int Gold()
         {
-            return rand.Next(250, 500);
+            return rand.Next(1000, 10000);
         }
         public string AppearedMessage()
         {
@@ -159,7 +159,7 @@ namespace Project_352
             return "You killed the dragon!\n";
         }
 
-        // Icon for the Ogre
+        // Icon for the Dragon
         string icon = "🐉";
         public E_Stats stats;
         public Random rand = new Random();
