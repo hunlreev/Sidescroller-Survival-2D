@@ -48,7 +48,9 @@ namespace Project_352
             Warrior warrior = create.Warrior(_name, _class);
             this.warrior = warrior;
             Warrior_Icon.Foreground = Brushes.Red;
-            
+            Mage_Icon.Foreground = Brushes.Black;
+            Rogue_Icon.Foreground = Brushes.Black;
+
         }
         private void SelectMage(object sender, RoutedEventArgs e)
         {
@@ -56,7 +58,9 @@ namespace Project_352
             _class = "Mage";
             Mage mage = create.Mage(_name, _class);
             this.mage = mage;
+            Warrior_Icon.Foreground = Brushes.Black;
             Mage_Icon.Foreground = Brushes.Purple;
+            Rogue_Icon.Foreground = Brushes.Black;
         }
         private void SelectRogue(object sender, RoutedEventArgs e)
         {
@@ -64,6 +68,8 @@ namespace Project_352
             _class = "Rogue";
             Rogue rogue = create.Rogue(_name, _class);
             this.rogue = rogue;
+            Warrior_Icon.Foreground = Brushes.Black;
+            Mage_Icon.Foreground = Brushes.Black;
             Rogue_Icon.Foreground = Brushes.Blue;
         }
 
