@@ -38,6 +38,7 @@ namespace Project_352
             _mage = m;
             _rogue = r;
 
+
             // Check to see if player is a mage
             if (_warrior == null && _rogue == null)
             {
@@ -48,6 +49,7 @@ namespace Project_352
             dialog.Text = "Welcome to Text Adventure RPG, Player. " +
                           "You start off a confused adventure in the middle of a field. " +
                           "Choose your pathway and go forth to the castle to discover yourself and the role you play in these trying times. " +
+                          "Click an arrow to begin your adventure in the cornfields!"+
                           "\n\nBegin your adventure now!";
         }
         // Shows information to the user of their player
