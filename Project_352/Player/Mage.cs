@@ -15,7 +15,7 @@ namespace Project_352
 {
     public class Mage
     {
-        // Create a Mage
+        // Create a Mage, weakest class
         public Mage(string name, string classification)
         {
             this.name = name;
@@ -24,21 +24,25 @@ namespace Project_352
             info.gold = 0;
             info.exp = 0;
             info.totalExp = 50;
-            stats.health = 110;
-            stats.totalHealth = 110;
-            stats.mana = 120;
-            stats.totalMana = 120;
-            stats.stamina = 70;
-            stats.totalStamina = 70;
+            stats.health = 100;
+            stats.totalHealth = 100;
+            stats.mana = 100;
+            stats.totalMana = 100;
+            stats.stamina = 100;
+            stats.totalStamina = 100;
             attr.strength = 6;
             attr.endurance = 8;
             attr.intelligence = 14;
             attr.dexterity = 12;
         }
         // Base damage the player does, accounts for strength stat and weapon damage
-        public new double DoDamage()
+        public double DoDamage()
         {
-            return 0.25 * attr.intelligence;
+            return 0.5 * (attr.strength + (attr.intelligence * 0.25));
+        }
+        public double Flames()
+        {
+            return DoDamage() + 6;
         }
 
         public string name;

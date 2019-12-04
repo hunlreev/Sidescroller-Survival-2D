@@ -36,7 +36,7 @@ namespace Project_352
         private void CreateCharacter(object sender, RoutedEventArgs e)
         {
             // Passes all possible class choices to main window
-            MainWindow main = new MainWindow(_warrior);
+            MainWindow main = new MainWindow(warrior, mage, rogue);
             main.Show();
             Close();
         }
@@ -46,28 +46,38 @@ namespace Project_352
             _name = GetName.Text;
             _class = "Warrior";
             Warrior warrior = create.Warrior(_name, _class);
-            _warrior = warrior;
+            this.warrior = warrior;
+            Warrior_Icon.Foreground = Brushes.Red;
+            Mage_Icon.Foreground = Brushes.Black;
+            Rogue_Icon.Foreground = Brushes.Black;
+
         }
         private void SelectMage(object sender, RoutedEventArgs e)
         {
             _name = GetName.Text;
             _class = "Mage";
             Mage mage = create.Mage(_name, _class);
-            _mage = mage;
+            this.mage = mage;
+            Warrior_Icon.Foreground = Brushes.Black;
+            Mage_Icon.Foreground = Brushes.Purple;
+            Rogue_Icon.Foreground = Brushes.Black;
         }
         private void SelectRogue(object sender, RoutedEventArgs e)
         {
             _name = GetName.Text;
             _class = "Rogue";
             Rogue rogue = create.Rogue(_name, _class);
-            _rogue = rogue;
+            this.rogue = rogue;
+            Warrior_Icon.Foreground = Brushes.Black;
+            Mage_Icon.Foreground = Brushes.Black;
+            Rogue_Icon.Foreground = Brushes.Blue;
         }
 
         private string _name;
         private string _class;
-        private Warrior _warrior;
-        private Mage _mage;
-        private Rogue _rogue;
+        public Warrior warrior;
+        public Mage mage;
+        public Rogue rogue;
         private PlayerCreation create = new PlayerCreation();
     }
 }

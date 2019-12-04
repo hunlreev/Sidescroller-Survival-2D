@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Enemy\Enemies.cs" />
+    <Compile Include="Enemy\EnemyStats.cs" />
     <Compile Include="Functionality\PlayerCreation.cs" />
     <Compile Include="Player\Mage.cs" />
     <Compile Include="Player\Rogue.cs" />
@@ -120,6 +122,10 @@
   <ItemGroup>
     <Resource Include="skybox.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="mage_logo.png" />
+    <Resource Include="rogue_logo.png" />
+    <Resource Include="warrior_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
