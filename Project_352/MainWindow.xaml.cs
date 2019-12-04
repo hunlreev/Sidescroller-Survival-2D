@@ -2205,12 +2205,17 @@ namespace Project_352
                 {
                     dialog.Text += "Now's not the time to rest!\n";
                 }
-                else if (_warrior.stats.stamina + 10 <= _warrior.stats.totalStamina)
+                else if (_warrior.stats.stamina + 100 <= _warrior.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
                     _warrior.stats.stamina += 100;
-                    _warrior.stats.mana += 20;
                     stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                }
+                else if (_warrior.stats.stamina + 20 <= _warrior.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some mana by resting.\n";
+                    _warrior.stats.mana += 20;
+                    mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
                 }
                 else
                 {
@@ -2220,12 +2225,17 @@ namespace Project_352
             // For mage
             if (_warrior == null && _rogue == null)
             {
-                if (_mage.stats.stamina + 10 <= _mage.stats.totalStamina)
+                if (_mage.stats.stamina + 100 <= _mage.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
                     _mage.stats.stamina += 100;
-                    _warrior.stats.mana += 50;
                     stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
+                }
+                else if (_mage.stats.stamina + 50 <= _mage.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some mana by resting.\n";
+                    _mage.stats.mana += 50;
+                    mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
                 }
                 else
                 {
@@ -2235,12 +2245,17 @@ namespace Project_352
             // For rogue
             if (_warrior == null && _mage == null)
             {
-                if (_rogue.stats.stamina + 10 <= _rogue.stats.totalStamina)
+                if (_rogue.stats.stamina + 100 <= _rogue.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
                     _rogue.stats.stamina += 100;
-                    _warrior.stats.mana += 20;
                     stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
+                }
+                else if (_rogue.stats.stamina + 20 <= _rogue.stats.totalStamina)
+                {
+                    dialog.Text += "You regained some mana by resting.\n";
+                    _rogue.stats.mana += 50;
+                    mana.Content = "Mana: " + _rogue.stats.mana + "/" + _rogue.stats.totalMana;
                 }
                 else
                 {
