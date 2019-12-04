@@ -46,7 +46,7 @@ namespace Project_352
         }
 
         // Icon for the Rat
-        string icon = "🐀";
+
         public E_Stats stats;
         public Random rand = new Random();
     }
@@ -84,7 +84,6 @@ namespace Project_352
         }
 
         // Icon for the Goblin
-        string icon = "👺";
         public E_Stats stats;
         public Random rand = new Random();
     }
@@ -122,7 +121,6 @@ namespace Project_352
         }
 
         // Icon for the Ogre
-        string icon = "👹";
         public E_Stats stats;
         public Random rand = new Random();
     }
@@ -208,7 +206,7 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(20, 35);
+            return rand.Next(5, 25);
         }
         public int Exp()
         {
@@ -232,7 +230,6 @@ namespace Project_352
         }
 
         // Icon for the Ogre
-        string icon = "🐉";
         public E_Stats stats;
         public Random rand = new Random();
     }

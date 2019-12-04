@@ -127,5 +127,11 @@
     <Resource Include="rogue_logo.png" />
     <Resource Include="warrior_logo.png" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Sounds\Fireball_Sound.wav" />
+    <Content Include="Sounds\Mage_Wack_Sound.wav" />
+    <Content Include="Sounds\Sword_Sound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

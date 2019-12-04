@@ -38,7 +38,7 @@ namespace Project_352
         // Base damage the player does, accounts for strength stat and weapon damage
         public double DoDamage()
         {
-            return 0.30 * (attr.strength + (attr.endurance * 0.25));
+            return 0.30 * (attr.strength + (attr.endurance * 0.4));
         }
 
         public string name;

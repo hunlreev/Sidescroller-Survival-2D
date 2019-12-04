@@ -47,7 +47,7 @@
         <Label x:Name="intelligence" Content="Intelligence: " HorizontalAlignment="Left" Margin="953,479,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
         <Label x:Name="dexterity" Content="Dexterity: " HorizontalAlignment="Left" Margin="953,505,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.856,0.577"/>
         <!--Test Text Area-->
-        <TextBox x:Name="dialog" MaxHeight="300" TextWrapping="Wrap" Text="" Margin="378,312,380,20" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="dialog" MaxHeight="300" TextWrapping="Wrap" Text="" Margin="378,312,380,20" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" />
         <Button x:Name="Attack" Content="Attack" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="77,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Attack"/>
         <Button x:Name="Rest"  Content="Rest" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="146,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Rest"/>
         <Button x:Name="Run"  Content="Run" FontSize="12" HorizontalAlignment="Left" Height="21" Margin="215,646,0,0" VerticalAlignment="Top" Width="64" Click="Player_Run"/>
