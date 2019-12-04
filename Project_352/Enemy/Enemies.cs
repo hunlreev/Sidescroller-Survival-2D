@@ -126,6 +126,78 @@ namespace Project_352
         public E_Stats stats;
         public Random rand = new Random();
     }
+    //Kraken Class, similar to the same as goblin
+    public class Kraken
+    {
+        public Kraken()
+        {
+            stats.health = 100;
+            stats.totalHealth = 100;
+        }
+        public double DoDamage()
+        {
+            return rand.Next(0, 20);
+        }
+        public int Exp()
+        {
+            return rand.Next(100, 250);
+        }
+        public int Gold()
+        {
+            return rand.Next(100, 150);
+        }
+        public string AppearedMessage()
+        {
+            return "The Mighty Kraken has appeared!\n";
+        }
+        public string DamageMessage()
+        {
+            return "Kraken did " + DoDamage() + " damage.\n";
+        }
+        public string DeathMessage()
+        {
+            return "You killed the Kraken!\n";
+        }
+
+        public E_Stats stats;
+        public Random rand = new Random();
+    }
+    //Bear in between Goblin and Rat
+    public class Bear
+    {
+        public Bear()
+        {
+            stats.health = 25;
+            stats.totalHealth = 25;
+        }
+        public double DoDamage()
+        {
+            return rand.Next(2, 5);
+        }
+        public int Exp()
+        {
+            return rand.Next(25, 50);
+        }
+        public int Gold()
+        {
+            return rand.Next(5, 10);
+        }
+        public string AppearedMessage()
+        {
+            return "The strong Bear has appeared!\n";
+        }
+        public string DamageMessage()
+        {
+            return "The Bear did " + DoDamage() + " damage.\n";
+        }
+        public string DeathMessage()
+        {
+            return "\nYou killed the strong Bear!\n";
+        }
+
+        public E_Stats stats;
+        public Random rand = new Random();
+    }
     // Dragon class, the final boss
     public class Dragon
     {
@@ -136,7 +208,7 @@ namespace Project_352
         }
         public double DoDamage()
         {
-            return rand.Next(25, 35);
+            return rand.Next(20, 35);
         }
         public int Exp()
         {

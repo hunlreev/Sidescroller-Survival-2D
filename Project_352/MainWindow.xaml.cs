@@ -29,7 +29,6 @@ namespace Project_352
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Initializing the game window
         public MainWindow(Warrior w, Mage m, Rogue r)
         {
             InitializeComponent();
@@ -38,20 +37,19 @@ namespace Project_352
             _mage = m;
             _rogue = r;
 
-            // Check to see if player is a mage
             if (_warrior == null && _rogue == null)
             {
                 Flames.IsEnabled = true;
-            }
+            }// Check to see if player is a mage
 
             // Start up message
             dialog.Text = "Welcome to Text Adventure RPG, Player. " +
                           "You start off a confused adventure in the middle of a field. " +
                           "Choose your pathway and go forth to the castle to discover yourself and the role you play in these trying times. " +
+                          "Click an arrow to begin your adventure in the cornfields!"+
                           "\n\nBegin your adventure now!";
-            dialog.Text += "\n\n";
-        }
-        // Shows information to the user of their player
+        }       // Initializing the game window
+
         private void ShowPlayerInfo(object sender, EventArgs e)
         {
             // For the Warrior
@@ -75,7 +73,7 @@ namespace Project_352
                     Player_Class = "🛡";
                     H4.Content = "🛡";
                     Player_Color = new SolidColorBrush(Colors.Red);
-                }
+    }
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
@@ -116,15 +114,13 @@ namespace Project_352
                 endurance.Content = "Endurance: " + _rogue.attr.endurance;
                 intelligence.Content = "Intelligence: " + _rogue.attr.intelligence;
                 dexterity.Content = "Dexterity: " + _rogue.attr.dexterity;
-                if (Player_Movement == 0)
-                {
+                if (Player_Movement == 0) {
                     Player_Class = "🗡";
                     H4.Content = "🗡";
                     Player_Color = new SolidColorBrush(Colors.Blue);
                 }
             }
-        }
-        // Levels System for the Player (subject to be tweaked in the future)
+        }        // Shows information to the user of their player
         private void LevelUp(object sender, EventArgs e)
         {
             // For the Warrior
@@ -137,13 +133,13 @@ namespace Project_352
                     {
                         _warrior.info.level += 1;
                         _warrior.info.exp = 0;
-                        _warrior.info.totalExp = (int)Math.Pow(_warrior.info.totalExp, 1.038);
-                        _warrior.stats.health += (int)(_warrior.attr.endurance * 0.5);
-                        _warrior.stats.totalHealth += (int)(_warrior.attr.endurance * 0.5);
-                        _warrior.stats.stamina += (int)(_warrior.attr.dexterity * 0.5);
-                        _warrior.stats.totalStamina += (int)(_warrior.attr.dexterity * 0.5);
-                        _warrior.stats.mana += (int)(_warrior.attr.intelligence * 0.5);
-                        _warrior.stats.totalMana += (int)(_warrior.attr.intelligence * 0.5);
+                        _warrior.info.totalExp = (int)Math.Pow(_warrior.info.totalExp, 1.035);
+                        _warrior.stats.health += 10;
+                        _warrior.stats.totalHealth += 10;
+                        _warrior.stats.stamina += 5;
+                        _warrior.stats.totalStamina += 5;
+                        _warrior.stats.mana += 5;
+                        _warrior.stats.totalMana += 5;
                         _warrior.attr.strength += 3;
                         _warrior.attr.endurance += 2;
                         _warrior.attr.dexterity += 1;
@@ -173,12 +169,12 @@ namespace Project_352
                         _mage.info.level += 1;
                         _mage.info.exp = 0;
                         _mage.info.totalExp = (int)Math.Pow(_mage.info.totalExp, 1.035);
-                        _mage.stats.health += (int)(_mage.attr.endurance * 0.5);
-                        _mage.stats.totalHealth += (int)(_mage.attr.endurance * 0.5);
-                        _mage.stats.stamina += (int)(_mage.attr.dexterity * 0.5);
-                        _mage.stats.totalStamina += (int)(_mage.attr.dexterity * 0.5);
-                        _mage.stats.mana += (int)(_mage.attr.intelligence * 0.5);
-                        _mage.stats.totalMana += (int)(_mage.attr.intelligence * 0.5);
+                        _mage.stats.health += 5;
+                        _mage.stats.totalHealth += 5;
+                        _mage.stats.stamina += 5;
+                        _mage.stats.totalStamina += 5;
+                        _mage.stats.mana += 10;
+                        _mage.stats.totalMana += 10;
                         _mage.attr.strength += 2;
                         _mage.attr.endurance += 1;
                         _mage.attr.dexterity += 1;
@@ -207,13 +203,13 @@ namespace Project_352
                     {
                         _rogue.info.level += 1;
                         _rogue.info.exp = 0;
-                        _rogue.info.totalExp = (int)Math.Pow(_rogue.info.totalExp, 1.0369);
-                        _rogue.stats.health += (int)(_rogue.attr.endurance * 0.5);
-                        _rogue.stats.totalHealth += (int)(_rogue.attr.endurance * 0.5);
-                        _rogue.stats.stamina += (int)(_rogue.attr.dexterity * 0.5);
-                        _rogue.stats.totalStamina += (int)(_rogue.attr.dexterity * 0.5);
-                        _rogue.stats.mana += (int)(_rogue.attr.intelligence * 0.5);
-                        _rogue.stats.totalMana += (int)(_rogue.attr.intelligence * 0.5);
+                        _rogue.info.totalExp = (int)Math.Pow(_rogue.info.totalExp, 1.035);
+                        _rogue.stats.health += 5;
+                        _rogue.stats.totalHealth += 5;
+                        _rogue.stats.stamina += 10;
+                        _rogue.stats.totalStamina += 10;
+                        _rogue.stats.mana += 5;
+                        _rogue.stats.totalMana += 5;
                         _rogue.attr.strength += 2;
                         _rogue.attr.endurance += 1;
                         _rogue.attr.dexterity += 3;
@@ -232,8 +228,7 @@ namespace Project_352
                     }
                 }
             }
-        }
-        // For rat
+        }        // Levels System for the Player (subject to be tweaked in the future)
         private void KillRat(object sender, EventArgs e)
         {
             // For the Warrior
@@ -245,7 +240,7 @@ namespace Project_352
                 _warrior.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Mage
             if (_warrior == null && _rogue == null)
@@ -256,7 +251,7 @@ namespace Project_352
                 _mage.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
             // For the Rogue
             if (_warrior == null && _mage == null)
@@ -267,10 +262,9 @@ namespace Project_352
                 _rogue.info.gold += gold;
                 LevelUp(sender, e);
                 ShowPlayerInfo(sender, e);
-                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n\n";
+                dialog.Text += "You received " + experience + " exp and " + gold + " gold!\n";
             }
-        }
-        // For killing a goblin
+        }        // For debugging/testing player level up on exp gain
         private void KillGoblin(object sender, EventArgs e)
         {
             // For the Warrior
@@ -284,7 +278,7 @@ namespace Project_352
                     _warrior.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Mage
@@ -298,7 +292,7 @@ namespace Project_352
                     _mage.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Rogue
@@ -312,11 +306,10 @@ namespace Project_352
                     _rogue.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
-        }
-        // For killing an ogre
+        }        // For killing a goblin, not finished
         private void KillOgre(object sender, EventArgs e)
         {
             // For the Warrior
@@ -330,7 +323,7 @@ namespace Project_352
                     _warrior.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Mage
@@ -344,7 +337,7 @@ namespace Project_352
                     _mage.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
             // For the Rogue
@@ -358,58 +351,207 @@ namespace Project_352
                     _rogue.info.gold += gold;
                     LevelUp(sender, e);
                     ShowPlayerInfo(sender, e);
-                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n\n";
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
                 }
             }
-        }
-        // Press ESC to close the window
+        }        // For killing an ogre, not finished
+        private void KillKraken(object sender, EventArgs e)
+        {
+            // For the Warrior
+            if (_mage == null && _rogue == null)
+            {
+                if (_warrior.info.level >= 10)
+                {
+                    int experience = kraken.Exp();
+                    int gold = kraken.Gold();
+                    _warrior.info.exp += experience;
+                    _warrior.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+            // For the Mage
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.info.level >= 10)
+                {
+                    int experience = kraken.Exp();
+                    int gold = kraken.Gold();
+                    _mage.info.exp += experience;
+                    _mage.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+            // For the Rogue
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.info.level >= 10)
+                {
+                    int experience = kraken.Exp();
+                    int gold = kraken.Gold();
+                    _rogue.info.exp += experience;
+                    _rogue.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+        }        //For killing a Kraken
+        private void Killbear(object sender, EventArgs e)
+        {
+            // For the Warrior
+            if (_mage == null && _rogue == null)
+            {
+                if (_warrior.info.level >= 10)
+                {
+                    int experience = bear.Exp();
+                    int gold = bear.Gold();
+                    _warrior.info.exp += experience;
+                    _warrior.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+            // For the Mage
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.info.level >= 10)
+                {
+                    int experience = bear.Exp();
+                    int gold = bear.Gold();
+                    _mage.info.exp += experience;
+                    _mage.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+            // For the Rogue
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.info.level >= 10)
+                {
+                    int experience = bear.Exp();
+                    int gold = bear.Gold();
+                    _rogue.info.exp += experience;
+                    _rogue.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+        }        //For killing a bear
+        private void Killdragon(object sender, EventArgs e)
+        {
+            // For the Warrior
+            if (_mage == null && _rogue == null)
+            {
+                if (_warrior.info.level >= 10)
+                {
+                    int experience = dragon.Exp();
+                    int gold = dragon.Gold();
+                    _warrior.info.exp += experience;
+                    _warrior.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+            // For the Mage
+            if (_warrior == null && _rogue == null)
+            {
+                if (_mage.info.level >= 10)
+                {
+                    int experience = dragon.Exp();
+                    int gold = dragon.Gold();
+                    _mage.info.exp += experience;
+                    _mage.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+            // For the Rogue
+            if (_warrior == null && _mage == null)
+            {
+                if (_rogue.info.level >= 10)
+                {
+                    int experience = dragon.Exp();
+                    int gold = dragon.Gold();
+                    _rogue.info.exp += experience;
+                    _rogue.info.gold += gold;
+                    LevelUp(sender, e);
+                    ShowPlayerInfo(sender, e);
+                    dialog.Text += "You recieved " + experience + " exp and " + gold + " gold!\n";
+                }
+            }
+        }        //For killing a dragon
+
         private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
         {
             Close();
-        }
-
+        }       // Press ESC to close the window
+        //====================================================================================
+        //Creates all of the players and enemies
         private Warrior _warrior;
         private Mage _mage;
         private Rogue _rogue;
         private Rat rat;
         private Goblin goblin;
         private Ogre ogre;
+        private Dragon dragon; 
+        private Bear bear;
+        private Kraken kraken;
         private Random rand = new Random();
+        //====================================================================================
+        private int Player_Position = 39;       //Player Map Details
+        private int Player_Movement = 0;        //Total Movements made by the Player
 
-        private int Player_Position = 39;//Player Map Details
-        private int Player_Movement = 0;//Total Movements made by the Player
+        private int Previous_Tile;      //Variable to monitor the Previous tile the player moved to
+        private int Next_Tile;      //Variable to monitor the next tile the player is trying to move to
 
-        private int Previous_Tile;//Variables for movement
-        private int Next_Tile;
-
-        private string Previous_Temp_Pos = "🌽";//Temporary Variables for movement
+        private string Previous_Temp_Pos = "🌽";     //Temporary Variables for movement
         private string Next_Temp_Pos;
 
-        private string Player_Class;//Variable to monitor Player's Class
-        private SolidColorBrush Player_Color;//Variable monitoring player's base color
+        private string Player_Class;        //Variable to monitor Player's Class
+        private SolidColorBrush Player_Color;       //Variable monitoring player's base color
 
-        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.Yellow);//Starting color of the spot
-        private Color Temp_Color;//To hold place and to convert from string to color
-        private SolidColorBrush Next_Color;//Placeholder for the next spot's color. To be placed in previous after movement
-
+        private SolidColorBrush Previous_Color = new SolidColorBrush(Colors.Yellow);        //Starting color of the spot
+        private Color Temp_Color;       //To hold place and to convert from string to color
+        private SolidColorBrush Next_Color;     //Placeholder for the next spot's color. To be placed in previous after movement
+        //====================================================================================
+        //Variables for Monitoring Damage amongst the monsters
         private double ratDamage;
         private double goblinDamage;
         private double ogreDamage;
+        private double krakenDamage;
+        private double bearDamage;
+        private double dragonDamage;
+        //====================================================================================
+        private bool Fighting = false;      //Variable to monitor if in battle or not
 
-        private bool Fighting = false;//Variable to monitor if in battle or not
-
+        //====================================================================================
         //Questing Variables
-        private bool MetKingFirst = false;// Wake up in the field. Go find the King in the castle to your west. Gives Quest to find the 3 powers of the world
-        private bool MetKingSecond = false;// Aquired the 3 powers of the world
-        private bool Kraken = false;// Receive the Kraken Egg from the island
-        private bool BearClaw = false;// Fight the Bears for the royal claw
-        private bool Blessing = false;// Receive the Emperor Penguins Blessing
-        private bool MeteorPower = false;// After meeting the king the second time with the three powers retrieve the Celestial power of the Meteor to get through the poison to fight the dragon 
-        private bool Dragon = false;
+        private bool MetKingFirst = false;      // Wake up in the field. Go find the King in the castle to your west. Gives Quest to find the 3 powers of the world
+        private bool MetKingSecond = false;     // Aquired the 3 powers of the world
+        private bool Kraken = false;        // Receive the Kraken Egg from the island
+        private bool KrakenFight = false;       //Fight the Kraken if not go to the island from the south
+        private bool BearClaw = false;      // Fight the Bears for the royal claw
+        private bool Blessing = false;      // Receive the Emperor Penguins Blessing
+        private bool MeteorPower = false;       // After meeting the king the second time with the three powers retrieve the Celestial power of the Meteor to get through the poison to fight the dragon 
+        private bool Dragon = false;        // To see when the fight with the dragon is over
+        private bool Postgame = false;      // To let the player roam free post dragon 
+        //====================================================================================
+
+
 
         public void Up_Arrow_Click(object sender, RoutedEventArgs e)
         {
-            // dialog.Text += Player_Position; // For Debugging and story lineup
+           // dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position % 8 > 0 && Player_Position < 256)
             {
                 if (Fighting == false)
@@ -500,28 +642,41 @@ namespace Project_352
                     }
                     NewEnemy(sender, e);
                 }
-                else
-                {
-                    dialog.ScrollToEnd();
-                    dialog.Text += "You can't move north because you are in combat!\n";
-                }
             }
             if (Player_Position == 0 && Kraken == false)
             {
                 dialog.Text += "You have obtained the Mighty Kraken's Egg!";
                 Checkbox1.IsChecked = true;
+                Kraken = true;
             }//For Kraken Egg
-            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            if ((Player_Position == 131 || Player_Position == 132) && BearClaw == false)
             {
-                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw.";
                 BearClaw = true;
-                Checkbox2.IsChecked = true;
+                Checkbox2.IsChecked = true; 
             }//For Bear Claw
-        }
+            if (Player_Position == 153 && MetKingSecond == true)
+            {
+                dialog.Text += "*The Gods Smile Down Upon You. You Receive Their Celestial Powers In Order To Slay The Dragon*";
+                MeteorPower = true;
+                Checkbox4.IsChecked = true;
+                Checkbox5.Content = "SLAY THE DRAGON";
+                Checkbox5.Opacity = 100;
+            }//Gain Celestial powers from the meteor
+            if (Player_Position == 233 && MeteorPower == true)//Fight The Dragon
+            {
+                dialog.Text += "*As you approach the dragon you feel the power of the gods flowing through you*";
+            }
+            if (Dragon == true && Postgame == false)
+            {
+                dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
+                Postgame = true;
+            }//For endgame messeage
+        }           //Moves Player and handles events
 
         private void Down_Arrow_Click(object sender, RoutedEventArgs e)
         {
-            // dialog.Text += Player_Position; // For Debugging and story lineup
+           // dialog.Text += Player_Position; // For Debugging and story lineup
             if (Player_Position % 8 + 1 != 8 && Player_Position < 256)
             {
                 if (Fighting == false)
@@ -612,15 +767,10 @@ namespace Project_352
                     }
                     NewEnemy(sender, e);
                 }
-                else
-                {
-                    dialog.ScrollToEnd();
-                    dialog.Text += "You can't move south because you are in combat!\n";
-                }
             }
-            if (Player_Position == 7)
+            if ( Player_Position == 7)
             {
-                if (MetKingFirst == false)
+                if( MetKingFirst == false)
                 {
                     dialog.Text += "\nKing: Welcome young traveler, It seems you are not from this world.\n" +
                         "King: Alas, I wish we could greet you better but our world is in grave turmoil.\n" +
@@ -643,10 +793,21 @@ namespace Project_352
                     Checkbox3.Opacity = 100;
 
                 }
-            }//Meeting the king
-            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+                if( Kraken == true && BearClaw == true && Blessing == true)
+                {
+                    dialog.Text += "\nKing: Welcome back young adventurer...What!" +
+                        "\nKing: You received all the items. Go see the court wizard now you great Hero!" +
+                        "\nWizard: Welcome back, I have been watching through the mystic pool." +
+                        "\nWizard: Since you have received the mystical items, go forth and go to the celestial crater." +
+                        "\nWizard: There you shall be blessed by the celestial gods and gain the power to kill the great Dragon.";
+                    MetKingSecond = true;
+                    Checkbox4.Content = "Obtain the Celestial Power from the Meteor Crater in the desert";
+                    Checkbox4.Opacity = 100;
+                }
+            }//Meeting the king 1 and 2
+            if ((Player_Position == 131 || Player_Position == 132) && BearClaw == false)
             {
-                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw.";
                 BearClaw = true;
                 Checkbox2.IsChecked = true;
             }//For Bear Claw
@@ -657,14 +818,19 @@ namespace Project_352
                 Checkbox3.IsChecked = true;
                 Blessing = true;
             }//For Penguin Blessing
+            if (Dragon == true && Postgame == false)
+            {
+                dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
+                Postgame = true;
+            }//For endgame messeage
 
 
-        }
+        }           //Moves Player and handles events
 
         private void Left_Arrow_Click(object sender, RoutedEventArgs e)
         {
             //dialog.Text += Player_Position; // For Debugging and story lineup
-            if (Player_Position - 8 > -1)
+            if (Player_Position-8 > -1)
             {
                 if (Fighting == false)
                 {
@@ -753,11 +919,6 @@ namespace Project_352
                         }
                     }
                     NewEnemy(sender, e);
-                }
-                else
-                {
-                    dialog.ScrollToEnd();
-                    dialog.Text += "You can't move west because you are in combat!\n";
                 }
             }
             if (Player_Position == 7)
@@ -785,15 +946,31 @@ namespace Project_352
                     Checkbox3.Opacity = 100;
 
                 }
-            }//Meeting the king
+                if (Kraken == true && BearClaw == true && Blessing == true)
+                {
+                    dialog.Text += "\nKing: Welcome back young adventurer...What!" +
+                        "\nKing: You received all the items. Go see the court wizard now you great Hero!" +
+                        "\nWizard: Welcome back, I have been watching through the mystic pool." +
+                        "\nWizard: Since you have received the mystical items, go forth and go to the celestial crater." +
+                        "\nWizard: There you shall be blessed by the celestial gods and gain the power to kill the great Dragon.";
+                    MetKingSecond = true;
+                    Checkbox4.Content = "Obtain the Celestial Power from the Meteor Crater in the desert";
+                    Checkbox4.Opacity = 100;
+                }
+            }//Meeting the king 1 and 2
             if (Player_Position == 0 && Kraken == false)
             {
                 dialog.Text += "You have obtained the Mighty Kraken's Egg!";
                 Checkbox1.IsChecked = true;
+                Kraken = true;
             }//For Kraken Egg
-            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            if (Player_Position == 8 && KrakenFight == false)
             {
-                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+
+            }//For the Kraken Fight Also in Left Arrow Click
+            if ((Player_Position == 131 || Player_Position == 132) && BearClaw == false)
+            {
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw.";
                 BearClaw = true;
                 Checkbox2.IsChecked = true;
             }//For Bear Claw
@@ -804,12 +981,25 @@ namespace Project_352
                 Checkbox3.IsChecked = true;
                 Blessing = true;
             }//For Penguin Blessing
-        }
+            if (Player_Position == 153 && MetKingSecond == true)
+            {
+                dialog.Text += "*The Gods Smile Down Upon You. You Receive Their Celestial Powers In Order To Slay The Dragon*";
+                MeteorPower = true;
+                Checkbox4.IsChecked = true;
+                Checkbox5.Content = "SLAY THE DRAGON";
+                Checkbox5.Opacity = 100;
+            }//Gain Celestial powers from the meteor
+            if (Dragon == true && Postgame == false)
+            {
+                dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
+                Postgame = true;
+            }//For endgame messeage
+        }           //Moves Player and handles events
 
         private void Right_Arrow_Click(object sender, RoutedEventArgs e)
         {
             //dialog.Text += Player_Position; // For Debugging and story lineup
-            if (Player_Position + 8 < 256)
+            if (Player_Position + 8 <256)
             {
                 if (Fighting == false)
                 {
@@ -899,15 +1089,10 @@ namespace Project_352
                     }
                     NewEnemy(sender, e);
                 }
-                else
-                {
-                    dialog.ScrollToEnd();
-                    dialog.Text += "You can't move east because you are in combat!\n";
-                }
             }
-            if (Player_Position == 131 || Player_Position == 132 && BearClaw == false)
+            if ((Player_Position == 131 || Player_Position == 132) && BearClaw == false)
             {
-                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw. The others coward in fear";
+                dialog.Text += "Congratulations you defeated the mighty Bear and obtained his claw.";
                 BearClaw = true;
                 Checkbox2.IsChecked = true;
             }//For Bear Claw
@@ -918,12 +1103,25 @@ namespace Project_352
                 Checkbox3.IsChecked = true;
                 Blessing = true;
             }//For Penguin Blessing
-        }
+            if (Player_Position == 153 && MetKingSecond == true)
+            {
+                dialog.Text += "*The Gods Smile Down Upon You. You Receive Their Celestial Powers In Order To Slay The Dragon*";
+                MeteorPower = true;
+                Checkbox4.IsChecked = true;
+                Checkbox5.Content = "SLAY THE DRAGON";
+                Checkbox5.Opacity = 100;
+            }//Gain Celestial powers from the meteor
+            if (Dragon == true && Postgame == false)
+            {
+                dialog.Text = "CONGRATUALTIONS! You successfully killed the Mighty Dragon and became the hero across the entire land!";
+                Postgame = true;
+            }//For endgame messeage
+        }           //Moves Player and handles events
 
         private void NewEnemy(object sender, RoutedEventArgs e)
         {
-            // Enemy has 25% chance of appearing on any tile
-            int chance = rand.Next(1, 4); 
+            // Enemy has 20% chance of appearing on any tile
+            int chance = rand.Next(1, 5);
 
             // For the Warrior
             if (_mage == null && _rogue == null)
@@ -934,7 +1132,14 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if ( Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -944,14 +1149,21 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += goblin.AppearedMessage();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -961,21 +1173,28 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += goblin.AppearedMessage();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 3)
                     {
                         ogre = new Ogre();
                         Fighting = true;
-                        dialog.Text += ogre.AppearedMessage();
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -989,7 +1208,14 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -999,14 +1225,21 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += goblin.AppearedMessage();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -1016,21 +1249,28 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += goblin.AppearedMessage();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 3)
                     {
                         ogre = new Ogre();
                         Fighting = true;
-                        dialog.Text += ogre.AppearedMessage();
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -1044,7 +1284,14 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -1054,14 +1301,21 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += goblin.AppearedMessage();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
@@ -1071,40 +1325,44 @@ namespace Project_352
                     {
                         rat = new Rat();
                         Fighting = true;
-                        dialog.Text += rat.AppearedMessage();
+                        dialog.Text += "\n" + rat.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 2)
                     {
                         goblin = new Goblin();
                         Fighting = true;
-                        dialog.Text += goblin.AppearedMessage();
+                        dialog.Text += "\n" + goblin.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                     if (chance == 3)
                     {
                         ogre = new Ogre();
                         Fighting = true;
-                        dialog.Text += ogre.AppearedMessage();
+                        dialog.Text += "\n" + ogre.AppearedMessage();
+                        dialog.Text += "What would you like to do?\nAttack or Run\n\n";
+                    }
+                    if (Player_Position == 8 && KrakenFight == false)
+                    {
+                        kraken = new Kraken();
+                        Fighting = true;
+                        dialog.Text += "\n" + kraken.AppearedMessage();
                         dialog.Text += "What would you like to do?\nAttack or Run\n\n";
                     }
                 }
             }
 
             dialog.ScrollToEnd();
-        }
+        }           //Addes the random chance per movement of an enemy spawning to fight
 
-        // Handles player attack depending on class and enemy that appears
         private void Player_Attack(object sender, RoutedEventArgs e)
         {
-            dialog.ScrollToEnd();
-
-            if (rat == null && goblin == null && ogre == null)
+            if (rat == null && goblin == null && ogre == null && kraken == null && bear == null && dragon == null)
             {
                 dialog.Text += "There is nothing to attack.\n";
             }
             // For a rat
-            else if (goblin == null && ogre == null)
+            else if (goblin == null && ogre == null && kraken == null)
             {
                 // For warrior
                 if (_mage == null && _rogue == null)
@@ -1216,7 +1474,7 @@ namespace Project_352
                 }
             }
             // For a goblin
-            else if (rat == null && ogre == null)
+            else if (rat == null && ogre == null && kraken == null)
             {
                 // For warrior
                 if (_mage == null && _rogue == null)
@@ -1328,7 +1586,7 @@ namespace Project_352
                 }
             }
             // For a ogre
-            else if (rat == null && goblin == null)
+            else if (rat == null && goblin == null && kraken == null)
             {
                 // For warrior
                 if (_mage == null && _rogue == null)
@@ -1430,9 +1688,325 @@ namespace Project_352
                     }
                 }
             }
-        }
+            // For a Kraken
+            else if (rat == null && goblin == null && ogre == null && Player_Position == 8)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
 
-        // Allows player to run from enemy
+                    dialog.ScrollToEnd();
+
+                    if (kraken.stats.health - playerDamage > 0)
+                    {
+                        krakenDamage = kraken.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        kraken.stats.health -= (int)playerDamage;
+                        dialog.Text += "kraken: " + kraken.stats.health + "/" + kraken.stats.totalHealth + " HP\n";
+                        dialog.Text += "The kraken did " + krakenDamage + " damage.\n";
+                        _warrior.stats.health -= (int)krakenDamage;
+
+                        // Handles player death
+                        if (_warrior.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += kraken.DeathMessage();
+                        KillKraken(sender, e);
+                        Fighting = false;
+                        kraken = null;
+                        KrakenFight = true;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (kraken.stats.health - playerDamage > 0)
+                    {
+                        krakenDamage = kraken.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        kraken.stats.health -= (int)playerDamage;
+                        dialog.Text += "Kraken: " + kraken.stats.health + "/" + kraken.stats.totalHealth + " HP\n";
+                        dialog.Text += "The Kraken did " + krakenDamage + " damage.\n";
+                        _mage.stats.health -= (int)krakenDamage;
+
+                        // Handles player death
+                        if (_mage.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += kraken.DeathMessage();
+                        KillKraken(sender, e);
+                        Fighting = false;
+                        kraken = null;
+                        KrakenFight = true;
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (kraken.stats.health - playerDamage > 0)
+                    {
+                        krakenDamage = kraken.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        kraken.stats.health -= (int)playerDamage;
+                        dialog.Text += "Kraken: " + kraken.stats.health + "/" + kraken.stats.totalHealth + " HP\n";
+                        dialog.Text += "The kraken did " + krakenDamage + " damage.\n";
+                        _rogue.stats.health -= (int)krakenDamage;
+
+                        // Handles player death
+                        if (_rogue.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += kraken.DeathMessage();
+                        KillKraken(sender, e);
+                        Fighting = false;
+                        kraken = null;
+                        KrakenFight = true;
+                    }
+                }
+            }
+            // For a Bear
+            else if (rat == null && goblin == null && ogre == null && (Player_Position == 131 || Player_Position == 132))
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (bear.stats.health - playerDamage > 0)
+                    {
+                        bearDamage = bear.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        bear.stats.health -= (int)playerDamage;
+                        dialog.Text += "Bear: " + bear.stats.health + "/" + bear.stats.totalHealth + " HP\n";
+                        dialog.Text += "The bear did " + bearDamage + " damage.\n";
+                        _warrior.stats.health -= (int)bearDamage;
+
+                        // Handles player death
+                        if (_warrior.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += bear.DeathMessage();
+                        Killbear(sender, e);
+                        Fighting = false;
+                        bear = null;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (bear.stats.health - playerDamage > 0)
+                    {
+                        bearDamage = bear.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        bear.stats.health -= (int)playerDamage;
+                        dialog.Text += "Bear: " + bear.stats.health + "/" + bear.stats.totalHealth + " HP\n";
+                        dialog.Text += "The Bear did " + bearDamage + " damage.\n";
+                        _mage.stats.health -= (int)bearDamage;
+
+                        // Handles player death
+                        if (_mage.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += bear.DeathMessage();
+                        Killbear(sender, e);
+                        Fighting = false;
+                        bear = null;
+
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (bear.stats.health - playerDamage > 0)
+                    {
+                        bearDamage = bear.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        bear.stats.health -= (int)playerDamage;
+                        dialog.Text += "Bear: " + bear.stats.health + "/" + bear.stats.totalHealth + " HP\n";
+                        dialog.Text += "The bear did " + bearDamage + " damage.\n";
+                        _rogue.stats.health -= (int)bearDamage;
+
+                        // Handles player death
+                        if (_rogue.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += bear.DeathMessage();
+                        Killbear(sender, e);
+                        Fighting = false;
+                        bear = null;
+                    }
+                }
+            }
+            // For a Dragon
+            else if (rat == null && goblin == null && ogre == null && Player_Position == 241 && MeteorPower == true)
+            {
+                // For warrior
+                if (_mage == null && _rogue == null)
+                {
+                    double playerDamage = _warrior.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (dragon.stats.health - playerDamage > 0)
+                    {
+                        dragonDamage = dragon.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        dragon.stats.health -= (int)playerDamage;
+                        dialog.Text += "Dragon: " + dragon.stats.health + "/" + dragon.stats.totalHealth + " HP\n";
+                        dialog.Text += "The Mighty Dragon did " + dragonDamage + " damage.\n";
+                        _warrior.stats.health -= (int)dragonDamage;
+
+                        // Handles player death
+                        if (_warrior.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += bear.DeathMessage();
+                        Killdragon(sender, e);
+                        Fighting = false;
+                        dragon = null;
+                        Dragon = true;
+                    }
+                }
+                // For mage
+                if (_warrior == null && _rogue == null)
+                {
+                    double playerDamage = _mage.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (dragon.stats.health - playerDamage > 0)
+                    {
+                        dragonDamage = dragon.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        dragon.stats.health -= (int)playerDamage;
+                        dialog.Text += "Dragon: " + dragon.stats.health + "/" + dragon.stats.totalHealth + " HP\n";
+                        dialog.Text += "The Mighty Dragon did " + dragonDamage + " damage.\n";
+                        _mage.stats.health -= (int)dragonDamage;
+
+                        // Handles player death
+                        if (_mage.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += dragon.DeathMessage();
+                        Killdragon(sender, e);
+                        Fighting = false;
+                        dragon = null;
+                        Dragon = true;
+
+                    }
+                }
+                // For rogue
+                if (_warrior == null && _mage == null)
+                {
+                    double playerDamage = _rogue.DoDamage();
+
+                    dialog.ScrollToEnd();
+
+                    if (dragon.stats.health - playerDamage > 0)
+                    {
+                        bearDamage = bear.DoDamage();
+
+                        dialog.Text += "You did " + playerDamage + " damage.\n";
+                        dragon.stats.health -= (int)playerDamage;
+                        dialog.Text += "Dragon: " + dragon.stats.health + "/" + dragon.stats.totalHealth + " HP\n";
+                        dialog.Text += "The Mighty Dragon did " + dragonDamage + " damage.\n";
+                        _rogue.stats.health -= (int)dragonDamage;
+
+                        // Handles player death
+                        if (_rogue.stats.health <= 0)
+                        {
+                            Close();
+                        }
+
+                        health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
+                    }
+                    else
+                    {
+                        dialog.Text += dragon.DeathMessage();
+                        Killdragon(sender, e);
+                        Fighting = false;
+                        dragon = null;
+                        Dragon = true;
+                    }
+                }
+            }
+        }           // Handles player attack depending on class and enemy that appears
+
         private void Player_Run(object sender, EventArgs e)
         {
             // 25% chance to run away from an enemy
@@ -1618,9 +2192,8 @@ namespace Project_352
                     }
                 }
             }
-        }
+        }           // Allows player to run from enemy
 
-        // Allows player to rest and restore stamina
         private void Player_Rest(object sender, EventArgs e)
         {
             dialog.ScrollToEnd();
@@ -1635,7 +2208,8 @@ namespace Project_352
                 else if (_warrior.stats.stamina + 10 <= _warrior.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
-                    _warrior.stats.stamina += 10;
+                    _warrior.stats.stamina += 100;
+                    _warrior.stats.mana += 20;
                     stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
                 }
                 else
@@ -1649,7 +2223,8 @@ namespace Project_352
                 if (_mage.stats.stamina + 10 <= _mage.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
-                    _mage.stats.stamina += 10;
+                    _mage.stats.stamina += 100;
+                    _warrior.stats.mana += 50;
                     stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
                 }
                 else
@@ -1663,7 +2238,8 @@ namespace Project_352
                 if (_rogue.stats.stamina + 10 <= _rogue.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
-                    _rogue.stats.stamina += 10;
+                    _rogue.stats.stamina += 100;
+                    _warrior.stats.mana += 20;
                     stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
                 }
                 else
@@ -1671,20 +2247,19 @@ namespace Project_352
                     dialog.Text += "Resting now would be a waste of time...\n";
                 }
             }
-        }
+        }        // Allows player to rest and restore stamina
 
-        // Spells for the Player the use
         private void Player_Heal(object sender, EventArgs e)
         {
             dialog.ScrollToEnd();
 
             if (_mage == null && _rogue == null)
             {
-                if (_warrior.stats.mana - 10 >= 0 && _warrior.stats.health <= _warrior.stats.totalHealth - 10)
+                if (_warrior.stats.mana - 10 > 0 && _warrior.stats.health < _warrior.stats.totalHealth - 10)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
-                    _warrior.stats.health += 10;
+                    _warrior.stats.health += 25;
                     _warrior.stats.mana -= 10;
                     health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
                     mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
@@ -1696,11 +2271,11 @@ namespace Project_352
             }
             if (_warrior == null && _rogue == null)
             {
-                if (_mage.stats.mana - 10 >= 0 && _mage.stats.health <= _mage.stats.totalHealth - 10)
+                if (_mage.stats.mana - 10 > 0 && _mage.stats.health < _mage.stats.totalHealth - 10)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
-                    _mage.stats.health += 10;
+                    _mage.stats.health += 25;
                     _mage.stats.mana -= 10;
                     health.Content = "Health: " + _mage.stats.health + "/" + _mage.stats.totalHealth;
                     mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
@@ -1712,11 +2287,11 @@ namespace Project_352
             }
             if (_warrior == null && _mage == null)
             {
-                if (_rogue.stats.mana - 10 >= 0 && _rogue.stats.health <= _rogue.stats.totalHealth - 10)
+                if (_rogue.stats.mana - 10 > 0 && _rogue.stats.health < _rogue.stats.totalHealth - 10)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
-                    _rogue.stats.health += 10;
+                    _rogue.stats.health += 25;
                     _rogue.stats.mana -= 10;
                     health.Content = "Health: " + _rogue.stats.health + "/" + _rogue.stats.totalHealth;
                     mana.Content = "Mana: " + _rogue.stats.mana + "/" + _rogue.stats.totalMana;
@@ -1726,9 +2301,9 @@ namespace Project_352
                     dialog.Text += "Failed to cast heal.\n";
                 }
             }
-        }
+        }        // Healing Spell for the Player the use
 
-        // Only available for the mage class
+
         private void Player_Flames(object sender, EventArgs e)
         {
             dialog.ScrollToEnd();
@@ -1854,6 +2429,29 @@ namespace Project_352
                     }
                 }
             }
+        }        // Flame spell available for the mage class only
+
+        private void Keyboard(object sender, KeyEventArgs e)         //For keyboard movement
+        {
+            if (e.Key == Key.Down || e.Key == Key.S)//Down
+                Down_Arrow_Click(sender, e);
+            if (e.Key == Key.Up || e.Key == Key.W)//Up
+                Up_Arrow_Click(sender, e);
+            if (e.Key == Key.Left || e.Key == Key.A)//Left
+                Left_Arrow_Click(sender, e);
+            if (e.Key == Key.Right || e.Key == Key.D)//Right
+                Right_Arrow_Click(sender, e);
+            if (e.Key == Key.Space)//Attack
+                Player_Attack(sender, e);
+            if (e.Key == Key.H)//Heal
+                Player_Heal(sender, e);
+            if (e.Key == Key.R)//Run
+                Player_Run(sender, e);
+            if (e.Key == Key.LeftShift)//Rest
+                Player_Rest(sender, e);
+            if (e.Key == Key.F)//Flames
+                Player_Flames(sender, e);
+
         }
     }
 }

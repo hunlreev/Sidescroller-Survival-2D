@@ -28,16 +28,17 @@
         <Rectangle x:Name="WarriorClass" Fill="#FFFFFF" HorizontalAlignment="Left" Height="541" Margin="10,70,0,0" Stroke="Black" VerticalAlignment="Top" Width="341"/>
         <Label Content="WARRIOR" FontSize="68" HorizontalAlignment="Left" Margin="23,74,0,0" VerticalAlignment="Top" Width="314"/>
         <Button x:Name="Warrior" Content="Select" HorizontalAlignment="Left" Margin="11,590,0,-8" VerticalAlignment="Top" Width="339" Click="SelectWarrior"/>
-        <Image Source="warrior_logo.png" HorizontalAlignment="Left" Height="426" Margin="28,210,0,-6" VerticalAlignment="Top" Width="307"/>
+        <Label x:Name="Warrior_Icon" Content="🛡" Foreground="Black" FontSize="280" HorizontalAlignment="Left" Height="373" Margin="23,179,0,0" VerticalAlignment="Top" Width="327"/>
         <!-- Mage -->
         <Rectangle x:Name="MageClass" Fill="#FFFFFF" HorizontalAlignment="Center" Height="541" Margin="368,70,365,-27" Stroke="Black" VerticalAlignment="Top" Width="341"/>
         <Label Content="MAGE" FontSize="68" HorizontalAlignment="Left" Margin="438,74,0,0" VerticalAlignment="Top" Width="204"/>
         <Button x:Name="Mage" Content="Select" HorizontalAlignment="Left" Margin="368,590,0,0" VerticalAlignment="Top" Width="331" Click="SelectMage"/>
-        <Image Source="mage_logo.png"  HorizontalAlignment="Left" Height="387" Margin="390,211,0,0" VerticalAlignment="Top" Width="307"/>
+        <Label x:Name="Mage_Icon" Content="🧙" Foreground="Black" FontSize="265" HorizontalAlignment="Left" Height="373" Margin="350,174,0,0" VerticalAlignment="Top" Width="341"/>
         <!-- Rogue -->
         <Rectangle x:Name="RogueClass" Fill="#FFFFFF" HorizontalAlignment="Right" Height="541" Margin="0,70,10,-41" Stroke="Black" VerticalAlignment="Top" Width="341"/>
         <Label Content="ROGUE" FontSize="68" HorizontalAlignment="Left" Margin="777,74,0,0" VerticalAlignment="Top" Width="243"/>
         <Button x:Name="Rogue" Content="Select" HorizontalAlignment="Left" Margin="714,590,0,0" VerticalAlignment="Top" Width="339" Click="SelectRogue"/>
-        <Image Source="rogue_logo.png"  HorizontalAlignment="Left" Height="387" Margin="738,197,0,0" VerticalAlignment="Top" Width="307"/>
+        <Label x:Name="Rogue_Icon" Content="🗡" Foreground="Black" FontSize="280" HorizontalAlignment="Left" Height="373" Margin="709,174,0,0" VerticalAlignment="Top" Width="341"/>
+        
     </Grid>
 </Window>
