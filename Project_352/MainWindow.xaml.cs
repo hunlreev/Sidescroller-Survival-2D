@@ -152,15 +152,15 @@ namespace Project_352
                         _warrior.info.level += 1;
                         _warrior.info.exp = 0;
                         _warrior.info.totalExp = (int)Math.Pow(_warrior.info.totalExp, 1.035);
-                        _warrior.stats.health += 10;
-                        _warrior.stats.totalHealth += 10;
-                        _warrior.stats.stamina += 5;
-                        _warrior.stats.totalStamina += 5;
-                        _warrior.stats.mana += 5;
-                        _warrior.stats.totalMana += 5;
-                        _warrior.attr.strength += 3;
-                        _warrior.attr.endurance += 2;
-                        _warrior.attr.dexterity += 1;
+                        _warrior.stats.health += (int)(_warrior.attr.endurance * 0.5);
+                        _warrior.stats.totalHealth += (int)(_warrior.attr.endurance * 0.5);
+                        _warrior.stats.stamina += (int)(_warrior.attr.dexterity * 0.5);
+                        _warrior.stats.totalStamina += (int)(_warrior.attr.dexterity * 0.5); 
+                        _warrior.stats.mana += (int)(_warrior.attr.intelligence * 0.5);
+                        _warrior.stats.totalMana += (int)(_warrior.attr.intelligence * 0.5);
+                        _warrior.attr.strength += 4;
+                        _warrior.attr.endurance += 3;
+                        _warrior.attr.dexterity += 2;
                         _warrior.attr.intelligence += 1;
 
                         dialog.Text += _warrior.name + " leveled up! " + '\n';
@@ -187,16 +187,16 @@ namespace Project_352
                         _mage.info.level += 1;
                         _mage.info.exp = 0;
                         _mage.info.totalExp = (int)Math.Pow(_mage.info.totalExp, 1.035);
-                        _mage.stats.health += 5;
-                        _mage.stats.totalHealth += 5;
-                        _mage.stats.stamina += 5;
-                        _mage.stats.totalStamina += 5;
-                        _mage.stats.mana += 10;
-                        _mage.stats.totalMana += 10;
-                        _mage.attr.strength += 2;
+                        _mage.stats.health += (int)(_mage.attr.endurance * 0.5);
+                        _mage.stats.totalHealth += (int)(_mage.attr.endurance * 0.5);
+                        _mage.stats.stamina += (int)(_mage.attr.dexterity * 0.5);
+                        _mage.stats.totalStamina += (int)(_mage.attr.dexterity * 0.5);
+                        _mage.stats.mana += (int)(_mage.attr.intelligence * 0.5);
+                        _mage.stats.totalMana += (int)(_mage.attr.intelligence * 0.5);
+                        _mage.attr.strength += 3;
                         _mage.attr.endurance += 1;
-                        _mage.attr.dexterity += 1;
-                        _mage.attr.intelligence += 3;
+                        _mage.attr.dexterity += 2;
+                        _mage.attr.intelligence += 4;
 
                         dialog.Text += _mage.name + " leveled up! " + '\n';
                         _mage.stats.health = _mage.stats.totalHealth;
@@ -222,15 +222,15 @@ namespace Project_352
                         _rogue.info.level += 1;
                         _rogue.info.exp = 0;
                         _rogue.info.totalExp = (int)Math.Pow(_rogue.info.totalExp, 1.035);
-                        _rogue.stats.health += 5;
-                        _rogue.stats.totalHealth += 5;
-                        _rogue.stats.stamina += 10;
-                        _rogue.stats.totalStamina += 10;
-                        _rogue.stats.mana += 5;
-                        _rogue.stats.totalMana += 5;
+                        _rogue.stats.health += (int)(_rogue.attr.endurance * 0.5);
+                        _rogue.stats.totalHealth += (int)(_rogue.attr.endurance * 0.5);
+                        _rogue.stats.stamina += (int)(_rogue.attr.dexterity * 0.5);
+                        _rogue.stats.totalStamina += (int)(_rogue.attr.dexterity * 0.5);
+                        _rogue.stats.mana += (int)(_rogue.attr.intelligence * 0.5);
+                        _rogue.stats.totalMana += (int)(_rogue.attr.intelligence * 0.5);
                         _rogue.attr.strength += 2;
-                        _rogue.attr.endurance += 1;
-                        _rogue.attr.dexterity += 3;
+                        _rogue.attr.endurance += 3;
+                        _rogue.attr.dexterity += 4;
                         _rogue.attr.intelligence += 1;
 
                         dialog.Text += _rogue.name + " leveled up! " + '\n';
@@ -2354,12 +2354,17 @@ namespace Project_352
                 {
                     dialog.Text += "Now's not the time to rest!\n";
                 }
-                else if (_warrior.stats.stamina + 10 <= _warrior.stats.totalStamina)
+                else if (_warrior.stats.stamina + 20 <= _warrior.stats.totalStamina)
                 {
                     dialog.Text += "You regained some stamina by resting.\n";
                     _warrior.stats.stamina += 20;
-                    _warrior.stats.mana += 20;
                     stamina.Content = "Stamina: " + _warrior.stats.stamina + "/" + _warrior.stats.totalStamina;
+                }
+                else if (_warrior.stats.mana + 20 <= _warrior.stats.totalMana)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _warrior.stats.mana += 20;
+                    mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
                 }
                 else
                 {
@@ -2376,6 +2381,12 @@ namespace Project_352
                     _mage.stats.mana += 20;
                     stamina.Content = "Stamina: " + _mage.stats.stamina + "/" + _mage.stats.totalStamina;
                 }
+                else if (_mage.stats.mana + 20 <= _mage.stats.totalMana)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _mage.stats.mana += 20;
+                    mana.Content = "Mana: " + _mage.stats.mana + "/" + _mage.stats.totalMana;
+                }
                 else
                 {
                     dialog.Text += "Resting now would be a waste of time...\n";
@@ -2391,6 +2402,12 @@ namespace Project_352
                     _rogue.stats.mana += 20;
                     stamina.Content = "Stamina: " + _rogue.stats.stamina + "/" + _rogue.stats.totalStamina;
                 }
+                else if (_rogue.stats.mana + 20 <= _rogue.stats.totalMana)
+                {
+                    dialog.Text += "You regained some stamina by resting.\n";
+                    _rogue.stats.mana += 20;
+                    mana.Content = "Mana: " + _rogue.stats.mana + "/" + _rogue.stats.totalMana;
+                }
                 else
                 {
                     dialog.Text += "Resting now would be a waste of time...\n";
@@ -2404,12 +2421,11 @@ namespace Project_352
 
             if (_mage == null && _rogue == null)
             {
-                if (_warrior.stats.mana - 10 > 0 && _warrior.stats.health < _warrior.stats.totalHealth - 10)
+                if (_warrior.stats.mana - 25 > 0 && _warrior.stats.health < _warrior.stats.totalHealth - 25)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
                     _warrior.stats.health += 25;
-                    _warrior.stats.mana -= 10;
                     health.Content = "Health: " + _warrior.stats.health + "/" + _warrior.stats.totalHealth;
                     mana.Content = "Mana: " + _warrior.stats.mana + "/" + _warrior.stats.totalMana;
                 }
@@ -2420,7 +2436,7 @@ namespace Project_352
             }
             if (_warrior == null && _rogue == null)
             {
-                if (_mage.stats.mana - 10 > 0 && _mage.stats.health < _mage.stats.totalHealth - 10)
+                if (_mage.stats.mana - 25 > 0 && _mage.stats.health < _mage.stats.totalHealth - 25)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
@@ -2436,7 +2452,7 @@ namespace Project_352
             }
             if (_warrior == null && _mage == null)
             {
-                if (_rogue.stats.mana - 10 > 0 && _rogue.stats.health < _rogue.stats.totalHealth - 10)
+                if (_rogue.stats.mana - 25 > 0 && _rogue.stats.health < _rogue.stats.totalHealth - 25)
                 {
                     dialog.Text += "You casted the heal spell.\n";
                     dialog.Text += "Replenished 10 HP!\n";
