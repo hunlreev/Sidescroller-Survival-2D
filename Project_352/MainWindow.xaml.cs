@@ -48,7 +48,7 @@ namespace Project_352
             dialog.Text = "====================\n" +
                           "                Controls                \n" +
                           "Arrows / WASD = Movement \n" +
-                          "Spacebar = Attack\n" +
+                          "G = Attack\n" +
                           "Shift = Rest \n" +
                           "R = Run\n" +
                           "H = Heal\n" +
@@ -2694,7 +2694,7 @@ namespace Project_352
                 Left_Arrow_Click(sender, e);
             if (e.Key == Key.Right || e.Key == Key.D)//Right
                 Right_Arrow_Click(sender, e);
-            if (e.Key == Key.Space)//Attack
+            if (e.Key == Key.G)//Attack
                 Player_Attack(sender, e);
             if (e.Key == Key.H)//Heal
                 Player_Heal(sender, e);
