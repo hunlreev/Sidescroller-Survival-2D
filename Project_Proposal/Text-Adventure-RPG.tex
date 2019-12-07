@@ -474,7 +474,7 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-Text Adventure RPG is a game that is a throw back to the first RPGs of its kind. It focuses on literal text based output and all of the graphics are centered around unicode characters. Our target audience is someone who enjoys fun RPG style games. The game has character creation where the player can choose one of three classes. Controls exist for the player to move around the map, along with a story to interact with. The combat system is more or less fleshed out, with a somewhat complex leveling system as well.
+Text Adventure RPG is a game that is a throw back to the first RPGs of its kind. It focuses on literal text based output and all of the graphics are centered around unicode characters. Our target audience is someone who enjoys fun RPG style games. The game has character creation where the player can choose one of three classes. Controls exist for the player to move around the map, along with a story to interact with. The combat system is finished as well, with a heal spell and flames spell (for the mage.) We have sound effects as well as a quest/story line! Now go defeat the evil Dragon! 
 \end{abstract}
 
 %As the comment below states, you usually only do these when you're doing a final submission of a paper, to make it easier to find your work when searching.
@@ -535,7 +535,7 @@ Text Adventure RPG is a game that is a throw back to the first RPGs of its kind.
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-Text Adventure RPG is a text-based RPG adventure game that allows the player to explore a text-filled world, pick a class, level up, fight enemies, and gain gold. Game development is an interesting area and we are looking forward to learning more about what all of that entails. The majority of the game will be text based. We hope to achieve this with minimal graphics, aside from a few images to make the visuals a bit more interesting. Our way of going about this was through the use of unicode characters.
+Text Adventure RPG is a text-based RPG adventure game that allows the player to explore a text-filled world, pick a class, level up, fight enemies, and gain gold. Game development is an interesting area and we are looking forward to learning more about what all of that entails. The majority of the game is text based, with some added sound effects. We achieved this with minimal graphics, aside from a few images to make the visuals a bit more interesting. We did this through the use of unicode characters.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -634,16 +634,17 @@ Text Adventure RPG is a text-based RPG adventure game that allows the player to 
 
 \subsection{Background}
 
-Our game, as has been previously mentioned, is a text based adventure. Text based adventure games involve text information around every event that occurs within the game. It will be strictly GUI based with text for every event that happens. From picking up loot and gaining gold/experience to fighting rats, goblins, and ogres.
+Our game is a text based adventure. Text based adventure games involve text information around every event that occurs within the game. It will be strictly GUI based with text for every event that happens. From picking up loot and gaining gold/experience to fighting rats, goblins, and ogres and completing quests.
+We have created a world for others to explore. This was an exciting task to take on. Being able to take part in this project is something we have both always wanted to do. The majority of the game development was straight forward. There were many challenges, such as with character creation and the combat system, but we were able to work those out.
 
-Creating a world for others to explore is a very exciting task to take on. Being able to take part in this project is something we have both always wanted to do. This project should not be too difficult, with a scope that won't be too large for the semester. The game will also be single player, for simplicity.
 
 \subsection{Challenges}
-The feature that will be most challenging to add to this game will be the interaction of the player with the items, or loot, they come across in their journey. 
-Another challenge that we came across during development was the character creation. That ended up being a bit more complex than previously thought.
+The biggest challenge was determining how to get the character creation to work. That ended up being a bit more complex than previously thought. The combat system was also a lot of work. This was not necessarily difficult, but involved a lot of logic. Another challenge was tweaking all of the stats and damage amounts to make the game playable but not too simple or too difficult.
 
 \section{Scope}
-Due to the game being more text-based, the scope is easier to handle. It involves some basic gameplay mechanics, the storyline, and how the player will interact with the world. It also includes our two stretch goals that we want to complete if we have the time.\\
+-	Remove any item that relates to items or loot, inventories
+-	Add some additional functional items, such as with spells and mana, moving tiles and stamina
+-	Add more to non-functional as well, (game doesn’t crash, doesn’t have any bugs we’re aware of)
 
 \textit{1. Interactive GUI for Gameplay\\}
 This will be the main window of the game where you will see your level, gold, experience, any quest updates and information, and the basic player controls for moving area to area.\\
@@ -757,7 +758,7 @@ This is located below at the bottom of this proposal.
 \end{figure}
 
 \section{Project Structure}
-The game starts off with a character creation screen, where the player chooses their name, and class. Once this is selected, the window closes and the main game window appears. The player's name and class choices will be reflected within the main game window. The player will have access to their dialogues from any quests, current and completed quests, and the map of the game. The map is based on a tile set of unicode characters, which is 32x8 (256) tiles. A player can enter combat with enemies and level up.
+The game starts off with a character creation screen, where the player chooses their name, and class. Once this is selected, the window closes and the main game window appears. The player's name and class choices will be reflected within the main game window. The player will have access to their dialogues from any quests, current and completed quests, and the map of the game. The map is based on a tile set of unicode characters, which is 32x8 (256) tiles. A player can enter combat with enemies and level up. We created many classes to help us in the program. Many of those classes include character classes for each individual character, enemy classes for every enemy, and finally classes for the actual combat system.\\
 
 \subsection{UML Outline}
 The UML that lists the player creation in it's entirety is down below.
@@ -780,10 +781,10 @@ The first design pattern was utilized in character creation - the Abstract Facto
 
 \section{Results}
 \textit{1. Interactive GUI for Gameplay\\}
-The GUI for the overall gameplay wasn't too difficult to get going. Get some map controls, combat controls, and we were home free.\\
+The Gui was difficult at first to produce the outcome to our standards. We finally fixed it after giving in to some difficulties and going another route.\\
 
 \textit{2. The Story\\}
-The storyline is also pretty straight forward. Have the player interact with the story and complete some quests for completeness.\\
+The storyline is loosely based of the sterotypical adventure story. Go into a troubled world, meet the king, go on quests, then finally defeat the evil dragon.\\
 
 \textit{3. Class Selection\\}
 Class selection/character creation was difficult. It was hard to figure out how to handle other classes being null when you only select one class each game run. Because of this, we have tons of null checks in our code. It's sloppy, but I had no idea how else to manage this issue.\\
@@ -792,9 +793,7 @@ Class selection/character creation was difficult. It was hard to figure out how 
 Gold/Leveling system as well as the combat system wasn't too hard to implement. The only issue is all of the conditionals for the logic to get it all to work. This is also sloppy, but again - not really sure how else to tackle this kind of mechanic.\\
 
 \subsection{Future Work}
-I am not sure if we are going to continue work on this or not. Perhaps if we added more to it and cleaned it up a bit, we could potentially put it on the Steam gamestore. But we are not sure.
-We accomplished everything we set out to do and then some. The only thing we wish we had implemented was the inventory system and items.
-All in all, this was a fun project. We enjoyed working on it, despite dealing with the wonkiness of WPF. Perhaps we will transfer this idea over to a sufficient game engine.
+As of right now, future work isn’t currently in the works. If we did work on it some more and cleaned it up a bit, we could potentially put it on the Steam game store, but we are not sure. We accomplished everything we set out to do and then some. The only thing we wish we had implemented was the inventory system and items. All in all, this was a fun project. We enjoyed working on it, despite dealing with the wonkiness of WPF. Perhaps we will transfer this idea over to a sufficient game engine, such as Unity or Unreal Engine. Even a framework like Monogame would allow for massive improvement.
 
 \iffalse % comment out the rest
 
