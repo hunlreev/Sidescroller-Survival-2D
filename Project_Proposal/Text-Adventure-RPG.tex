@@ -671,8 +671,7 @@ The requirements were gathered by researching and thinking of what would be the 
 
 \subsubsection{Functional}
 \begin{itemize}
-\item The user must have the ability to equip and unequip their weapons/armour.
-\item The user should have private inventories that can't be accessed but from themselves.
+\item The user must be able to cast spells.
 \item The user should be able to run or fight from any battle.
 \item The user should have the ability to quit the game at any point.
 \end{itemize}
@@ -711,14 +710,14 @@ The requirements were gathered by researching and thinking of what would be the 
 
 \begin{itemize}
 	\item[Use Case:] 3
-	\item[Name:] Obtain Loot
-	\item[Description:] There will be moments in the game where the player can pick up new gear, quest items, or gold. When the player encounters something they can loot, a text dialogue describing the item will appear. The player will then get the option to either pick the item up or ignore the item.
+	\item[Name:] Cast a Spell
+	\item[Description:] There will be moments in the game where the player can cast a heal or flames spell. While the player has mana, the user can cast these spell, so long as conditions are met. For example, if the player uses the Heal spell - the player must require health. 
 \end{itemize}
 
 \begin{enumerate}
-	\item Player comes across loot and receives dialogue about the loot.
-	\item Player decides whether or not they pick the loot up or ignore it.
-	\item Player adds loot to their inventory or simply walks away from the loot.\\\\\\
+	\item Player comes needs to attack an enemy or needs to heal.
+	\item Player casts the spell so long as they have mana or require health.
+	\item Player gains health or attacks with flames.\\\\\\
 \end{enumerate}
 
 \begin{table}[h]
@@ -731,7 +730,7 @@ The requirements were gathered by researching and thinking of what would be the 
 		\hline
 		2 & Attack an Enemy & Player & Medium & 1\\
 		\hline
-		3 & Obtain Loot & Player & Easy & 2\\
+		3 & Cast a Spell & Player & Easy & 2\\
 		\hline
 		
 	\end{tabular}
@@ -742,9 +741,15 @@ The requirements were gathered by researching and thinking of what would be the 
 \subsection{Interface Mockup}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.25\linewidth]{interface_v2}
-	\caption{The base game GUI.}
-	\label{fig:interfacev2}
+	\includegraphics[width=0.50\linewidth]{"../../Text Adventure RPG/Project_Proposal/create_char"}
+	\caption{The character creation screen.}
+	\label{fig:createchar}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.50\linewidth]{"../../Text Adventure RPG/Project_Proposal/demo"}
+	\caption{This is the main game window.}
+	\label{fig:demo}
 \end{figure}
 
 \section{Project Timeline}
